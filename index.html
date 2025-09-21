@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Storefront — Automating Growth. Scaling Storefronts.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --bg:#0B0F14; --ink:#E6EAF0; --muted:#9AA4B2;
+      --blue:#2F6FFF; --blue-2:#38BDF8;
+      --card:#11161d; --border:#1b2330;
+      --radius:1.2rem;
+    }
+    *{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+  </style>
+</head>
+<body class="bg-[var(--bg)] text-[var(--ink)] selection:bg-[var(--blue)]/30">
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/30">
+    <nav class="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <!-- Minimal logo: storefront frame + growth curve -->
+        <svg width="28" height="28" viewBox="0 0 24 24" class="text-[var(--blue)]">
+          <path fill="currentColor" d="M3 8h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z" opacity=".2"/>
+          <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+            d="M3 8h18M5 20h14a2 2 0 0 0 2-2V6H3v12a2 2 0 0 0 2 2Zm3-6h4m-4 4h8"/>
+          <path stroke="currentColor" stroke-width="1.6" fill="none"
+            d="M4 5c3 0 6 6 9 6s5-3 7-5"/>
+        </svg>
+        <span class="font-extrabold tracking-tight">Storefront</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-sm text-[var(--muted)]">
+        <a href="#features" class="hover:text-[var(--ink)]">Features</a>
+        <a href="#proof" class="hover:text-[var(--ink)]">Results</a>
+        <a href="#cta" class="hover:text-[var(--ink)]">Get demo</a>
+      </div>
+      <a href="#cta" class="inline-flex items-center rounded-xl px-4 py-2 bg-[var(--blue)] hover:bg-[var(--blue-2)] text-black font-semibold transition">
+        Book a demo
+      </a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(600px_200px_at_20%_0%,rgba(47,111,255,.25),transparent),radial-gradient(600px_200px_at_80%_0%,rgba(56,189,248,.18),transparent)] pointer-events-none"></div>
+    <div class="mx-auto max-w-6xl px-4 py-24 md:py-32 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
+        Automating Growth.<span class="text-[var(--blue)]"> Scaling Storefronts.</span>
+      </h1>
+      <p class="mt-5 text-lg md:text-xl text-[var(--muted)] max-w-3xl mx-auto">
+        AI workflows that cut support time, boost conversion, and make revenue compounding inevitable.
+      </p>
+      <div class="mt-8 flex items-center justify-center gap-3">
+        <a href="#cta" class="rounded-2xl px-5 py-3 bg-[var(--blue)] hover:bg-[var(--blue-2)] text-black font-semibold">Get a live demo</a>
+        <a href="#features" class="rounded-2xl px-5 py-3 border border-[var(--border)] hover:border-[var(--blue)] text-[var(--ink)]">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="mx-auto max-w-6xl px-4 pb-8">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="rounded-[var(--radius)] border border-[var(--border)] bg-[var(--card)] p-6">
+        <h3 class="font-bold mb-2">Save Time</h3>
+        <p class="text-[var(--muted)]">Automate support, product copy, and post-purchase flows.</p>
+      </div>
+      <div class="rounded-[var(--radius)] border border-[var(--border)] bg-[var(--card)] p-6">
+        <h3 class="font-bold mb-2">Increase Revenue</h3>
+        <p class="text-[var(--muted)]">24/7 AI sales assistant, upsells, abandoned cart recovery.</p>
+      </div>
+      <div class="rounded-[var(--radius)] border border-[var(--border)] bg-[var(--card)] p-6">
+        <h3 class="font-bold mb-2">Scale Reliably</h3>
+        <p class="text-[var(--muted)]">Forecasting & insights that keep margins healthy as you grow.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section id="proof" class="mx-auto max-w-6xl px-4 py-12">
+    <div class="rounded-[var(--radius)] border border-[var(--border)] p-6 md:p-10 bg-gradient-to-b from-[#0d1320] to-[#0b1019]">
+      <div class="grid md:grid-cols-3 gap-6 text-center">
+        <div>
+          <div class="text-4xl font-extrabold text-[var(--blue)]">-45%</div>
+          <p class="text-[var(--muted)] mt-1">Support ticket load</p>
+        </div>
+        <div>
+          <div class="text-4xl font-extrabold text-[var(--blue)]">+18%</div>
+          <p class="text-[var(--muted)] mt-1">Checkout conversion</p>
+        </div>
+        <div>
+          <div class="text-4xl font-extrabold text-[var(--blue)]">+32%</div>
+          <p class="text-[var(--muted)] mt-1">Repeat purchase rate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="mx-auto max-w-6xl px-4 pb-24">
+    <div class="rounded-[var(--radius)] border border-[var(--border)] bg-[var(--card)] p-8 md:p-12 text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">See Storefront in action</h2>
+      <p class="text-[var(--muted)] mt-3">We’ll map your bottlenecks and show a revenue plan in 20 minutes.</p>
+      <a href="mailto:hello@storefront.ai" class="mt-6 inline-flex rounded-2xl px-6 py-3 bg-[var(--blue)] hover:bg-[var(--blue-2)] text-black font-semibold">Book my demo</a>
+    </div>
+  </section>
+
+  <footer class="border-t border-[var(--border)]">
+    <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-[var(--muted)] flex flex-col md:flex-row items-center justify-between gap-4">
+      <span>© Storefront. All rights reserved.</span>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-[var(--ink)]">Privacy</a>
+        <a href="#" class="hover:text-[var(--ink)]">Terms</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
