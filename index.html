@@ -19,16 +19,26 @@
     }
     *{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans"; }
 
-    /* Subtle reveal animation */
+    /* Reveal on scroll */
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity .35s ease, transform .35s ease; }
     .reveal.show { opacity: 1; transform: translateY(0); }
 
-    /* Nice gradient glow behind hero */
+    /* Hero halo */
     .hero-glow{
       background:
         radial-gradient(600px 220px at 20% 0%, rgba(47,111,255,.25), transparent),
         radial-gradient(600px 220px at 80% 0%, rgba(56,189,248,.18), transparent);
     }
+
+    /* Card hover */
+    .card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .card:hover { transform: translateY(-2px); border-color: var(--blue); box-shadow: 0 10px 30px rgba(47,111,255,.08); }
+
+    /* Pricing hover (a bit bolder) */
+    .price:hover { transform: translateY(-4px) scale(1.01); border-color: var(--blue); box-shadow: 0 16px 40px rgba(47,111,255,.12); }
+
+    /* Placeholder logo badge */
+    .logo-badge { width:72px; height:36px; border:1px solid var(--border); border-radius:.6rem; display:flex; align-items:center; justify-content:center; color:var(--muted); font-weight:600; }
   </style>
 </head>
 <body class="bg-[var(--bg)] text-[var(--ink)] selection:bg-[var(--blue)]/30">
@@ -49,12 +59,11 @@
         <a href="#features" class="hover:text-[var(--ink)]">Features</a>
         <a href="#proof" class="hover:text-[var(--ink)]">Results</a>
         <a href="#how" class="hover:text-[var(--ink)]">How it works</a>
+        <a href="#pricing" class="hover:text-[var(--ink)]">Pricing</a>
         <a href="#testimonials" class="hover:text-[var(--ink)]">Testimonials</a>
         <a href="#faq" class="hover:text-[var(--ink)]">FAQ</a>
       </div>
-      <a href="#cta" class="inline-flex items-center rounded-xl px-4 py-2 bg-[var(--blue)] hover:bg-[var(--blue-2)] text-black font-semibold transition">
-        Book a demo
-      </a>
+      <a href="#cta" class="inline-flex items-center rounded-xl px-4 py-2 bg-[var(--blue)] hover:bg-[var(--blue-2)] text-black font-semibold transition">Book a demo</a>
     </nav>
   </header>
 
@@ -70,7 +79,14 @@
       </p>
       <div class="reveal mt-8 flex items-center justify-center gap-3">
         <a href="#cta" class="rounded-2xl px-5 py-3 bg-[var(--blue)] hover:bg-[var(--blue-2)] text-black font-semibold">Get a live demo</a>
-        <a href="#features" class="rounded-2xl px-5 py-3 border border-[var(--border)] hover:border-[var(--blue)] text-[var(--ink)]">See how it works</a>
+        <a href="#how" class="rounded-2xl px-5 py-3 border border-[var(--border)] hover:border-[var(--blue)] text-[var(--ink)]">See how it works</a>
+      </div>
+      <!-- Integrations / trust strip (placeholders you can replace later) -->
+      <div class="reveal mt-12 flex items-center justify-center gap-4 md:gap-6 opacity-90">
+        <div class="logo-badge">Shopify</div>
+        <div class="logo-badge">Klaviyo</div>
+        <div class="logo-badge">Gorgias</div>
+        <div class="logo-badge">Slack</div>
       </div>
     </div>
   </section>
@@ -78,37 +94,28 @@
   <!-- FEATURES -->
   <section id="features" class="mx-auto max-w-6xl px-4 pb-8">
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="reveal rounded-[var(--radius)] border border-[var(--border)] bg-[var(--card)] p-6">
+      <div class="reveal card rounded-[var(--radius)] border border-[var(--border)] bg-[var(--card)] p-6">
         <h3 class="font-bold mb-2">Save Time</h3>
         <p class="text-[var(--muted)]">Automate support, product copy, and post-purchase flows.</p>
       </div>
-      <div class="reveal rounded-[var(--radius)] border border-[var(--border)] bg-[var(--card)] p-6">
+      <div class="reveal card rounded-[var(--radius)] border border-[var(--border)] bg-[var(--card)] p-6">
         <h3 class="font-bold mb-2">Increase Revenue</h3>
         <p class="text-[var(--muted)]">24/7 AI sales assistant, upsells, and abandoned cart recovery.</p>
       </div>
-      <div class="reveal rounded-[var(--radius)] border border-[var(--border)] bg-[var(--card)] p-6">
+      <div class="reveal card rounded-[var(--radius)] border border-[var(--border)] bg-[var(--card)] p-6">
         <h3 class="font-bold mb-2">Scale Reliably</h3>
         <p class="text-[var(--muted)]">Forecasting & insights that keep margins healthy as you grow.</p>
       </div>
     </div>
   </section>
 
-  <!-- PROOF -->
+  <!-- RESULTS / PROOF -->
   <section id="proof" class="mx-auto max-w-6xl px-4 py-12">
     <div class="reveal rounded-[var(--radius)] border border-[var(--border)] p-6 md:p-10 bg-gradient-to-b from-[#0d1320] to-[#0b1019]">
       <div class="grid md:grid-cols-3 gap-6 text-center">
-        <div>
-          <div class="text-4xl font-extrabold text-[var(--blue)]">-45%</div>
-          <p class="text-[var(--muted)] mt-1">Support ticket load</p>
-        </div>
-        <div>
-          <div class="text-4xl font-extrabold text-[var(--blue)]">+18%</div>
-          <p class="text-[var(--muted)] mt-1">Checkout conversion</p>
-        </div>
-        <div>
-          <div class="text-4xl font-extrabold text-[var(--blue)]">+32%</div>
-          <p class="text-[var(--muted)] mt-1">Repeat purchase rate</p>
-        </div>
+        <div><div class="text-4xl font-extrabold text-[var(--blue)]">-45%</div><p class="text-[var(--muted)] mt-1">Support ticket load</p></div>
+        <div><div class="text-4xl font-extrabold text-[var(--blue)]">+18%</div><p class="text-[var(--muted)] mt-1">Checkout conversion</p></div>
+        <div><div class="text-4xl font-extrabold text-[var(--blue)]">+32%</div><p class="text-[var(--muted)] mt-1">Repeat purchase rate</p></div>
       </div>
     </div>
   </section>
@@ -117,17 +124,67 @@
   <section class="mx-auto max-w-6xl px-4 py-16" id="how">
     <h2 class="reveal text-3xl font-extrabold tracking-tight text-center">How we deploy in days</h2>
     <div class="mt-8 grid gap-6 md:grid-cols-3">
-      <div class="reveal rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
+      <div class="reveal card rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
         <h3 class="font-bold mb-2">1) Map bottlenecks</h3>
         <p class="text-[var(--muted)]">20-min discovery → find ticket, conversion, and inventory leaks.</p>
       </div>
-      <div class="reveal rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
+      <div class="reveal card rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
         <h3 class="font-bold mb-2">2) Plug into your stack</h3>
         <p class="text-[var(--muted)]">Shopify, email, and chat tools connected with prebuilt workflows.</p>
       </div>
-      <div class="reveal rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
+      <div class="reveal card rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
         <h3 class="font-bold mb-2">3) Measure & scale</h3>
         <p class="text-[var(--muted)]">Weekly insights, A/B tests, and compounding gains.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="reveal text-3xl font-extrabold tracking-tight text-center">Simple pricing that scales with you</h2>
+    <p class="reveal text-center text-[var(--muted)] mt-2">Month-to-month. Launch in 7–14 days. Cancel anytime.</p>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      <!-- Starter -->
+      <div class="reveal card price rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 flex flex-col">
+        <h3 class="font-bold text-lg">Starter</h3>
+        <p class="text-[var(--muted)] text-sm mt-1">Efficiency unlocks</p>
+        <div class="text-3xl font-extrabold mt-4">$500<span class="text-base font-semibold text-[var(--muted)]">/mo</span></div>
+        <ul class="mt-4 space-y-2 text-sm text-[var(--muted)]">
+          <li>AI Support Bot (shipping, returns, FAQs)</li>
+          <li>Automated order status updates</li>
+          <li>Product description generator</li>
+        </ul>
+        <a href="#cta" class="mt-6 inline-flex justify-center rounded-xl px-4 py-2 bg-[var(--blue)] hover:bg-[var(--blue-2)] text-black font-semibold transition">Get started</a>
+      </div>
+
+      <!-- Growth -->
+      <div class="reveal card price rounded-2xl border border-[var(--blue)]/40 bg-[var(--card)] p-6 flex flex-col">
+        <div class="inline-flex text-xs px-2 py-1 bg-[var(--blue)]/15 text-[var(--blue)] rounded-lg self-start">Most Popular</div>
+        <h3 class="font-bold text-lg mt-2">Growth</h3>
+        <p class="text-[var(--muted)] text-sm mt-1">Revenue acceleration</p>
+        <div class="text-3xl font-extrabold mt-4">$2,000<span class="text-base font-semibold text-[var(--muted)]">/mo</span></div>
+        <ul class="mt-4 space-y-2 text-sm text-[var(--muted)]">
+          <li>Everything in Starter</li>
+          <li>AI Sales Assistant (upsells & cross-sells)</li>
+          <li>Abandoned cart email/SMS flows</li>
+          <li>Weekly AI performance reports</li>
+        </ul>
+        <a href="#cta" class="mt-6 inline-flex justify-center rounded-xl px-4 py-2 bg-[var(--blue)] hover:bg-[var(--blue-2)] text-black font-semibold transition">Book a demo</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="reveal card price rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 flex flex-col">
+        <h3 class="font-bold text-lg">Enterprise</h3>
+        <p class="text-[var(--muted)] text-sm mt-1">Scale & predictability</p>
+        <div class="text-3xl font-extrabold mt-4">Custom</div>
+        <ul class="mt-4 space-y-2 text-sm text-[var(--muted)]">
+          <li>Everything in Growth</li>
+          <li>Demand forecasting (SKU-level)</li>
+          <li>Dynamic pricing/promotions</li>
+          <li>Executive insights & dashboards</li>
+        </ul>
+        <a href="#cta" class="mt-6 inline-flex justify-center rounded-xl px-4 py-2 border border-[var(--blue)] text-[var(--ink)] hover:bg-[var(--blue)] hover:text-black transition">Talk to sales</a>
       </div>
     </div>
   </section>
@@ -137,7 +194,7 @@
     <h2 class="reveal text-3xl font-extrabold tracking-tight text-center">What customers say</h2>
     <div class="mt-8 grid gap-6 md:grid-cols-2">
       <!-- Brotein -->
-      <figure class="reveal rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
+      <figure class="reveal card rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
         <div class="flex items-center gap-3">
           <div class="h-9 w-9 rounded-lg bg-[var(--blue)]/15 flex items-center justify-center font-bold text-[var(--blue)]">B</div>
           <figcaption class="text-sm">
@@ -149,7 +206,7 @@
       </figure>
 
       <!-- Restup -->
-      <figure class="reveal rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
+      <figure class="reveal card rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6">
         <div class="flex items-center gap-3">
           <div class="h-9 w-9 rounded-lg bg-[var(--blue)]/15 flex items-center justify-center font-bold text-[var(--blue)]">R</div>
           <figcaption class="text-sm">
@@ -179,27 +236,22 @@
       <summary class="font-semibold cursor-pointer">How fast can we launch?</summary>
       <p class="mt-3 text-[var(--muted)]">Most clients see their first workflow live in 7–14 days.</p>
     </details>
-
     <details class="reveal mt-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5">
       <summary class="font-semibold cursor-pointer">Do you integrate with our tools?</summary>
       <p class="mt-3 text-[var(--muted)]">Yes—Shopify, WooCommerce, Klaviyo, Omnisend, Gorgias, Slack and more.</p>
     </details>
-
     <details class="reveal mt-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5">
       <summary class="font-semibold cursor-pointer">Is our data safe?</summary>
       <p class="mt-3 text-[var(--muted)]">We connect via secure APIs using least-privilege access. You can revoke at any time.</p>
     </details>
-
     <details class="reveal mt-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5">
       <summary class="font-semibold cursor-pointer">What ROI should we expect?</summary>
       <p class="mt-3 text-[var(--muted)]">Typical early wins: –30–50% support load and +10–20% conversion lift in the first quarter.</p>
     </details>
-
     <details class="reveal mt-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5">
       <summary class="font-semibold cursor-pointer">How much work is required from our team?</summary>
       <p class="mt-3 text-[var(--muted)]">A short discovery call and access to your tools. We handle setup, monitoring, and iteration.</p>
     </details>
-
     <details class="reveal mt-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5">
       <summary class="font-semibold cursor-pointer">Do you offer contracts or month-to-month?</summary>
       <p class="mt-3 text-[var(--muted)]">Start month-to-month. When you’re happy with results, we can discuss longer terms.</p>
