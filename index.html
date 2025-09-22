@@ -160,7 +160,7 @@
         <a href="#how" class="rounded-2xl px-5 py-3 border border-[var(--border)] hover:border-[var(--blue)] text-[var(--ink)]">See how it works</a>
       </div>
       <!-- Integrations placeholders (swap for logos later) -->
-      <div class="reveal mt-12 flex items-center justify-center gap-4 md:gap-6 opacity-90">
+      <div class="reveal mt-12 flex items-center justify-center gap-4 md:gap-6 opacity-90" aria-label="Integrations">
         <div class="logo-badge" aria-label="Shopify logo placeholder">Shopify</div>
         <div class="logo-badge" aria-label="Klaviyo logo placeholder">Klaviyo</div>
         <div class="logo-badge" aria-label="Gorgias logo placeholder">Gorgias</div>
@@ -199,24 +199,45 @@
     </div>
   </section>
 
-  <!-- ROI CALCULATOR -->
+  <!-- ROI CALCULATOR (Conservative) -->
   <section id="roi" class="mx-auto max-w-6xl px-4 py-16">
     <h2 class="reveal text-3xl font-extrabold tracking-tight text-center">Estimate Your ROI</h2>
-    <p class="reveal text-center text-[var(--muted)] mt-2">Use your numbers. We’ll estimate savings, revenue lift, and payback.</p>
+    <p class="reveal text-center text-[var(--muted)] mt-2">Conservative estimates based on transparent assumptions. Adjust inputs to match your store.</p>
 
     <div class="reveal mt-8 grid-2">
       <!-- Inputs -->
       <div class="calc-card">
         <div class="grid gap-4">
           <label class="label">Store monthly revenue ($10k – $1M)</label>
-          <input id="rev" class="slider" type="range" min="10000" max="1000000" step="1000" value="50000" oninput="revOut.value = Number(this.value).toLocaleString()">
-          <input id="revOut" class="input" type="number" min="10000" max="1000000" step="1000" value="50000" oninput="rev.value=this.value">
+          <input id="rev" class="slider" type="range" min="10000" max="1000000" step="1000" value="50000">
+          <div class="flex items-center gap-3">
+            <input id="revOut" class="input" type="number" min="10000" max="1000000" step="1000" value="50000" aria-label="Revenue number input">
+            <span class="text-sm muted">Current: <strong id="revPretty">$50,000</strong></span>
+          </div>
 
           <label class="label">Average order value ($)</label>
           <input id="aov" class="input" type="number" min="1" step="1" value="60" />
 
           <label class="label">Current support tickets / month</label>
-          <input id="tickets" class="input" type="number" min="0" step="1" value="300" />
+          <div class="grid grid-cols-2 gap-3">
+            <select id="ticketsPreset" class="input">
+              <option value="100">~100</option>
+              <option value="250" selected>~250</option>
+              <option value="500">~500</option>
+              <option value="1000">~1,000</option>
+              <option value="custom">Custom</option>
+            </select>
+            <input id="tickets" class="input" type="number" min="0" step="1" value="250" placeholder="Enter custom" aria-label="Custom ticket count">
+          </div>
+          <div class="text-xs muted">Don’t know it? Pick a rough range. You can refine later.</div>
+
+          <label class="label">Estimated support cost per ticket</label>
+          <select id="ticketCost" class="input">
+            <option value="1.5">$1.50 (lean team)</option>
+            <option value="2.5" selected>$2.50 (conservative default)</option>
+            <option value="4">$4.00 (fully loaded)</option>
+          </select>
+          <div class="text-xs muted">Shown as time × wage. Example: 6–10 minutes at $15–$25/hr ≈ $1.50–$4 per ticket.</div>
 
           <label class="label">Package</label>
           <select id="pkg" class="input">
@@ -226,7 +247,7 @@
           </select>
 
           <div class="text-xs muted">
-            Assumptions: ~45% ticket reduction at ~$5/ticket, overall revenue lift varies by package and store size (3–15%).
+            Assumptions: ~30% ticket reduction, overall revenue lift varies by package & store size (capped at 5% / 10% / 12%).
           </div>
 
           <div class="flex gap-3 mt-3">
@@ -265,6 +286,15 @@
             <div id="outMulti" class="text-2xl font-extrabold">—</div>
           </div>
         </div>
+
+        <div class="mt-4 text-xs muted">
+          <strong>Conservative estimate.</strong> Based on your inputs and the assumptions shown above:
+          <ul class="list-disc ml-5 mt-1 space-y-1">
+            <li>Ticket reduction default: 30% (adjustable).</li>
+            <li>Support cost per ticket: your selection.</li>
+            <li>Overall revenue lift: low band by plan & size; capped at 5% / 10% / 12% respectively.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -299,7 +329,7 @@
     </div>
   </section>
 
-  <!-- PRICING -->
+  <!-- PRICING (updated) -->
   <section id="pricing" class="mx-auto max-w-6xl px-4 py-16">
     <h2 class="reveal text-3xl font-extrabold tracking-tight text-center">Simple pricing that scales with you</h2>
     <p class="reveal text-center text-[var(--muted)] mt-2">Month-to-month. Launch in 7–14 days. Cancel anytime.</p>
@@ -493,29 +523,15 @@
     },{threshold:.12});
     els.forEach(el=>obs.observe(el));
 
-    // --- ROI Calculator ---
-    // Assumptions (tweak as needed)
-    const COST_PER_TICKET = 5;          // $ per ticket resolved (time × rate)
-    const TICKET_REDUCTION = 0.45;      // 45% fewer tickets
-    // Revenue lift bands by package & store size
-    const LIFT = {
-      starter: { small: 0.03, mid: 0.04, large: 0.05 },      // overall revenue lift
-      growth:  { small: 0.06, mid: 0.09, large: 0.12 },
-      enterprise: { small: 0.08, mid: 0.12, large: 0.15 }    // placeholder
-    };
-    const COST = { starter: 497, growth: 1997, enterprise: 4997 }; // Enterprise cost placeholder for calc
-
-    function sizeBracket(rev){
-      if (rev < 50000) return 'small';
-      if (rev <= 200000) return 'mid';
-      return 'large';
-    }
-    function fmt(n){ return '$' + Number(n.toFixed(0)).toLocaleString(); }
-
+    // -------------------- ROI Calculator (conservative) --------------------
+    // DOM
     const rev = document.getElementById('rev');
     const revOut = document.getElementById('revOut');
-    const aov = document.getElementById('aov'); // currently not used in math but kept for context
+    const revPretty = document.getElementById('revPretty');
+    const aov = document.getElementById('aov');
+    const ticketsPreset = document.getElementById('ticketsPreset');
     const tickets = document.getElementById('tickets');
+    const ticketCostSelect = document.getElementById('ticketCost');
     const pkg = document.getElementById('pkg');
     const calcBtn = document.getElementById('calcBtn');
     const resetBtn = document.getElementById('resetBtn');
@@ -527,18 +543,53 @@
     const outNet     = document.getElementById('outNet');
     const outMulti   = document.getElementById('outMulti');
 
+    // Helpers
+    function pretty(n){ return '$' + Number(n).toLocaleString(); }
+    function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
+    function syncPretty(){ revPretty.textContent = pretty(revOut.value); }
+
+    // Sync slider <-> number input, keep raw numeric in inputs
+    rev.addEventListener('input', ()=>{ revOut.value = rev.value; syncPretty(); });
+    revOut.addEventListener('input', ()=>{ 
+      const v = clamp(Number(revOut.value || 0), 10000, 1000000);
+      revOut.value = v; rev.value = v; syncPretty();
+    });
+    syncPretty();
+
+    // Ticket presets
+    ticketsPreset.addEventListener('change', () => {
+      if (ticketsPreset.value === 'custom') { tickets.removeAttribute('readonly'); tickets.focus(); }
+      else { tickets.value = Number(ticketsPreset.value); tickets.setAttribute('readonly', 'readonly'); }
+    });
+    ticketsPreset.dispatchEvent(new Event('change'));
+
+    // Conservative assumptions
+    const TICKET_REDUCTION = 0.30; // 30% default
+    const LIFT = {
+      starter:    { small: 0.01, mid: 0.02, large: 0.03 },
+      growth:     { small: 0.02, mid: 0.04, large: 0.06 },
+      enterprise: { small: 0.03, mid: 0.05, large: 0.07 }
+    };
+    const LIFT_CAP = { starter: 0.05, growth: 0.10, enterprise: 0.12 };
+    const COST = { starter: 497, growth: 1997, enterprise: 4997 }; // Enterprise placeholder for calc display
+
+    function sizeBracket(rev){ if (rev < 50000) return 'small'; if (rev <= 200000) return 'mid'; return 'large'; }
+
     function calculate(){
-      const revenue = Math.max(10000, Math.min(1000000, Number(revOut.value || rev.value)));
-      const tix = Math.max(0, Number(tickets.value));
+      const revenue = clamp(Number(revOut.value || rev.value || 0), 10000, 1000000);
+      const tix = clamp(Number(tickets.value || 0), 0, 1000000);
       const plan = pkg.value;
       const bracket = sizeBracket(revenue);
+      const costPerTicket = Number(ticketCostSelect.value);
 
       // Support savings
       const ticketsReduced = tix * TICKET_REDUCTION;
-      const savings = ticketsReduced * COST_PER_TICKET;
+      const savings = ticketsReduced * costPerTicket;
 
-      // Revenue boost (overall lift proxy)
-      const liftPct = LIFT[plan][bracket];
+      // Revenue boost — conservative with caps
+      let liftPct = LIFT[plan][bracket];
+      const cap = LIFT_CAP[plan];
+      liftPct = Math.min(liftPct, cap);
       const boost = revenue * liftPct;
 
       const benefit = savings + boost;
@@ -547,18 +598,23 @@
       const multiple = cost > 0 ? (benefit / cost) : Infinity;
       const paybackMonths = cost > 0 && benefit > 0 ? (cost / benefit) : 0;
 
-      outSavings.textContent = fmt(savings);
-      outBoost.textContent = fmt(boost);
-      outBenefit.textContent = fmt(benefit);
-      outCost.textContent = plan === 'enterprise' ? fmt(cost) + ' (est.)' : fmt(cost);
-      outNet.textContent = (plan === 'enterprise' ? fmt(net) + ' (vs. est. cost)' : fmt(net));
+      outSavings.textContent = pretty(savings.toFixed(0));
+      outBoost.textContent = pretty(boost.toFixed(0));
+      outBenefit.textContent = pretty(benefit.toFixed(0));
+      outCost.textContent = plan === 'enterprise' ? pretty(cost) + ' (est.)' : pretty(cost);
+      outNet.textContent = (plan === 'enterprise' ? pretty(net.toFixed(0)) + ' (vs. est. cost)' : pretty(net.toFixed(0)));
       outMulti.textContent = (cost === 0)
         ? '—'
         : `${multiple.toFixed(1)}×  •  Payback in ${Math.max(0.1, paybackMonths).toFixed(1)} mo`;
     }
+
+    // Buttons and auto-recalc
     calcBtn.addEventListener('click', calculate);
+    [rev, revOut, aov, tickets, ticketsPreset, pkg, ticketCostSelect].forEach(el => el.addEventListener('change', calculate));
     resetBtn.addEventListener('click', () => {
-      rev.value = 50000; revOut.value = 50000; aov.value = 60; tickets.value = 300; pkg.value = 'starter';
+      rev.value = 50000; revOut.value = 50000; syncPretty();
+      aov.value = 60; ticketsPreset.value = '250'; ticketsPreset.dispatchEvent(new Event('change'));
+      ticketCostSelect.value = '2.5'; pkg.value = 'starter';
       outSavings.textContent = '$0'; outBoost.textContent = '$0'; outBenefit.textContent = '$0';
       outCost.textContent = '$0'; outNet.textContent = '$0'; outMulti.textContent = '—';
     });
