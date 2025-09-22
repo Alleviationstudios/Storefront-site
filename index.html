@@ -6,18 +6,18 @@
   <title>Storefront: AI Automation for Shopify | Boost Revenue 18%</title>
 
   <!-- Basic SEO -->
-  <meta name="description" content="AI support agents, email automation, and forecasting for Shopify stores. Cut support 45%, boost conversions 18%, launch in days." />
+  <meta name="description" content="AI chatbots, email automation, and forecasting for Shopify stores. Cut support 45%, boost conversions 18%, launch in days." />
   <link rel="canonical" href="https://storefront-site.vercel.app/" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://storefront-site.vercel.app/" />
   <meta property="og:title" content="Storefront: AI Automation for Shopify | Boost Revenue 18%" />
-  <meta property="og:description" content="AI support agents, email automation, and forecasting for Shopify stores. Cut support 45%, boost conversions 18%, launch in days." />
+  <meta property="og:description" content="AI chatbots, email automation, and forecasting for Shopify stores. Cut support 45%, boost conversions 18%, launch in days." />
   <meta property="og:image" content="https://storefront-site.vercel.app/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Storefront: AI Automation for Shopify | Boost Revenue 18%" />
-  <meta name="twitter:description" content="AI support agents, email automation, and forecasting for Shopify stores. Cut support 45%, boost conversions 18%, launch in days." />
+  <meta name="twitter:description" content="AI chatbots, email automation, and forecasting for Shopify stores. Cut support 45%, boost conversions 18%, launch in days." />
   <meta name="twitter:image" content="https://storefront-site.vercel.app/og-image.png" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
@@ -33,12 +33,16 @@
     a{ color:inherit; text-decoration:none; }
     .container{ max-width:1128px; margin:0 auto; padding:0 16px; }
     .muted{ color:var(--muted); }
+
     .btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border-radius:14px; padding:.8rem 1.1rem; font-weight:600; background:linear-gradient(135deg,var(--blue),var(--teal)); color:#0b0f14; border:0; cursor:pointer; transition:transform .15s ease, filter .15s ease; }
     .btn:hover{ transform:translateY(-1px); filter:brightness(1.05); }
     .btn-outline{ background:transparent; border:1px solid var(--border); color:var(--ink); }
     .badge{ display:inline-flex; align-items:center; border-radius:10px; padding:.2rem .5rem; background:rgba(47,111,255,.15); color:#7fb1ff; font-weight:700; font-size:.75rem; }
+    .guarantee{ display:inline-flex; align-items:center; gap:.4rem; border-radius:999px; padding:.35rem .7rem; background:rgba(0,196,180,.12); color:#6fe8de; border:1px solid rgba(0,196,180,.25); font-weight:700; font-size:.78rem; }
+
     .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
     .card:hover{ transform:translateY(-3px); border-color:#2F6FFF; box-shadow:0 12px 30px rgba(47,111,255,.1); }
+
     header{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px); background:rgba(0,0,0,.25); }
     nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
     .nav-links{ display:none; gap:24px; color:var(--muted); font-size:.95rem; }
@@ -47,6 +51,7 @@
     .hamb{ display:inline-flex; width:40px; height:40px; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:10px; background:transparent; color:var(--ink); }
     .mobile{ display:none; border-top:1px solid var(--border); background:var(--card); }
     .mobile a{ display:block; padding:12px 0; border-bottom:1px solid var(--border); }
+
     /* hero */
     .hero{ position:relative; overflow:hidden; }
     .hero-glow{ position:absolute; inset:0; background:
@@ -54,10 +59,12 @@
         radial-gradient(600px 220px at 80% 0%, rgba(0,196,180,.18), transparent);
       animation:glow 12s ease-in-out infinite; pointer-events:none; }
     @keyframes glow{ 0%{ transform:translateX(-2%);} 50%{ transform:translateX(2%);} 100%{ transform:translateX(-2%);} }
+
     /* grid helpers */
     .grid{ display:grid; gap:16px; }
     .g-3{ grid-template-columns:repeat(3,1fr); }
     .g-2{ grid-template-columns:repeat(2,1fr); }
+
     /* sections */
     section{ padding:64px 0; }
     h1{ font-size: clamp(32px, 5vw, 64px); line-height:1.05; margin:0; }
@@ -65,14 +72,22 @@
     h3{ font-size: 1.1rem; margin: 0 0 6px 0; }
     p{ margin:0; }
     .center{ text-align:center; }
+
+    /* logos row */
     .logos-row{ display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:20px; }
-    .logo-badge{ width:80px; height:36px; border:1px solid var(--border); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--muted); font-weight:700; }
+    .logo-badge{ width:90px; height:40px; border:1px solid var(--border); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--muted); font-weight:700; position:relative; }
+    .logo-badge:hover::after{ content:attr(data-tip); position:absolute; bottom:calc(100% + 8px); background:#0d1320; border:1px solid var(--border); padding:6px 8px; border-radius:8px; color:var(--ink); font-size:.82rem; white-space:nowrap; }
+
     /* pricing */
     .pricing .card{ height:100%; display:flex; flex-direction:column; }
     .pricing ul{ list-style:none; padding:0; margin:10px 0 0 0; }
     .pricing li{ display:flex; align-items:center; gap:8px; margin:.35rem 0; font-size:.95rem; color:var(--muted); }
     .check{ width:18px; height:18px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--teal)); display:inline-flex; align-items:center; justify-content:center; color:#0b0f14; font-weight:900; font-size:12px; }
     .tip{ font-size:.85rem; color:var(--muted); background:rgba(47,111,255,.08); border:1px solid rgba(47,111,255,.25); border-radius:.8rem; padding:.6rem .8rem; margin-top:.6rem; }
+
+    /* product visuals placeholder */
+    .ph-shot{ height:260px; background:#1a2330; border:1px dashed #2b3a52; border-radius:14px; display:flex; align-items:center; justify-content:center; color:#7d8aa3; font-weight:700; }
+
     /* calculator */
     .calc-card{ display:flex; flex-direction:column; gap:14px; }
     .input, select{ background:var(--card); border:1px solid var(--border); color:var(--ink); border-radius:10px; padding:.65rem .75rem; width:100%; }
@@ -83,21 +98,39 @@
     .calc-grid{ display:grid; gap:16px; grid-template-columns:1fr 1fr 1fr; }
     .details{ font-size:.85rem; color:var(--muted); }
     .collapsible{ cursor:pointer; color:#7fb1ff; font-weight:600; }
+
     /* video placeholder */
     .video-ph{ height:400px; background:#1a2330; border:1px dashed #2b3a52; border-radius:16px; display:flex; align-items:center; justify-content:center; color:#7d8aa3; font-weight:700; }
+
     /* integrations */
     .integrations-grid{ display:grid; gap:14px; grid-template-columns:repeat(6,1fr); }
     .int-box{ height:50px; background:#1a2330; border:1px solid #263043; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#9fb0c7; position:relative; }
-    .int-box:hover::after{ content:attr(data-tip); position:absolute; bottom:calc(100% + 8px); white-space:nowrap; background:#0d1320; border:1px solid var(--border); padding:6px 8px; border-radius:8px; color:var(--ink); font-size:.85rem; }
+    .int-box:hover::after{ content:attr(data-tip); position:absolute; bottom:calc(100% + 8px); white-space:nowrap; background:#0d1320; border:1px solid var(--border); padding:6px 8px; border-radius:8px; color:#fff; font-size:.85rem; }
+
     /* lead magnet */
     .lead{ display:grid; gap:14px; grid-template-columns:1fr auto; }
     .email{ min-width:260px; }
+
     /* trust badges */
     .trust{ display:flex; gap:12px; flex-wrap:wrap; }
     .badge-ph{ width:50px; height:50px; border-radius:12px; background:#1a2330; border:1px solid #263043; display:flex; align-items:center; justify-content:center; color:#8ea4c2; font-size:.75rem; }
+
+    /* carousel */
+    .carousel{ position:relative; overflow:hidden; }
+    .slides{ display:flex; transition:transform .5s ease; }
+    .slide{ min-width:100%; display:grid; grid-template-columns:300px 1fr; gap:24px; align-items:center; }
+    .slide .img{ height:260px; background:#1a2330; border:1px dashed #2b3a52; border-radius:14px; display:flex; align-items:center; justify-content:center; color:#7d8aa3; font-weight:700; }
+    .quote{ font-size:clamp(18px,2.2vw,26px); line-height:1.4; }
+    .dots{ position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:8px; }
+    .dot{ width:10px; height:10px; border-radius:50%; background:#334257; border:1px solid #46628a; cursor:pointer; }
+    .dot.active{ background:#2F6FFF; border-color:#2F6FFF; }
+    .nav-btn{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(13,19,32,.7); border:1px solid #2b3a52; color:#e6eaf0; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+    .prev{ left:12px; } .next{ right:12px; }
+
     /* fade-in */
     .reveal{ opacity:0; transform:translateY(12px); transition:opacity .35s ease, transform .35s ease; }
     .reveal.show{ opacity:1; transform:translateY(0); }
+
     /* responsive */
     @media (max-width: 960px){
       .nav-links{ display:none; }
@@ -105,6 +138,8 @@
       .g-2, .calc-grid{ grid-template-columns:1fr; }
       .integrations-grid{ grid-template-columns:repeat(3,1fr); }
       .lead{ grid-template-columns:1fr; }
+      .slide{ grid-template-columns:1fr; }
+      .mobile{ display:block; }
     }
     @media (min-width: 960px){
       .nav-links{ display:flex; }
@@ -131,6 +166,7 @@
           <a href="#how">How it works</a>
           <a href="#roi">Estimate ROI</a>
           <a href="#pricing">Pricing</a>
+          <a href="#reviews">Reviews</a>
           <a href="#integrations">Integrations</a>
           <a href="#faq">FAQ</a>
         </div>
@@ -144,6 +180,7 @@
         <a href="#how">How it works</a>
         <a href="#roi">Estimate ROI</a>
         <a href="#pricing">Pricing</a>
+        <a href="#reviews">Reviews</a>
         <a href="#integrations">Integrations</a>
         <a href="#faq">FAQ</a>
         <a href="#cta">Book a demo</a>
@@ -155,22 +192,45 @@
   <section class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="container center" style="padding:96px 16px 72px;">
-      <h1 class="reveal">Automating Growth. <span style="background:linear-gradient(135deg,#2F6FFF,#00C4B4); -webkit-background-clip:text; background-clip:text; color:transparent;">Scaling Storefronts.</span></h1>
-      <p class="reveal muted" style="margin-top:12px; max-width:760px; margin-inline:auto;">AI support agents, email automation, and forecasting for Shopify brands. Cut support 45%, boost conversions 18%, launch in days.</p>
-      <div class="reveal" style="margin-top:18px; display:flex; gap:12px; justify-content:center;">
+      <h1 class="reveal">AI workflows for Shopify brands—<span style="background:linear-gradient(135deg,#2F6FFF,#00C4B4); -webkit-background-clip:text; background-clip:text; color:transparent;">support bots, upsells, and forecasting</span>.</h1>
+      <p class="reveal muted" style="margin-top:12px; max-width:780px; margin-inline:auto;">Cut support 45%, boost conversions 18%, and launch in 14 days.</p>
+      <div class="reveal" style="margin-top:18px; display:flex; gap:12px; justify-content:center; align-items:center;">
         <a class="btn" href="#cta">Get a live demo</a>
-        <a class="btn btn-outline" href="#how">See how it works</a>
+        <span class="guarantee" title="If we don't deliver the agreed outcomes, you don't pay.">✓ 30-day performance guarantee — or you don’t pay</span>
       </div>
+
+      <!-- Integrations placeholders in hero -->
       <div class="logos-row reveal" aria-label="Ecommerce platforms and apps">
-        <div class="logo-badge" role="img" aria-label="Shopify logo">Shopify</div>
-        <div class="logo-badge" role="img" aria-label="Klaviyo logo">Klaviyo</div>
-        <div class="logo-badge" role="img" aria-label="Gorgias logo">Gorgias</div>
-        <div class="logo-badge" role="img" aria-label="Slack logo">Slack</div>
+        <div class="logo-badge" data-tip="Seamless Shopify Sync" role="img" aria-label="Shopify logo">Shopify</div>
+        <div class="logo-badge" data-tip="Seamless Klaviyo Sync" role="img" aria-label="Klaviyo logo">Klaviyo</div>
+        <div class="logo-badge" data-tip="Seamless Gorgias Sync" role="img" aria-label="Gorgias logo">Gorgias</div>
+        <div class="logo-badge" data-tip="Seamless Slack Sync" role="img" aria-label="Slack logo">Slack</div>
       </div>
     </div>
   </section>
 
-  <!-- Benefits (trimmed) -->
+  <!-- Product visuals -->
+  <section aria-labelledby="product-visuals">
+    <div class="container">
+      <h2 id="product-visuals" class="reveal">See how it works</h2>
+      <div class="grid g-3" style="margin-top:12px;">
+        <div class="card reveal">
+          <div class="ph-shot" role="img" aria-label="Placeholder: AI chatbot resolving a ticket">Chatbot Screenshot</div>
+          <p class="muted" style="margin-top:10px;">AI answers in &lt;5s, deflecting repetitive tickets.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ph-shot" role="img" aria-label="Placeholder: AI-generated upsell email in Klaviyo">Email Upsell</div>
+          <p class="muted" style="margin-top:10px;">Automated upsells via email/SMS recover revenue.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ph-shot" role="img" aria-label="Placeholder: Forecasting dashboard with demand alerts">Forecasting</div>
+          <p class="muted" style="margin-top:10px;">SKU-level demand alerts protect margins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
   <section id="features">
     <div class="container grid g-3">
       <div class="card reveal"><h3>Save Time</h3><p class="muted">Save <strong>$1,500/mo</strong> on support.</p></div>
@@ -179,18 +239,18 @@
     </div>
   </section>
 
-  <!-- ROI Calculator (simplified, live) -->
+  <!-- ROI Calculator -->
   <section id="roi">
     <div class="container">
       <h2 class="center reveal">Estimate Your ROI</h2>
-      <p class="center muted reveal" style="margin-bottom:18px;">Conservative, auto-calculated from revenue band & package.</p>
+      <p class="center muted reveal" style="margin-bottom:18px;">Conservative, auto-calculated from revenue band &amp; package.</p>
       <div class="grid g-2">
         <div class="card calc-card reveal" aria-labelledby="calc-inputs">
           <h3 id="calc-inputs">Inputs</h3>
-          <label class="muted" for="rev">Monthly revenue ($10k–$1M)</label>
-          <input id="rev" class="slider" type="range" min="10000" max="1000000" step="1000" value="50000" aria-label="Monthly revenue slider" />
+          <label class="muted" for="rev">Monthly revenue ($10k–$250k)</label>
+          <input id="rev" class="slider" type="range" min="10000" max="250000" step="1000" value="50000" aria-label="Monthly revenue slider" />
           <div style="display:flex; gap:10px; align-items:center;">
-            <input id="revNum" class="input" type="number" min="10000" max="1000000" step="1000" value="50000" aria-label="Monthly revenue number" />
+            <input id="revNum" class="input" type="number" min="10000" max="250000" step="1000" value="50000" aria-label="Monthly revenue number" />
             <span class="muted">Current: <strong id="revPretty">$50,000</strong></span>
           </div>
           <label class="muted" for="plan">Package</label>
@@ -201,7 +261,7 @@
           </select>
           <div class="details"><span id="detailsToggle" class="collapsible" role="button" aria-expanded="false" aria-controls="calcDetails">Details</span>
             <div id="calcDetails" hidden class="muted" style="margin-top:8px;">
-              Assumptions: ~45% ticket reduction, +18% conversion lift, +32% repeat purchases. Tickets & AOV estimated by revenue band: Small (&lt;$50k), Mid ($50–200k), Large (&gt;$200k).
+              Assumptions: ~45% ticket reduction, +18% conversion lift, +32% repeat purchases. Tickets &amp; AOV estimated by revenue band: Small (&lt;$50k), Mid ($50–150k), Large (&gt;$150k).
             </div>
           </div>
         </div>
@@ -221,6 +281,55 @@
               <div id="outROI" class="value">—</div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews carousel -->
+  <section id="reviews" aria-labelledby="reviews-title">
+    <div class="container">
+      <h2 id="reviews-title" class="reveal">What customers say</h2>
+      <div class="card carousel reveal" style="margin-top:12px;">
+        <div class="slides" id="slides">
+          <!-- Slide 1: Brotein -->
+          <div class="slide">
+            <div class="img" role="img" aria-label="Placeholder brand imagery">Brotein Image</div>
+            <div>
+              <div class="quote">“Storefront cut our support time and gave us clear revenue wins within weeks.”</div>
+              <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
+                <div style="width:40px;height:40px;border-radius:999px;background:#1a2330;border:1px solid #2b3a52;display:flex;align-items:center;justify-content:center;color:#7fb1ff;font-weight:800;">P</div>
+                <div>
+                  <div style="font-weight:700;">Peter Hesthaven</div>
+                  <div class="muted" style="font-size:.9rem;">Brotein — VP Operations</div>
+                </div>
+                <img src="/assets/brands/brotein.png" alt="Brotein logo" width="80" height="30" loading="lazy" style="margin-left:auto;opacity:.9;filter:grayscale(25%);background:#1a2330;border:1px solid #2b3a52;border-radius:8px;padding:6px;">
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2: Restup -->
+          <div class="slide">
+            <div class="img" role="img" aria-label="Placeholder brand imagery">Restup Image</div>
+            <div>
+              <div class="quote">“Fast setup. Noticeable lift in conversion and fewer repetitive tickets.”</div>
+              <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
+                <div style="width:40px;height:40px;border-radius:999px;background:#1a2330;border:1px solid #2b3a52;display:flex;align-items:center;justify-content:center;color:#7fb1ff;font-weight:800;">M</div>
+                <div>
+                  <div style="font-weight:700;">Michael Valky</div>
+                  <div class="muted" style="font-size:.9rem;">Restup — Ecommerce Manager</div>
+                </div>
+                <img src="/assets/brands/restup.png" alt="Restup logo" width="80" height="30" loading="lazy" style="margin-left:auto;opacity:.9;filter:grayscale(25%);background:#1a2330;border:1px solid #2b3a52;border-radius:8px;padding:6px;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="nav-btn prev" id="prev" aria-label="Previous slide">‹</button>
+        <button class="nav-btn next" id="next" aria-label="Next slide">›</button>
+
+        <div class="dots" id="dots" aria-label="Slide indicators">
+          <button class="dot active" aria-label="Go to slide 1"></button>
+          <button class="dot" aria-label="Go to slide 2"></button>
         </div>
       </div>
     </div>
@@ -264,6 +373,9 @@
     <div class="container">
       <h2 class="center reveal">Simple pricing that scales with you</h2>
       <p class="center muted reveal" style="margin-bottom:16px;">Month-to-month. Launch in days. Cancel anytime.</p>
+      <div class="center reveal" style="margin-bottom:14px;">
+        <span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span>
+      </div>
       <div class="grid g-3 pricing">
         <div class="card reveal">
           <h3>Starter</h3>
@@ -295,11 +407,11 @@
 
         <div class="card reveal">
           <h3>Enterprise</h3>
-          <p class="muted">Scale & predictability</p>
+          <p class="muted">Scale &amp; predictability</p>
           <p style="font-size:1.8rem; font-weight:800; margin-top:8px;">Custom</p>
           <ul aria-label="Enterprise features">
             <li><span class="check">✓</span> Everything in Growth</li>
-            <li><span class="check">✓</span> Forecasting & pricing</li>
+            <li><span class="check">✓</span> Forecasting &amp; pricing</li>
             <li><span class="check">✓</span> Executive dashboards</li>
           </ul>
           <div class="tip">Custom ROI modeling available.</div>
@@ -331,7 +443,7 @@
         <details class="card reveal"><summary class="muted">What's the setup process?</summary><p class="muted" style="margin-top:8px;">Kickoff call, connect tools, launch first workflow in 7–14 days. We handle setup.</p></details>
         <details class="card reveal"><summary class="muted">Do you integrate with our stack?</summary><p class="muted" style="margin-top:8px;">Yes—Shopify, WooCommerce, Klaviyo, Omnisend, Gorgias, Slack, and more.</p></details>
         <details class="card reveal"><summary class="muted">Is our data safe?</summary><p class="muted" style="margin-top:8px;">Least-privilege access with revocation anytime. Data handled via secure APIs.</p></details>
-        <details class="card reveal"><summary class="muted">What ROI should we expect?</summary><p class="muted" style="margin-top:8px;">Conservative: 3–12× depending on store size & plan. Calculator shows estimates.</p></details>
+        <details class="card reveal"><summary class="muted">What ROI should we expect?</summary><p class="muted" style="margin-top:8px;">Conservative: 3–12× depending on store size &amp; plan. Calculator shows estimates.</p></details>
       </div>
 
       <div class="trust" style="margin-top:16px;" aria-label="Trust badges">
@@ -377,7 +489,7 @@
   ]}
   </script>
 
-  <!-- Minimal JS: menu, reveal, calculator -->
+  <!-- Minimal JS: menu, reveal, calculator, carousel -->
   <script>
     // Mobile menu
     const menuBtn=document.getElementById('menuBtn');
@@ -395,7 +507,7 @@
     },{threshold:.12});
     reveals.forEach(el=>io.observe(el));
 
-    // Calculator (simplified)
+    // Calculator (conservative; 10k–250k)
     const rev=document.getElementById('rev');
     const revNum=document.getElementById('revNum');
     const revPretty=document.getElementById('revPretty');
@@ -408,17 +520,19 @@
     function pretty(n){ return '$' + Number(n.toFixed(0)).toLocaleString(); }
     function syncPretty(){ revPretty.textContent = pretty(Number(revNum.value)); }
 
-    function band(rev){ if(rev < 50000) return 'small'; if(rev <= 200000) return 'mid'; return 'large'; }
-    const EST = { small:{tickets:200,aov:45}, mid:{tickets:400,aov:60}, large:{tickets:1000,aov:80} };
-
-    // Per spec: -45% tickets, +18% conversions (+32% repeats baked into lift by band/plan)
+    function band(rev){ if(rev < 50000) return 'small'; if(rev <= 150000) return 'mid'; return 'large'; }
+    const EST = { small:{tickets:180,aov:45}, mid:{tickets:350,aov:60}, large:{tickets:700,aov:75} };
     const TICKET_REDUCTION = 0.45;
     const COST_PER_TICKET = 5;
-    const LIFT = { starter:{small:.06,mid:.10,large:.12}, growth:{small:.10,mid:.14,large:.18}, enterprise:{small:.12,mid:.18,large:.22} };
+    const LIFT = {
+      starter:{small:.06, mid:.09, large:.11},
+      growth: {small:.10, mid:.13, large:.16},
+      enterprise:{small:.12, mid:.16, large:.20}
+    };
     const CAP  = { starter:.12, growth:.18, enterprise:.22 };
 
     function calc(){
-      const revenue = clamp(Number(revNum.value||rev.value||0),10000,1000000);
+      const revenue = clamp(Number(revNum.value||rev.value||0), 10000, 250000);
       rev.value = revenue; revNum.value = revenue; syncPretty();
 
       const b = band(revenue);
@@ -431,7 +545,7 @@
       lift = Math.min(lift, CAP[planKey]);
       const boost = revenue * lift;
 
-      const cost = planKey==='starter'?497:planKey==='growth'?1997:4997;
+      const cost = planKey==='starter'?497:planKey==='growth'?1997:3997; // enterprise placeholder for math
       const multiple = (savings + boost) / cost;
 
       outSave.textContent = pretty(savings);
@@ -451,6 +565,36 @@
       if(hidden) calcDetails.removeAttribute('hidden'); else calcDetails.setAttribute('hidden','');
       detailsToggle.setAttribute('aria-expanded', String(hidden));
     });
+
+    // Testimonial carousel
+    (function initCarousel(){
+      const slidesEl = document.getElementById('slides');
+      const dotsEl   = document.getElementById('dots');
+      const prev     = document.getElementById('prev');
+      const next     = document.getElementById('next');
+      if (!slidesEl || !dotsEl) return;
+
+      const dots = Array.from(dotsEl.querySelectorAll('.dot'));
+      let index = 0;
+
+      function go(i){
+        index = (i + dots.length) % dots.length;
+        slidesEl.style.transform = 'translateX(' + (-index * 100) + '%)';
+        dots.forEach((d,di)=>d.classList.toggle('active', di===index));
+      }
+      prev?.addEventListener('click', ()=> go(index-1));
+      next?.addEventListener('click', ()=> go(index+1));
+      dots.forEach((d,i)=> d.addEventListener('click', ()=> go(i)));
+
+      const AUTO_MS = 6500;
+      let timer = setInterval(()=> go(index+1), AUTO_MS);
+      const carousel = slidesEl.closest('.carousel');
+      if (carousel){
+        carousel.addEventListener('mouseenter', ()=> clearInterval(timer));
+        carousel.addEventListener('mouseleave', ()=> { timer = setInterval(()=> go(index+1), AUTO_MS); });
+      }
+      go(0);
+    })();
   </script>
 </body>
 </html>
