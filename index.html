@@ -77,6 +77,15 @@
     .logos-row{ display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:20px; }
     .logo-badge{ width:90px; height:40px; border:1px solid var(--border); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--muted); font-weight:700; position:relative; }
     .logo-badge:hover::after{ content:attr(data-tip); position:absolute; bottom:calc(100% + 8px); background:#0d1320; border:1px solid var(--border); padding:6px 8px; border-radius:8px; color:var(--ink); font-size:.82rem; white-space:nowrap; }
+    /* Hero logo chips: make images scale cleanly on dark bg */
+    .logo-badge { padding: 0 10px; }
+    .logo-badge img{
+      display:block;
+      max-height:24px; /* consistent height */
+      width:auto;
+      opacity:.92;     /* soften for “used-by” look */
+      filter:grayscale(10%) contrast(105%); /* optional, keeps them subtle */
+    }
 
     /* pricing */
     .pricing .card{ height:100%; display:flex; flex-direction:column; }
@@ -205,14 +214,23 @@
         <span class="guarantee" title="If we don't deliver the agreed outcomes, you don't pay.">✓ 30-day performance guarantee — or you don’t pay</span>
       </div>
 
-      <!-- Integrations placeholders in hero -->
-      <div class="logos-row reveal" aria-label="Ecommerce platforms and apps">
-        <div class="logo-badge" data-tip="Seamless Shopify Sync" role="img" aria-label="Shopify logo">Shopify</div>
-        <div class="logo-badge" data-tip="Seamless Klaviyo Sync" role="img" aria-label="Klaviyo logo">Klaviyo</div>
-        <div class="logo-badge" data-tip="Seamless Gorgias Sync" role="img" aria-label="Gorgias logo">Gorgias</div>
-        <div class="logo-badge" data-tip="Seamless Slack Sync" role="img" aria-label="Slack logo">Slack</div>
-      </div>
-    </div>
+  <!-- Integrations logos -->
+  <div class="logos-row reveal" aria-label="Ecommerce platforms and apps">
+    <span class="logo-badge" data-tip="Seamless Shopify Sync" aria-label="Shopify">
+      <img src="/assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" width="90" height="24" loading="lazy">
+    </span>
+    <span class="logo-badge" data-tip="Seamless Klaviyo Sync" aria-label="Klaviyo">
+      <img src="/assets/logos//Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" width="90" height="24" loading="lazy">
+    </span>
+    <!-- If you have a Gorgias SVG/PNG, drop it here. Otherwise keep the text fallback. -->
+    <span class="logo-badge" data-tip="Seamless Google Sync" aria-label="Google">
+      <img src="/assets/logos/Google/Google_Logo_0.svg" alt="Google" width="90" height="24" loading="lazy"
+           onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Google'}));">
+    </span>
+    <span class="logo-badge" data-tip="Seamless Slack Sync" aria-label="Slack">
+      <img src="/assets/logos/Slack.png" alt="Slack" width="90" height="24" loading="lazy">
+    </span>
+  </div>
   </section>
 
   <!-- Product visuals -->
