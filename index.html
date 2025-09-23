@@ -108,6 +108,33 @@
     .dot.active{ background:#2F6FFF; border-color:#2F6FFF; }
     .nav-btn{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(13,19,32,.7); border:1px solid #2b3a52; color:#e6eaf0; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; }
     .prev{ left:12px; } .next{ right:12px; }
+    
+    /* existing placeholder style — you can leave it or override */
+      .slide .img {
+        height:260px;
+        background:#1a2330;
+        border:1px dashed #2b3a52;
+        border-radius:14px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:#7d8aa3;
+        font-weight:700;
+      }
+      
+      /* new full-cover style for real brand images */
+      .slide .img.t-cover {
+        position: relative;
+        overflow: hidden;
+        border-radius: 14px;
+        background: #0e151f; /* subtle fallback behind image */
+      }
+      .slide .img.t-cover img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;   /* fills the block */
+      }
 
     /* fades */
     .reveal{ opacity:0; transform:translateY(12px); transition:opacity .35s ease, transform .35s ease; }
@@ -260,10 +287,9 @@
       <div class="card carousel reveal" style="margin-top:12px;">
         <div class="slides" id="slides">
           <div class="slide">
-            <div class="img">
-              <img src="assets/brands/Brotein.jpg" alt="Brotein logo" 
-                   style="max-height:300px; max-width:100%; object-fit:contain;">
-              </div>
+            <div class="img t-cover">
+              <img src="assets/brands/brotein.jpg" alt="Brotein" loading="lazy">
+            </div>
             <div>
               <div class="quote">“Storefront cut our support time and gave us clear revenue wins within weeks.”</div>
               <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
