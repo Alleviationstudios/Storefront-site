@@ -51,6 +51,11 @@
     .hamb{ display:inline-flex; width:40px; height:40px; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:10px; background:transparent; color:var(--ink); }
     .mobile{ display:none; border-top:1px solid var(--border); background:var(--card); }
     .mobile a{ display:block; padding:12px 0; border-bottom:1px solid var(--border); }
+    /* Ensure [hidden] works on mobile nav */
+    .mobile[hidden] { display: none !important; }
+    
+    /* Lock body scroll when menu is open */
+    body.menu-open { overflow: hidden; }
 
     /* hero */
     .hero{ position:relative; overflow:hidden; }
@@ -490,15 +495,43 @@
   </script>
 
   <!-- Minimal JS: menu, reveal, calculator, carousel -->
-  <script>
-    // Mobile menu
-    const menuBtn=document.getElementById('menuBtn');
-    const mobileNav=document.getElementById('mobileNav');
-    menuBtn?.addEventListener('click',()=>{
-      const hidden=mobileNav.hasAttribute('hidden');
-      if(hidden) mobileNav.removeAttribute('hidden'); else mobileNav.setAttribute('hidden','');
-      menuBtn.setAttribute('aria-expanded', String(hidden));
-    });
+<script>
+  // Mobile menu
+  const menuBtn   = document.getElementById('menuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+
+  function setMenu(open){
+    if(open){
+      mobileNav.removeAttribute('hidden');
+      document.body.classList.add('menu-open');
+    }else{
+      mobileNav.setAttribute('hidden','');
+      document.body.classList.remove('menu-open');
+    }
+    menuBtn.setAttribute('aria-expanded', String(open));
+  }
+
+  menuBtn?.addEventListener('click', ()=>{
+    const open = mobileNav.hasAttribute('hidden');
+    setMenu(open);
+  });
+
+  // Close when a link is tapped
+  mobileNav?.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=> setMenu(false));
+  });
+
+  // Close on Escape
+  window.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape') setMenu(false);
+  });
+
+  // Close if viewport becomes desktop
+  window.addEventListener('resize', ()=>{
+    if (window.innerWidth >= 960) setMenu(false);
+  });
+</script>
+
 
     // Reveal on scroll
     const reveals=[...document.querySelectorAll('.reveal')];
