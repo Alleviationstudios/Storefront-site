@@ -64,10 +64,9 @@
     .g-3{ grid-template-columns:repeat(3,1fr); }
     .g-2{ grid-template-columns:repeat(2,1fr); }
 
-    /* hero icons row (no pills, no tooltip) */
+    /* hero icons row */
     .logos-row{ display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:20px; }
     .logos-row .logo-badge{ border:none; background:transparent; padding:0; width:auto; height:auto; box-shadow:none; }
-    .logos-row .logo-badge::after{ content:none; display:none; }
     .logos-row .logo-badge img{ display:block; height:24px; width:auto; }
 
     /* product visual placeholder */
@@ -82,7 +81,7 @@
     .result .value{ font-size:1.35rem; font-weight:800; }
     .calc-grid{ display:grid; gap:16px; grid-template-columns:1fr 1fr 1fr; }
 
-    /* ✅ center the “Results” card contents vertically */
+    /* center the “Results” card contents vertically */
     .results-card{ display:flex; align-items:center; justify-content:center; }
 
     /* pricing */
@@ -93,7 +92,6 @@
     .pricing li{ display:flex; align-items:center; gap:8px; margin:.35rem 0; font-size:.95rem; color:var(--muted); }
     .check{ width:18px; height:18px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--teal)); display:inline-flex; align-items:center; justify-content:center; color:#0b0f14; font-weight:900; font-size:12px; }
     .tip{ font-size:.85rem; color:var(--muted); background:rgba(47,111,255,.08); border:1px solid rgba(47,111,255,.25); border-radius:.8rem; padding:.6rem .8rem; margin-top:.8rem; }
-    /* ✅ keep buttons aligned bottom across all cards */
     .pricing .spacer{ flex:1; }
     .pricing .cta{ margin-top:16px; }
 
@@ -109,187 +107,25 @@
     .nav-btn{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(13,19,32,.7); border:1px solid #2b3a52; color:#e6eaf0; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; }
     .prev{ left:12px; } .next{ right:12px; }
 
-    /* testimonial brand logo next to name (sane size) */
-    .brand-avatar {
-      height: 28px;
-      width: auto;
-      object-fit: contain;
-      margin-right: 12px;
-      display: inline-block;
-    }
+    .brand-avatar { height: 28px; width: auto; object-fit: contain; margin-right: 12px; display: inline-block; }
+    .slide .img.t-cover { position: relative; overflow: hidden; border-radius: 14px; background: #0e151f; }
+    .slide .img.t-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-    /* full-cover style for real brand images in testimonial left block */
-    .slide .img.t-cover {
-      position: relative;
-      overflow: hidden;
-      border-radius: 14px;
-      background: #0e151f; /* subtle fallback behind image */
-    }
-    .slide .img.t-cover img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;   /* fills the block */
-    }
+    /* --- Integrations marquee (seamless) --- */
+    .integrations-marquee{ position:relative; overflow:hidden; padding:16px 24px; }
+    .integrations-track{ display:flex; align-items:center; gap:36px; will-change:transform; }
+    .integrations-track img{ height:28px; width:auto; display:block; opacity:.95; transition:opacity .15s ease, transform .15s ease; }
+    .integrations-track img:hover{ opacity:1; transform:translateY(-2px); }
+    @media (prefers-reduced-motion: reduce){ .integrations-marquee{ overflow-x:auto; } }
+    @media (max-width: 960px){ .integrations-track{ gap:24px; } .integrations-marquee{ padding-inline:16px; } }
 
-    /* Integrations section */
-    .integrations-grid{
-      display:grid; gap:14px;
-      grid-template-columns:repeat(6, minmax(0,1fr));
-      margin-top:14px;
-      align-items:center; justify-items:center;
-    }
-    .integrations-grid .int{
-      display:flex; align-items:center; justify-content:center;
-      height:60px; width:100%;
-      background:#121a26; border:1px solid #263043; border-radius:10px; padding:10px;
-    }
-    .integrations-grid .int img{ display:block; height:24px; width:auto; }
-    @media (max-width:960px){
-      .integrations-grid{ grid-template-columns:repeat(3, minmax(0,1fr)); }
-    }
-
-    /* fades */
-    .reveal{ opacity:0; transform:translateY(12px); transition:opacity .35s ease, transform .35s ease; }
-    .reveal.show{ opacity:1; transform:translateY(0); }
-
-    /* mobile menu + responsive */
-    .mobile[hidden]{ display:none !important; }
-    body.menu-open{ overflow:hidden; }
-    @media (max-width:960px){
-      .g-3{ grid-template-columns:1fr; }
-      .g-2, .calc-grid{ grid-template-columns:1fr; }
-      .nav-links{ display:none; }
-      .slide{ grid-template-columns:1fr; }
-      .mobile{ display:block; }
-    }
-    @media (min-width:960px){
-      .nav-links{ display:flex; }
-      .hamb{ display:none; }
-    }
-        /* --- Integrations: logos only (no boxes) --- */
-    .integrations-grid{ gap:24px; justify-items:center; align-items:center; }
-    
-    .integrations-grid .int{
-      background: transparent !important;
-      border: 0 !important;
-      padding: 0 !important;
-      height: auto !important;
-      box-shadow: none !important;
-      border-radius: 0 !important;
-    }
-    
-    .integrations-grid .int img{
-      display:block;
-      height:28px;      /* tweak to 24–36px if you want larger/smaller logos */
-      width:auto;
-      filter:none;
-    }
-  /* --- Integrations logo spacing refinement --- */
-  .integrations-grid {
-    gap: 16px;
-    justify-items: center;
-    align-items: center;
-    margin: 0 auto;
-    padding: 0 24px;
-    max-width: 100%;
-  }
-
-  .integrations-grid img {
-    height: 28px;
-    width: auto;
-  }
-    /* === Integrations marquee (infinite scroll) === */
-.integrations-marquee {
-  position: relative;
-  overflow: hidden;
-  padding: 16px 24px;  /* keeps edge logos off the sides */
-}
-
-.integrations-track {
-  display: flex;
-  gap: 36px;           /* spacing between logos */
-  align-items: center;
-  width: max-content;  /* track only as wide as its contents */
-  will-change: transform;
-  animation: integrations-scroll var(--scroll-speed, 28s) linear infinite;
-  /* Direction: reverse = scrolls left->right (to the right).
-     Remove 'reverse' if you want right->left. */
-  animation-direction: reverse;
-}
-
-.integrations-track:hover {
-  animation-play-state: paused;  /* pause on hover */
-}
-
-.integrations-track img {
-  height: 28px;       /* adjust 24–36px to taste */
-  width: auto;
-  display: block;
-  opacity: 0.95;
-  transition: opacity .15s ease, transform .15s ease;
-}
-.integrations-track img:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-}
-
-/* Duplicate group spacing looks even */
-.integrations-group {
-  display: flex;
-  gap: 36px;
-  align-items: center;
-}
-
-/* The magic: move one full group's width across */
-@keyframes integrations-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(calc(-1 * var(--group-width, 100%))); }
-}
-
-/* Reduce Motion: stop animation but keep layout */
-@media (prefers-reduced-motion: reduce) {
-  .integrations-track { animation: none; }
-}
-
-/* Responsive tweaks */
-@media (max-width: 960px) {
-  .integrations-track,
-  .integrations-group { gap: 24px; }
-  .integrations-marquee { padding-inline: 16px; }
-}
-    /* === Integrations marquee: layout + spacing === */
-.integrations-marquee{
-  position:relative;
-  overflow:hidden;
-  padding:16px 24px;               /* edge breathing room */
-}
-
-.integrations-track{
-  display:flex;
-  align-items:center;
-  gap:36px;                         /* logo spacing; adjust to taste */
-  will-change: transform;
-}
-
-.integrations-track img{
-  height:28px;                      /* 24–36px looks good */
-  width:auto;
-  display:block;
-  opacity:.95;
-  transition:opacity .15s ease, transform .15s ease;
-}
-.integrations-track img:hover{ opacity:1; transform:translateY(-2px); }
-
-/* Respect user preference to reduce motion */
-@media (prefers-reduced-motion: reduce){
-  .integrations-marquee{ overflow-x:auto; } /* fallback: manual scroll */
-}
-@media (max-width: 960px){
-  .integrations-track{ gap:24px; }
-  .integrations-marquee{ padding-inline:16px; }
-}
-
+    /* === Audit form sizing / states === */
+    .audit .row{ display:grid; gap:16px; }
+    @media (min-width:960px){ .audit .row-2{ grid-template-columns:1fr 1fr; } }
+    .audit .input, .audit select{ height:48px; border-radius:12px; padding:0 14px; width:100%; }
+    .audit .btn{ height:48px; padding:0 24px; border-radius:12px; }
+    .audit .help{ font-size:12px; color:rgba(230,234,240,.6); margin-top:6px; }
+    .err{ border:1px solid rgba(255,0,0,.4); background:rgba(255,0,0,.08); color:#ffb4b4; border-radius:12px; padding:12px 14px; }
   </style>
 </head>
 <body>
@@ -345,7 +181,6 @@
         <a class="btn" href="#cta">Get a live demo</a>
         <span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span>
       </div>
-      <!-- ✅ use relative paths so they work locally and on subpaths -->
       <div class="logos-row reveal" aria-label="Platforms & apps">
         <span class="logo-badge" aria-label="Shopify"><img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Shopify'}));"></span>
         <span class="logo-badge" aria-label="Klaviyo"><img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Klaviyo'}));"></span>
@@ -404,7 +239,7 @@
             </div>
           </div>
         </div>
-        <!-- results (centered) -->
+        <!-- results -->
         <div class="card calc-card results-card reveal" aria-labelledby="calc-results">
           <h3 id="calc-results" class="visually-hidden" style="position:absolute;left:-9999px;">Results</h3>
           <div class="calc-grid">
@@ -424,9 +259,7 @@
       <div class="card carousel reveal" style="margin-top:12px;">
         <div class="slides" id="slides">
           <div class="slide">
-            <div class="img t-cover">
-              <img src="assets/brands/Brotein.jpg" alt="Brotein" loading="lazy">
-            </div>
+            <div class="img t-cover"><img src="assets/brands/Brotein.jpg" alt="Brotein" loading="lazy"></div>
             <div>
               <div class="quote">“Storefront cut our support time and gave us clear revenue wins within weeks.”</div>
               <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
@@ -465,32 +298,30 @@
     </div>
   </section>
 
-  <!-- ✅ Integrations (new) -->
-<section id="integrations" aria-labelledby="integrations-title">
-  <div class="container">
-    <h2 id="integrations-title" class="reveal">Seamless Integrations</h2>
+  <!-- Integrations -->
+  <section id="integrations" aria-labelledby="integrations-title">
+    <div class="container">
+      <h2 id="integrations-title" class="reveal">Seamless Integrations</h2>
 
-    <!-- Accessible, seamless marquee -->
-    <div class="integrations-marquee" data-speed="42" aria-label="Supported integrations">
-      <div class="integrations-track" id="integrationsTrack">
-        <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy"
-             onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Shopify'}));">
-        <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy"
-             onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Klaviyo'}));">
-        <img src="assets/logos/Google/Google_google_calender_0.svg" alt="Google" loading="lazy"
-             onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Google'}));">
-        <img src="assets/logos/Slack.png" alt="Slack" loading="lazy"
-             onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Slack'}));">
-        <img src="assets/logos/Sage/Sage_idVLlxXMe9_0.svg" alt="Sage" loading="lazy"
-             onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Sage'}));">
-        <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" alt="Omnisend" loading="lazy"
-             onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Omnisend'}));">
+      <!-- Seamless marquee (jump-free, pauses on hover) -->
+      <div class="integrations-marquee" data-speed="42" aria-label="Supported integrations">
+        <div class="integrations-track" id="integrationsTrack">
+          <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Shopify'}));">
+          <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Klaviyo'}));">
+          <img src="assets/logos/Google/Google_google_calender_0.svg" alt="Google" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Google'}));">
+          <img src="assets/logos/Slack.png" alt="Slack" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Slack'}));">
+          <img src="assets/logos/Sage/Sage_idVLlxXMe9_0.svg" alt="Sage" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Sage'}));">
+          <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" alt="Omnisend" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Omnisend'}));">
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-
+  </section>
 
   <!-- Pricing -->
   <section id="pricing">
@@ -556,15 +387,66 @@
     </div>
   </section>
 
-  <!-- Lead Magnet -->
-  <section aria-labelledby="lead-title">
+  <!-- ✅ Free AI Audit (full lead form) -->
+  <section id="audit" aria-labelledby="audit-title">
     <div class="container">
       <div class="card reveal">
-        <h2 id="lead-title">Get Your Free AI Audit Checklist</h2>
-        <p class="muted" style="margin:.4rem 0 1rem;">Join 100+ Shopify stores optimizing with AI.</p>
-        <form class="lead" action="#" method="post" aria-label="Lead magnet form">
-          <input class="input email" type="email" name="email" placeholder="you@brand.com" aria-label="Email address" required />
-          <button class="btn" type="submit">Submit</button>
+        <h2 id="audit-title">Free signup for an AI Audit</h2>
+        <p class="muted" style="margin:.4rem 0 1rem;">We’ll evaluate opportunities and estimate impact before you commit.</p>
+
+        <form id="auditForm" class="audit" novalidate aria-describedby="auditError">
+          <!-- honeypot -->
+          <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+
+          <div class="row row-2">
+            <div>
+              <label for="fullName" class="muted">Full Name</label>
+              <input id="fullName" name="fullName" type="text" class="input" required autocomplete="name" />
+            </div>
+            <div>
+              <label for="companyName" class="muted">Company Name</label>
+              <input id="companyName" name="companyName" type="text" class="input" required autocomplete="organization" />
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:16px">
+            <div>
+              <label for="shopifyUrl" class="muted">Shopify Store URL</label>
+              <input id="shopifyUrl" name="shopifyUrl" type="url" class="input" required placeholder="https://yourstore.myshopify.com" autocomplete="url" />
+              <div class="help">Custom domains are OK.</div>
+            </div>
+          </div>
+
+          <div class="row row-2" style="margin-top:16px">
+            <div>
+              <label for="email" class="muted">Email Address</label>
+              <input id="email" name="email" type="email" class="input" required autocomplete="email" />
+            </div>
+            <div>
+              <label for="revenue" class="muted">Monthly Store Revenue</label>
+              <select id="revenue" name="revenue" class="input" required>
+                <option value="">Select a range…</option>
+                <option>&lt;$10k</option>
+                <option>$10–50k</option>
+                <option>$50–150k</option>
+                <option>$150–500k</option>
+                <option>$500k+</option>
+              </select>
+              <div class="help">Helps us tailor the audit to your current scale.</div>
+            </div>
+          </div>
+
+          <label style="display:flex; gap:12px; align-items:flex-start; margin-top:16px; font-size:14px">
+            <input type="checkbox" name="consent" required style="margin-top:6px" />
+            <span>You agree to be contacted about your audit.</span>
+          </label>
+
+          <div id="auditError" class="err" style="display:none; margin-top:12px" role="alert" aria-live="polite"></div>
+
+          <div style="display:flex; gap:12px; align-items:center; margin-top:16px">
+            <button type="submit" id="auditSubmit" class="btn">Get Free Audit</button>
+            <span class="muted" style="font-size:12px">No spam—cancel anytime.</span>
+          </div>
         </form>
       </div>
     </div>
@@ -684,7 +566,7 @@
     // Collapsible details
     const detailsToggle=document.getElementById('detailsToggle');
     const calcDetails=document.getElementById('calcDetails');
-    detailsToggle.addEventListener('click',()=>{
+    detailsToggle?.addEventListener('click',()=>{
       const hidden = calcDetails.hasAttribute('hidden');
       if(hidden) calcDetails.removeAttribute('hidden'); else calcDetails.setAttribute('hidden','');
       detailsToggle.setAttribute('aria-expanded', String(hidden));
@@ -709,86 +591,139 @@
       go(0);
     })();
   </script>
+
+  <!-- Integrations marquee script (seamless, no jump) -->
   <script>
-(function(){
-  const marquee = document.querySelector('.integrations-marquee');
-  const track   = document.getElementById('integrationsTrack');
-  if(!marquee || !track) return;
+  (function(){
+    const marquee = document.querySelector('.integrations-marquee');
+    const track   = document.getElementById('integrationsTrack');
+    if(!marquee || !track) return;
 
-  // Respect reduced motion
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduce) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce) return;
 
-  // Config
-  const pxPerSec = Number(marquee.getAttribute('data-speed') || 40); // belt speed
-  let x = 0;                 // current translateX (px)
-  let rafId = null;
-  let last = null;
-  let running = true;
+    const pxPerSec = Number(marquee.getAttribute('data-speed') || 40);
+    let x = 0, rafId = null, last = null, running = true;
 
-  // Clone children until the track is at least 2x the visible width
-  function fill() {
-    const startCount = track.children.length;
-    const visibleW = marquee.clientWidth;
-    // Ensure we have at least 2x viewport width to allow smooth recycling
-    while (track.scrollWidth < visibleW * 2) {
-      for (let i = 0; i < startCount && track.scrollWidth < visibleW * 2; i++) {
-        track.appendChild(track.children[i].cloneNode(true));
+    function fill() {
+      const startCount = track.children.length;
+      const visibleW = marquee.clientWidth;
+      while (track.scrollWidth < visibleW * 2) {
+        for (let i = 0; i < startCount && track.scrollWidth < visibleW * 2; i++) {
+          track.appendChild(track.children[i].cloneNode(true));
+        }
       }
     }
-  }
 
-  function firstUnitWidth(){
-    const first = track.children[0];
-    if(!first) return 0;
-    // Include the flex "gap" by reading computed gap value
-    const gap = parseFloat(getComputedStyle(track).gap) || 0;
-    return first.getBoundingClientRect().width + gap;
-  }
-
-  function step(ts){
-    if(!running) { rafId = requestAnimationFrame(step); return; }
-    if(last == null) last = ts;
-    const dt = (ts - last) / 1000;
-    last = ts;
-
-    x -= pxPerSec * dt;                      // move left
-    // Recycle items that fully left the view
-    let unitW = firstUnitWidth();
-    while (unitW && x <= -unitW) {
-      x += unitW;
-      track.appendChild(track.children[0]);  // move first -> end
-      unitW = firstUnitWidth();              // recalc for next potential item
+    function firstUnitWidth(){
+      const first = track.children[0];
+      if(!first) return 0;
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      return first.getBoundingClientRect().width + gap;
     }
-    track.style.transform = `translateX(${x}px)`;
-    rafId = requestAnimationFrame(step);
-  }
 
-  // Pause on hover / blur
-  marquee.addEventListener('mouseenter', () => running = false);
-  marquee.addEventListener('mouseleave', () => { running = true; last = null; });
-  document.addEventListener('visibilitychange', () => {
-    running = document.visibilityState === 'visible';
-    last = null;
-  });
+    function step(ts){
+      if(!running) { rafId = requestAnimationFrame(step); return; }
+      if(last == null) last = ts;
+      const dt = (ts - last) / 1000;
+      last = ts;
 
-  // Start with a full, non-offset row (x = 0)
-  x = 0;
-  track.style.transform = 'translateX(0)';
+      x -= pxPerSec * dt;
+      let unitW = firstUnitWidth();
+      while (unitW && x <= -unitW) {
+        x += unitW;
+        track.appendChild(track.children[0]);
+        unitW = firstUnitWidth();
+      }
+      track.style.transform = `translateX(${x}px)`;
+      rafId = requestAnimationFrame(step);
+    }
 
-  // Once images settle, measure & fill, then animate
-  const imgs = track.querySelectorAll('img');
-  let pending = imgs.length;
-  function go(){
-    fill();                          // clone just enough to cover 2x width
-    rafId = requestAnimationFrame(step);
-  }
-  if (pending === 0) go();
-  imgs.forEach(img => {
-    if (img.complete) { if(--pending===0) go(); }
-    else img.addEventListener('load', () => { if(--pending===0) go(); }, {once:true});
-  });
-})();
-</script>
+    marquee.addEventListener('mouseenter', () => running = false);
+    marquee.addEventListener('mouseleave', () => { running = true; last = null; });
+    document.addEventListener('visibilitychange', () => { running = document.visibilityState === 'visible'; last = null; });
+
+    x = 0;
+    track.style.transform = 'translateX(0)';
+
+    const imgs = track.querySelectorAll('img');
+    let pending = imgs.length;
+    function go(){ fill(); rafId = requestAnimationFrame(step); }
+    if (pending === 0) go();
+    imgs.forEach(img => {
+      if (img.complete) { if(--pending===0) go(); }
+      else img.addEventListener('load', () => { if(--pending===0) go(); }, {once:true});
+    });
+  })();
+  </script>
+
+  <!-- Audit form handler (validation + success state) -->
+  <script>
+  (function(){
+    const form = document.getElementById('auditForm');
+    if(!form) return;
+    const errorEl = document.getElementById('auditError');
+    const submitBtn = document.getElementById('auditSubmit');
+    const startedAt = Date.now();
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
+    const shopifyRe = /^(https?:\/\/)?([a-z0-9-]+)\.(myshopify\.com|[a-z0-9-]+\.[a-z.]+)(\/.*)?$/i;
+
+    // Set this to your backend/service endpoint when ready:
+    const SUBMIT_URL = null; // e.g., "https://formspree.io/f/xxxxxx"
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const payload = {
+        fullName: fd.get("fullName")?.toString().trim(),
+        companyName: fd.get("companyName")?.toString().trim(),
+        shopifyUrl: fd.get("shopifyUrl")?.toString().trim(),
+        email: fd.get("email")?.toString().trim(),
+        revenue: fd.get("revenue")?.toString(),
+        consent: fd.get("consent") === "on",
+      };
+
+      const honeypot = (fd.get("website") || "").toString().trim();
+      const elapsed = Date.now() - startedAt;
+
+      function fail(msg){
+        errorEl.textContent = msg;
+        errorEl.style.display = "block";
+      }
+
+      if (honeypot || elapsed < 3000) { showSuccess(); return; }
+      if (!payload.fullName || !payload.companyName || !payload.shopifyUrl || !payload.email || !payload.revenue) return fail("Please fill in all required fields.");
+      if (!emailRe.test(payload.email)) return fail("Please enter a valid email address.");
+      if (!shopifyRe.test(payload.shopifyUrl)) return fail("Please enter a valid Shopify store URL.");
+      if (!payload.consent) return fail("Please agree to be contacted about your audit.");
+
+      errorEl.style.display = "none";
+      submitBtn.disabled = true;
+
+      try{
+        if (SUBMIT_URL){
+          await fetch(SUBMIT_URL, { method:"POST", body: JSON.stringify(payload), headers:{ "Content-Type":"application/json" }});
+        } else {
+          console.log("[Audit Form] payload:", payload);
+        }
+        showSuccess();
+      } catch(err){
+        fail("Something went wrong. Please try again.");
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+
+    function showSuccess(){
+      form.innerHTML = `
+        <div class="card" style="border-color: rgba(16,185,129,.5); background: rgba(16,185,129,.08);">
+          <div style="color:#a7f3d0; font-weight:600">Thanks! You’re on the list.</div>
+          <div class="muted" style="margin-top:6px">We’ll email you within 1–2 business days with next steps.</div>
+        </div>
+      `;
+      form.setAttribute("data-evt", "audit_submit_success");
+    }
+  })();
+  </script>
 </body>
 </html>
