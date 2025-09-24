@@ -167,6 +167,24 @@
       .nav-links{ display:flex; }
       .hamb{ display:none; }
     }
+        /* --- Integrations: logos only (no boxes) --- */
+    .integrations-grid{ gap:24px; justify-items:center; align-items:center; }
+    
+    .integrations-grid .int{
+      background: transparent !important;
+      border: 0 !important;
+      padding: 0 !important;
+      height: auto !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    
+    .integrations-grid .int img{
+      display:block;
+      height:28px;      /* tweak to 24–36px if you want larger/smaller logos */
+      width:auto;
+      filter:none;
+    }
   </style>
 </head>
 <body>
