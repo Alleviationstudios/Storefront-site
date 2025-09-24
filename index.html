@@ -199,6 +199,65 @@
     height: 28px;
     width: auto;
   }
+    /* === Integrations marquee (infinite scroll) === */
+.integrations-marquee {
+  position: relative;
+  overflow: hidden;
+  padding: 16px 24px;  /* keeps edge logos off the sides */
+}
+
+.integrations-track {
+  display: flex;
+  gap: 36px;           /* spacing between logos */
+  align-items: center;
+  width: max-content;  /* track only as wide as its contents */
+  will-change: transform;
+  animation: integrations-scroll var(--scroll-speed, 28s) linear infinite;
+  /* Direction: reverse = scrolls left->right (to the right).
+     Remove 'reverse' if you want right->left. */
+  animation-direction: reverse;
+}
+
+.integrations-track:hover {
+  animation-play-state: paused;  /* pause on hover */
+}
+
+.integrations-track img {
+  height: 28px;       /* adjust 24–36px to taste */
+  width: auto;
+  display: block;
+  opacity: 0.95;
+  transition: opacity .15s ease, transform .15s ease;
+}
+.integrations-track img:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Duplicate group spacing looks even */
+.integrations-group {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+
+/* The magic: move one full group's width across */
+@keyframes integrations-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-1 * var(--group-width, 100%))); }
+}
+
+/* Reduce Motion: stop animation but keep layout */
+@media (prefers-reduced-motion: reduce) {
+  .integrations-track { animation: none; }
+}
+
+/* Responsive tweaks */
+@media (max-width: 960px) {
+  .integrations-track,
+  .integrations-group { gap: 24px; }
+  .integrations-marquee { padding-inline: 16px; }
+}
   </style>
 </head>
 <body>
@@ -375,37 +434,43 @@
   </section>
 
   <!-- ✅ Integrations (new) -->
-  <section id="integrations" aria-labelledby="integrations-title">
-    <div class="container">
-      <h2 id="integrations-title" class="reveal">Seamless Integrations</h2>
-      <div class="integrations-grid">
-        <div class="int reveal" aria-label="Shopify">
+ <section id="integrations" aria-labelledby="integrations-title">
+  <div class="container">
+    <h2 id="integrations-title" class="reveal">Seamless Integrations</h2>
+
+    <!-- Marquee -->
+    <div class="integrations-marquee" style="--scroll-speed: 28s;">
+      <div class="integrations-track" id="integrationsTrack" style="--group-width: 1200px;">
+        <!-- GROUP 1 -->
+        <div class="integrations-group" aria-label="Supported integrations">
           <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Shopify'}));">
-        </div>
-        <div class="int reveal" aria-label="Klaviyo">
           <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Klaviyo'}));">
-        </div>
-        <div class="int reveal" aria-label="Google Calender">
-          <img src="assets/logos/Google/Google_google_calendar_0.svg" alt="Gorgias" loading="lazy"
-               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Gorgias'}));">
-        </div>
-        <div class="int reveal" aria-label="Slack">
+          <img src="assets/logos/Google/Google_google_calender_0.svg" alt="Google" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Google'}));">
           <img src="assets/logos/Slack.png" alt="Slack" loading="lazy"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Slack'}));">
-        </div>
-        <div class="int reveal" aria-label="Sage">
-          <img src="assets/logos/Sage/Sage_idVLLxMWe9_0.svg" alt="WooCommerce" loading="lazy"
-               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'WooCommerce'}));">
-        </div>
-        <div class="int reveal" aria-label="Omnisend">
+          <img src="assets/logos/Sage/Sage_idVLlxXMe9_0.svg" alt="Sage" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Sage'}));">
           <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" alt="Omnisend" loading="lazy"
                onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Omnisend'}));">
         </div>
+
+        <!-- GROUP 2 (duplicate for seamless loop) -->
+        <div class="integrations-group" aria-hidden="true">
+          <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="" loading="lazy">
+          <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="" loading="lazy">
+          <img src="assets/logos/Google/Google_google_calender_0.svg" alt="" loading="lazy">
+          <img src="assets/logos/Slack.png" alt="" loading="lazy">
+          <img src="assets/logos/Sage/Sage_idVLlxXMe9_0.svg" alt="" loading="lazy">
+          <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" alt="" loading="lazy">
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Pricing -->
   <section id="pricing">
