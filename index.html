@@ -258,6 +258,38 @@
   .integrations-group { gap: 24px; }
   .integrations-marquee { padding-inline: 16px; }
 }
+    /* === Integrations marquee: layout + spacing === */
+.integrations-marquee{
+  position:relative;
+  overflow:hidden;
+  padding:16px 24px;               /* edge breathing room */
+}
+
+.integrations-track{
+  display:flex;
+  align-items:center;
+  gap:36px;                         /* logo spacing; adjust to taste */
+  will-change: transform;
+}
+
+.integrations-track img{
+  height:28px;                      /* 24–36px looks good */
+  width:auto;
+  display:block;
+  opacity:.95;
+  transition:opacity .15s ease, transform .15s ease;
+}
+.integrations-track img:hover{ opacity:1; transform:translateY(-2px); }
+
+/* Respect user preference to reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .integrations-marquee{ overflow-x:auto; } /* fallback: manual scroll */
+}
+@media (max-width: 960px){
+  .integrations-track{ gap:24px; }
+  .integrations-marquee{ padding-inline:16px; }
+}
+
   </style>
 </head>
 <body>
@@ -434,42 +466,30 @@
   </section>
 
   <!-- ✅ Integrations (new) -->
- <section id="integrations" aria-labelledby="integrations-title">
+<section id="integrations" aria-labelledby="integrations-title">
   <div class="container">
     <h2 id="integrations-title" class="reveal">Seamless Integrations</h2>
 
-    <!-- Marquee -->
-    <div class="integrations-marquee" style="--scroll-speed: 28s;">
-      <div class="integrations-track" id="integrationsTrack" style="--group-width: 1200px;">
-        <!-- GROUP 1 -->
-        <div class="integrations-group" aria-label="Supported integrations">
-          <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy"
-               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Shopify'}));">
-          <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy"
-               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Klaviyo'}));">
-          <img src="assets/logos/Google/Google_google_calender_0.svg" alt="Google" loading="lazy"
-               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Google'}));">
-          <img src="assets/logos/Slack.png" alt="Slack" loading="lazy"
-               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Slack'}));">
-          <img src="assets/logos/Sage/Sage_idVLlxXMe9_0.svg" alt="Sage" loading="lazy"
-               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Sage'}));">
-          <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" alt="Omnisend" loading="lazy"
-               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Omnisend'}));">
-        </div>
-
-        <!-- GROUP 2 (duplicate for seamless loop) -->
-        <div class="integrations-group" aria-hidden="true">
-          <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="" loading="lazy">
-          <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="" loading="lazy">
-          <img src="assets/logos/Google/Google_google_calender_0.svg" alt="" loading="lazy">
-          <img src="assets/logos/Slack.png" alt="" loading="lazy">
-          <img src="assets/logos/Sage/Sage_idVLlxXMe9_0.svg" alt="" loading="lazy">
-          <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" alt="" loading="lazy">
-        </div>
+    <!-- Accessible, seamless marquee -->
+    <div class="integrations-marquee" data-speed="42" aria-label="Supported integrations">
+      <div class="integrations-track" id="integrationsTrack">
+        <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy"
+             onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Shopify'}));">
+        <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy"
+             onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Klaviyo'}));">
+        <img src="assets/logos/Google/Google_google_calender_0.svg" alt="Google" loading="lazy"
+             onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Google'}));">
+        <img src="assets/logos/Slack.png" alt="Slack" loading="lazy"
+             onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Slack'}));">
+        <img src="assets/logos/Sage/Sage_idVLlxXMe9_0.svg" alt="Sage" loading="lazy"
+             onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Sage'}));">
+        <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" alt="Omnisend" loading="lazy"
+             onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Omnisend'}));">
       </div>
     </div>
   </div>
 </section>
+
 
 
   <!-- Pricing -->
@@ -689,5 +709,86 @@
       go(0);
     })();
   </script>
+  <script>
+(function(){
+  const marquee = document.querySelector('.integrations-marquee');
+  const track   = document.getElementById('integrationsTrack');
+  if(!marquee || !track) return;
+
+  // Respect reduced motion
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce) return;
+
+  // Config
+  const pxPerSec = Number(marquee.getAttribute('data-speed') || 40); // belt speed
+  let x = 0;                 // current translateX (px)
+  let rafId = null;
+  let last = null;
+  let running = true;
+
+  // Clone children until the track is at least 2x the visible width
+  function fill() {
+    const startCount = track.children.length;
+    const visibleW = marquee.clientWidth;
+    // Ensure we have at least 2x viewport width to allow smooth recycling
+    while (track.scrollWidth < visibleW * 2) {
+      for (let i = 0; i < startCount && track.scrollWidth < visibleW * 2; i++) {
+        track.appendChild(track.children[i].cloneNode(true));
+      }
+    }
+  }
+
+  function firstUnitWidth(){
+    const first = track.children[0];
+    if(!first) return 0;
+    // Include the flex "gap" by reading computed gap value
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    return first.getBoundingClientRect().width + gap;
+  }
+
+  function step(ts){
+    if(!running) { rafId = requestAnimationFrame(step); return; }
+    if(last == null) last = ts;
+    const dt = (ts - last) / 1000;
+    last = ts;
+
+    x -= pxPerSec * dt;                      // move left
+    // Recycle items that fully left the view
+    let unitW = firstUnitWidth();
+    while (unitW && x <= -unitW) {
+      x += unitW;
+      track.appendChild(track.children[0]);  // move first -> end
+      unitW = firstUnitWidth();              // recalc for next potential item
+    }
+    track.style.transform = `translateX(${x}px)`;
+    rafId = requestAnimationFrame(step);
+  }
+
+  // Pause on hover / blur
+  marquee.addEventListener('mouseenter', () => running = false);
+  marquee.addEventListener('mouseleave', () => { running = true; last = null; });
+  document.addEventListener('visibilitychange', () => {
+    running = document.visibilityState === 'visible';
+    last = null;
+  });
+
+  // Start with a full, non-offset row (x = 0)
+  x = 0;
+  track.style.transform = 'translateX(0)';
+
+  // Once images settle, measure & fill, then animate
+  const imgs = track.querySelectorAll('img');
+  let pending = imgs.length;
+  function go(){
+    fill();                          // clone just enough to cover 2x width
+    rafId = requestAnimationFrame(step);
+  }
+  if (pending === 0) go();
+  imgs.forEach(img => {
+    if (img.complete) { if(--pending===0) go(); }
+    else img.addEventListener('load', () => { if(--pending===0) go(); }, {once:true});
+  });
+})();
+</script>
 </body>
 </html>
