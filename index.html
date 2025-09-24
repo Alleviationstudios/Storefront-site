@@ -83,12 +83,12 @@
     .calc-grid{ display:grid; gap:16px; grid-template-columns:1fr 1fr 1fr; }
 
     /* ✅ center the “Results” card contents vertically */
-    .results-card{ justify-content:center; }
-    .results-card .calc-grid{ align-items:center; }
+    .results-card{ display:flex; align-items:center; justify-content:center; }
 
     /* pricing */
     .pricing .card{ height:100%; display:flex; flex-direction:column; padding-bottom:24px; }
     .pricing .plan-head{ margin-bottom:8px; }
+    .pricing .plan-head h3{ margin:0; }
     .pricing ul{ list-style:none; padding:0; margin:10px 0 0 0; }
     .pricing li{ display:flex; align-items:center; gap:8px; margin:.35rem 0; font-size:.95rem; color:var(--muted); }
     .check{ width:18px; height:18px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--teal)); display:inline-flex; align-items:center; justify-content:center; color:#0b0f14; font-weight:900; font-size:12px; }
@@ -109,41 +109,45 @@
     .nav-btn{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(13,19,32,.7); border:1px solid #2b3a52; color:#e6eaf0; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; }
     .prev{ left:12px; } .next{ right:12px; }
 
-    /* testimonial brand logo next to name */
+    /* testimonial brand logo next to name (sane size) */
     .brand-avatar {
-      height: 150px;      /* adjust to taste */
+      height: 28px;
       width: auto;
       object-fit: contain;
-      margin-right: 12px; /* spacing before the name block */
+      margin-right: 12px;
       display: inline-block;
     }
 
-    /* existing placeholder style — you can leave it or override */
-      .slide .img {
-        height:260px;
-        background:#1a2330;
-        border:1px dashed #2b3a52;
-        border-radius:14px;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        color:#7d8aa3;
-        font-weight:700;
-      }
-      
-      /* new full-cover style for real brand images */
-      .slide .img.t-cover {
-        position: relative;
-        overflow: hidden;
-        border-radius: 14px;
-        background: #0e151f; /* subtle fallback behind image */
-      }
-      .slide .img.t-cover img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;   /* fills the block */
-      }
+    /* full-cover style for real brand images in testimonial left block */
+    .slide .img.t-cover {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #0e151f; /* subtle fallback behind image */
+    }
+    .slide .img.t-cover img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;   /* fills the block */
+    }
+
+    /* Integrations section */
+    .integrations-grid{
+      display:grid; gap:14px;
+      grid-template-columns:repeat(6, minmax(0,1fr));
+      margin-top:14px;
+      align-items:center; justify-items:center;
+    }
+    .integrations-grid .int{
+      display:flex; align-items:center; justify-content:center;
+      height:60px; width:100%;
+      background:#121a26; border:1px solid #263043; border-radius:10px; padding:10px;
+    }
+    .integrations-grid .int img{ display:block; height:24px; width:auto; }
+    @media (max-width:960px){
+      .integrations-grid{ grid-template-columns:repeat(3, minmax(0,1fr)); }
+    }
 
     /* fades */
     .reveal{ opacity:0; transform:translateY(12px); transition:opacity .35s ease, transform .35s ease; }
@@ -218,11 +222,12 @@
         <a class="btn" href="#cta">Get a live demo</a>
         <span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span>
       </div>
+      <!-- ✅ use relative paths so they work locally and on subpaths -->
       <div class="logos-row reveal" aria-label="Platforms & apps">
-        <span class="logo-badge" aria-label="Shopify"><img src="/assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy"></span>
-        <span class="logo-badge" aria-label="Klaviyo"><img src="/assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy"></span>
-        <span class="logo-badge" aria-label="Google"><img src="/assets/logos/Google/Google_Logo_0.svg" alt="Google" loading="lazy"></span>
-        <span class="logo-badge" aria-label="Slack"><img src="/assets/logos/Slack.png" alt="Slack" loading="lazy"></span>
+        <span class="logo-badge" aria-label="Shopify"><img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Shopify'}));"></span>
+        <span class="logo-badge" aria-label="Klaviyo"><img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Klaviyo'}));"></span>
+        <span class="logo-badge" aria-label="Google"><img src="assets/logos/Google/Google_Logo_0.svg" alt="Google" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Google'}));"></span>
+        <span class="logo-badge" aria-label="Slack"><img src="assets/logos/Slack.png" alt="Slack" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Slack'}));"></span>
       </div>
     </div>
   </section>
@@ -304,8 +309,8 @@
               <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
                 <img src="assets/brands/brotein-icon.svg" alt="Brotein logo" class="brand-avatar">
                 <div>
-                    <div style="font-weight:700;">Peter Hesthaven</div>
-                    <div class="muted" style="font-size:.9rem;">VP Operations</div>
+                  <div style="font-weight:700;">Peter Hesthaven</div>
+                  <div class="muted" style="font-size:.9rem;">VP Operations</div>
                 </div>
               </div>
             </div>
@@ -334,6 +339,39 @@
       <div class="card reveal"><h3>1) Map</h3><p class="muted">20-min discovery to find bottlenecks.</p></div>
       <div class="card reveal"><h3>2) Plug in</h3><p class="muted">Shop, email, and chat tools connected.</p></div>
       <div class="card reveal"><h3>3) Scale</h3><p class="muted">Weekly insights and A/B tests.</p></div>
+    </div>
+  </section>
+
+  <!-- ✅ Integrations (new) -->
+  <section id="integrations" aria-labelledby="integrations-title">
+    <div class="container">
+      <h2 id="integrations-title" class="reveal">Seamless Integrations</h2>
+      <div class="integrations-grid">
+        <div class="int reveal" aria-label="Shopify">
+          <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Shopify'}));">
+        </div>
+        <div class="int reveal" aria-label="Klaviyo">
+          <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Klaviyo'}));">
+        </div>
+        <div class="int reveal" aria-label="Gorgias">
+          <img src="assets/logos/Gorgias/Gorgias.svg" alt="Gorgias" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Gorgias'}));">
+        </div>
+        <div class="int reveal" aria-label="Slack">
+          <img src="assets/logos/Slack.png" alt="Slack" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Slack'}));">
+        </div>
+        <div class="int reveal" aria-label="WooCommerce">
+          <img src="assets/logos/WooCommerce/WooCommerce.svg" alt="WooCommerce" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'WooCommerce'}));">
+        </div>
+        <div class="int reveal" aria-label="Omnisend">
+          <img src="assets/logos/Omnisend/Omnisend.svg" alt="Omnisend" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Omnisend'}));">
+        </div>
+      </div>
     </div>
   </section>
 
