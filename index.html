@@ -359,7 +359,9 @@
         <p class="muted audit-sub">We’ll evaluate opportunities and estimate impact before you commit.</p>
 
         <!-- Set data-endpoint to your n8n webhook or form backend URL -->
-        <form id="auditForm" novalidate aria-describedby="auditError" data-endpoint="">
+        <form id="auditForm" novalidate aria-describedby="auditError"
+      data-endpoint="https://thestorefrontai.app.n8n.cloud/webhook/audit-signup">
+
           <!-- honeypot -->
           <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
 
