@@ -727,120 +727,121 @@
   })();
   </script>
 
-  <script>
-  (function(){ // Audit form (incl. niche)
-    var form=document.getElementById('auditForm');
-    if(!form){ return; }
-    var errorEl=document.getElementById('auditError');
-    var submitBtn=document.getElementById('auditSubmit');
-    var startedAt=Date.now();
-    var SUBMIT_URL=(form.getAttribute('data-endpoint')||'').trim()||null;
+<script>
+(function(){ // Audit form (preflight-free FormData submit)
+  var form=document.getElementById('auditForm');
+  if(!form) return;
 
-    var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
-    var shopifyRe=/^(https?:\/\/)?([a-z0-9-]+)\.(myshopify\.com|[a-z0-9-]+\.[a-z.]+)(\/.*)?$/i;
+  var errorEl=document.getElementById('auditError');
+  var submitBtn=document.getElementById('auditSubmit');
+  var startedAt=Date.now();
+  // IMPORTANT: this should be your n8n Production URL (exactly as shown in n8n)
+  var SUBMIT_URL=(form.getAttribute('data-endpoint')||'').trim()||null;
 
-    function el(id){ return document.getElementById(id); }
-    var fields={
-      fullName: el('fullName'),
-      companyName: el('companyName'),
-      shopifyUrl: el('shopifyUrl'),
-      niche: el('niche'),
-      email: el('email'),
-      revenue: el('revenue')
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
+  var shopifyRe=/^(https?:\/\/)?([a-z0-9-]+)\.(myshopify\.com|[a-z0-9-]+\.[a-z.]+)(\/.*)?$/i;
+
+  function el(id){ return document.getElementById(id); }
+  var fields={
+    fullName: el('fullName'),
+    companyName: el('companyName'),
+    shopifyUrl: el('shopifyUrl'),
+    niche: el('niche'),
+    email: el('email'),
+    revenue: el('revenue')
+  };
+  function setInvalid(node, bad){ if(!node) return; node.toggleAttribute('aria-invalid', !!bad); }
+  function showError(msg, focusEl){
+    errorEl.textContent=msg; errorEl.style.display='block';
+    if(focusEl && focusEl.focus) focusEl.focus({preventScroll:true});
+  }
+  function clearError(){
+    errorEl.style.display='none';
+    Object.keys(fields).forEach(function(k){ setInvalid(fields[k], false); });
+  }
+
+  // UTM capture
+  var params=new URLSearchParams(location.search);
+  var utm={
+    utm_source: params.get('utm_source')||'',
+    utm_medium: params.get('utm_medium')||'',
+    utm_campaign: params.get('utm_campaign')||'',
+    utm_term: params.get('utm_term')||'',
+    utm_content: params.get('utm_content')||''
+  };
+
+  function renderSuccess(){
+    var wrap=document.createElement('div'); wrap.className='success';
+    wrap.innerHTML = '<div style="font-weight:700">Thanks! You’re on the list.</div>\
+      <div class="muted" style="margin-top:6px">We’ll email you within 1–2 business days with next steps.</div>';
+    form.replaceWith(wrap);
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); clearError();
+
+    // Gather + validate
+    var fd=new FormData(form);
+    var payload={
+      fullName: (fd.get('fullName')||'').toString().trim(),
+      companyName: (fd.get('companyName')||'').toString().trim(),
+      shopifyUrl: (fd.get('shopifyUrl')||'').toString().trim(),
+      niche: (fd.get('niche')||'').toString().trim(),
+      email: (fd.get('email')||'').toString().trim(),
+      revenue: (fd.get('revenue')||'').toString(),
+      consent: fd.get('consent')==='on'
     };
-    function setInvalid(node, bad){ if(!node) return; if(bad){ node.setAttribute('aria-invalid','true'); } else { node.removeAttribute('aria-invalid'); } }
-    function showError(msg, focusEl){
-      errorEl.textContent=msg; errorEl.style.display='block';
-      if(focusEl && focusEl.focus){ focusEl.focus({preventScroll:true}); }
+
+    // honeypot + time-gate (kept from your version)
+    var honeypot=(fd.get('website')||'').toString().trim();
+    var elapsed=Date.now()-startedAt;
+    if(honeypot || elapsed<1200){ renderSuccess(); return; }
+
+    if(!payload.fullName){ setInvalid(fields.fullName,true); showError('Please add your full name.', fields.fullName); return; }
+    if(!payload.companyName){ setInvalid(fields.companyName,true); showError('Please add your company name.', fields.companyName); return; }
+    if(!payload.shopifyUrl){ setInvalid(fields.shopifyUrl,true); showError('Please add your Shopify store URL.', fields.shopifyUrl); return; }
+    if(!shopifyRe.test(payload.shopifyUrl)){ setInvalid(fields.shopifyUrl,true); showError('Please enter a valid Shopify store URL.', fields.shopifyUrl); return; }
+    if(!payload.email || !emailRe.test(payload.email)){ setInvalid(fields.email,true); showError('Please enter a valid work email.', fields.email); return; }
+    if(!payload.revenue){ setInvalid(fields.revenue,true); showError('Please choose a revenue range.', fields.revenue); return; }
+    if(!payload.consent){ showError('Please agree to be contacted about your audit.'); return; }
+
+    // Build FormData for POST (NO headers -> no preflight)
+    var postData=new FormData();
+    Object.keys(payload).forEach(function(k){ postData.append(k, payload[k]); });
+    // add UTM and useful context
+    postData.append('utm_source', utm.utm_source);
+    postData.append('utm_medium', utm.utm_medium);
+    postData.append('utm_campaign', utm.utm_campaign);
+    postData.append('utm_term', utm.utm_term);
+    postData.append('utm_content', utm.utm_content);
+    postData.append('userAgent', navigator.userAgent);
+    postData.append('receivedAt', new Date().toISOString());
+
+    submitBtn.setAttribute('aria-busy','true'); submitBtn.disabled=true;
+
+    var done=function(){ submitBtn.removeAttribute('aria-busy'); submitBtn.disabled=false; };
+
+    if(!SUBMIT_URL){
+      renderSuccess();
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push({event:'audit_form_submit', payload:payload});
+      return done();
     }
-    function clearError(){
-      errorEl.style.display='none';
-      Object.keys(fields).forEach(function(k){ setInvalid(fields[k], false); });
-    }
 
-    // UTM capture
-    var params=new URLSearchParams(location.search);
-    var utm={
-      utm_source: params.get('utm_source')||'',
-      utm_medium: params.get('utm_medium')||'',
-      utm_campaign: params.get('utm_campaign')||'',
-      utm_term: params.get('utm_term')||'',
-      utm_content: params.get('utm_content')||''
-    };
-
-    function renderSuccess(){
-      var wrap=document.createElement('div'); wrap.className='success';
-      var h=document.createElement('div'); h.style.fontWeight='700'; h.textContent='Thanks! You’re on the list.';
-      var p=document.createElement('div'); p.className='muted'; p.style.marginTop='6px'; p.textContent='We’ll email you within 1–2 business days with next steps.';
-      wrap.appendChild(h); wrap.appendChild(p);
-      form.replaceWith(wrap);
-    }
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault(); clearError();
-
-      var fd=new FormData(form);
-      var payload={
-        fullName: (fd.get('fullName')||'').toString().trim(),
-        companyName: (fd.get('companyName')||'').toString().trim(),
-        shopifyUrl: (fd.get('shopifyUrl')||'').toString().trim(),
-        niche: (fd.get('niche')||'').toString().trim(),
-        email: (fd.get('email')||'').toString().trim(),
-        revenue: (fd.get('revenue')||'').toString(),
-        consent: fd.get('consent')==='on',
-        utm_source: utm.utm_source,
-        utm_medium: utm.utm_medium,
-        utm_campaign: utm.utm_campaign,
-        utm_term: utm.utm_term,
-        utm_content: utm.utm_content
-      };
-
-      // Honeypot + time-gate
-      var honeypot=(fd.get('website')||'').toString().trim();
-      var elapsed=Date.now()-startedAt;
-      if(honeypot || elapsed<1200){ renderSuccess(); return; }
-
-      // Validation
-      if(!payload.fullName){ setInvalid(fields.fullName,true); showError('Please add your full name.', fields.fullName); return; }
-      if(!payload.companyName){ setInvalid(fields.companyName,true); showError('Please add your company name.', fields.companyName); return; }
-      if(!payload.shopifyUrl){ setInvalid(fields.shopifyUrl,true); showError('Please add your Shopify store URL.', fields.shopifyUrl); return; }
-      if(!shopifyRe.test(payload.shopifyUrl)){ setInvalid(fields.shopifyUrl,true); showError('Please enter a valid Shopify store URL.', fields.shopifyUrl); return; }
-      if(!payload.email || !emailRe.test(payload.email)){ setInvalid(fields.email,true); showError('Please enter a valid work email.', fields.email); return; }
-      if(!payload.revenue){ setInvalid(fields.revenue,true); showError('Please choose a revenue range.', fields.revenue); return; }
-      if(!payload.consent){ showError('Please agree to be contacted about your audit.'); return; }
-
-      submitBtn.setAttribute('aria-busy','true'); submitBtn.disabled=true;
-
-      var done=function(){
-        submitBtn.removeAttribute('aria-busy'); submitBtn.disabled=false;
-      };
-
-      if(!SUBMIT_URL){
-        // No backend yet: show success + push event
+    fetch(SUBMIT_URL, { method:'POST', body: postData, mode:'cors', keepalive:true })
+      .then(function(res){
+        if(!res.ok) throw new Error('bad_status_'+res.status);
         renderSuccess();
         window.dataLayer=window.dataLayer||[];
         window.dataLayer.push({event:'audit_form_submit', payload:payload});
-        done();
-        return;
-      }
-
-      fetch(SUBMIT_URL, {
-        method:'POST',
-        headers:{ 'Content-Type':'application/json' },
-        body: JSON.stringify(payload),
-        mode:'cors',
-        keepalive:true
-      }).then(function(res){
-        if(!res.ok){ throw new Error('bad_status_'+res.status); }
-        renderSuccess();
-        window.dataLayer=window.dataLayer||[];
-        window.dataLayer.push({event:'audit_form_submit', payload:payload});
-      }).catch(function(){
+      })
+      .catch(function(){
         showError('Something went wrong. Please try again.');
-      }).finally(done);
-    });
-  })();
-  </script>
+      })
+      .finally(done);
+  });
+})();
+</script>
 
 <script id="carousel-polish-20250929">
 (function(){
