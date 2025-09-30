@@ -163,105 +163,110 @@
     #pricing .card > div:last-of-type{ margin-top:auto !important; }
   </style>
 
-<style id="ui-polish-20250929">
-  /* === Pricing spacing & badge === */
-  #pricing .plans{ display:grid; gap:16px; align-items:stretch; }
-  @media (min-width:960px){ #pricing .plans{ grid-template-columns:repeat(3,1fr); } }
-  @media (max-width:959.98px){ #pricing .plans{ grid-template-columns:1fr; } }
+  <style id="ui-polish-20250929">
+    /* === Pricing spacing & badge === */
+    #pricing .plans{ display:grid; gap:16px; align-items:stretch; }
+    @media (min-width:960px){ #pricing .plans{ grid-template-columns:repeat(3,1fr); } }
+    @media (max-width:959.98px){ #pricing .plans{ grid-template-columns:1fr; } }
 
-  .plan{ position:relative; display:flex; flex-direction:column; padding:22px; border-radius:14px;
-    background:linear-gradient(180deg, var(--card), #0f1522); border:1px solid var(--border); }
-  .plan-header{ display:flex; flex-direction:column; gap:4px; }
-  .plan-price{ font-size:1.9rem; font-weight:800; margin-top:8px; }
-  .plan-per{ font-size:.95rem; color:var(--muted); }
-  .plan-features{ list-style:none; padding:0; margin:14px 0 0; display:grid; gap:.5rem; }
-  .plan-meta{ margin-top:10px; font-size:.9rem; color:var(--muted); }
-  .plan-footer{ margin-top:auto; padding-top:16px; border-top:1px dashed #223047; }
-  .plan--popular{ border-color:#2F6FFF66; box-shadow:0 12px 30px rgba(47,111,255,.08); }
+    .plan{ position:relative; display:flex; flex-direction:column; padding:22px; border-radius:14px;
+      background:linear-gradient(180deg, var(--card), #0f1522); border:1px solid var(--border); }
+    .plan-header{ display:flex; flex-direction:column; gap:4px; }
+    .plan-price{ font-size:1.9rem; font-weight:800; margin-top:8px; }
+    .plan-per{ font-size:.95rem; color:var(--muted); }
+    .plan-features{ list-style:none; padding:0; margin:14px 0 0; display:grid; gap:.5rem; }
+    .plan-meta{ margin-top:10px; font-size:.9rem; color:var(--muted); }
+    .plan-footer{ margin-top:auto; padding-top:16px; border-top:1px dashed #223047; }
+    .plan--popular{ border-color:#2F6FFF66; box-shadow:0 12px 30px rgba(47,111,255,.08); }
 
-  /* Ribbon badge (eye-catching but minimal) */
-  .ribbon{ position:absolute; top:14px; right:-10px; padding:.45rem .85rem; font-weight:900; font-size:.76rem; letter-spacing:.02em;
-    color:#0b0f14; background:linear-gradient(135deg,#ffd641,#ff8a00); border-radius:999px; box-shadow:0 8px 24px rgba(255,160,0,.25);
-    display:inline-flex; align-items:center; gap:6px; }
-  .ribbon svg{ width:14px; height:14px; }
+    /* Ribbon badge (eye-catching but minimal) */
+    .ribbon{ position:absolute; top:14px; right:-10px; padding:.45rem .85rem; font-weight:900; font-size:.76rem; letter-spacing:.02em;
+      color:#0b0f14; background:linear-gradient(135deg,#ffd641,#ff8a00); border-radius:999px; box-shadow:0 8px 24px rgba(255,160,0,.25);
+      display:inline-flex; align-items:center; gap:6px; }
+    .ribbon svg{ width:14px; height:14px; }
 
-  /* === Testimonials: crisp media, centered arrows, non-stretched dots === */
-  #reviews .carousel{ position:relative; overflow:hidden; background:var(--card); border:1px solid var(--border); border-radius:14px; }
-  #reviews .slides{ display:flex; will-change:transform; transition:transform .5s ease; }
-  #reviews .slide{ min-width:100%; display:grid; grid-template-columns:360px 1fr; gap:24px; align-items:center; padding:18px; }
-  @media (max-width:991.98px){ #reviews .slide{ grid-template-columns:1fr; gap:14px; padding:14px; } }
-  #reviews .media-box{ border-radius:14px; background:#0d1320; border:1px solid #223047; overflow:hidden; position:relative; }
-  #reviews .media-box::after{ content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(to bottom, rgba(255,255,255,.03), transparent 35%); }
-  #reviews .media-box img{ width:100%; height:100%; aspect-ratio:16/10; object-fit:cover; image-rendering:auto; }
-  #reviews .quote{ font-size:clamp(18px,2.2vw,26px); line-height:1.4; }
+    /* === Testimonials: crisp media, centered arrows, non-stretched dots === */
+    #reviews .carousel{ position:relative; overflow:hidden; background:var(--card); border:1px solid var(--border); border-radius:14px; }
+    #reviews .slides{ display:flex; will-change:transform; transition:transform .5s ease; }
+    #reviews .slide{ min-width:100%; display:grid; grid-template-columns:360px 1fr; gap:24px; align-items:center; padding:18px; }
+    @media (max-width:991.98px){ #reviews .slide{ grid-template-columns:1fr; gap:14px; padding:14px; } }
+    #reviews .media-box{ border-radius:14px; background:#0d1320; border:1px solid #223047; overflow:hidden; position:relative; }
+    #reviews .media-box::after{ content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(to bottom, rgba(255,255,255,.03), transparent 35%); }
+    #reviews .media-box img{ width:100%; height:100%; aspect-ratio:16/10; object-fit:cover; image-rendering:auto; }
+    #reviews .quote{ font-size:clamp(18px,2.2vw,26px); line-height:1.4; }
 
-  #reviews .dots{ position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:10px; padding:6px 10px; border-radius:999px;
-    background:rgba(10,14,22,.5); backdrop-filter: blur(6px); border:1px solid #223047; }
-  #reviews .dot{ width:12px; height:12px; border-radius:50%; border:1px solid #46628a; background:#2a374c; cursor:pointer; position:relative; }
-  #reviews .dot::after{ content:""; position:absolute; inset:2px; border-radius:inherit; background:#2F6FFF; opacity:0; transition:opacity .15s ease; }
-  #reviews .dot.active::after{ opacity:1; }
+    #reviews .dots{ position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:10px; padding:6px 10px; border-radius:999px;
+      background:rgba(10,14,22,.5); backdrop-filter: blur(6px); border:1px solid #223047; }
+    #reviews .dot{ width:12px; height:12px; border-radius:50%; border:1px solid #46628a; background:#2a374c; cursor:pointer; position:relative; }
+    #reviews .dot::after{ content:""; position:absolute; inset:2px; border-radius:inherit; background:#2F6FFF; opacity:0; transition:opacity .15s ease; }
+    #reviews .dot.active::after{ opacity:1; }
 
-  #reviews .nav-btn{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(13,19,32,.7); border:1px solid #2b3a52; color:#e6eaf0;
-    width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.25); }
-  #reviews .nav-btn svg{ width:22px; height:22px; display:block; }
-  #reviews .prev{ left:12px; } #reviews .next{ right:12px; }
-  #reviews .nav-btn:hover{ background:rgba(13,19,32,.9); }
+    #reviews .nav-btn{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(13,19,32,.7); border:1px solid #2b3a52; color:#e6eaf0;
+      width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.25); }
+    #reviews .nav-btn svg{ width:22px; height:22px; display:block; }
+    #reviews .prev{ left:12px; } #reviews .next{ right:12px; }
+    #reviews .nav-btn:hover{ background:rgba(13,19,32,.9); }
 
-  /* === ROI select dropdown list colors (best-effort across browsers) === */
-  #roi select, #audit select{ color:var(--ink); background:linear-gradient(180deg,#0f1522,#0c111a); }
-  #roi select option, #audit select option{ color:var(--ink); background:#0f1522; }
-  #roi select option:checked, #roi select option:hover,
-  #audit select option:checked, #audit select option:hover{ background:#2F6FFF !important; color:#fff; }
+    /* === ROI select dropdown list colors (best-effort across browsers) === */
+    #roi select, #audit select{ color:var(--ink); background:linear-gradient(180deg,#0f1522,#0c111a); }
+    #roi select option, #audit select option{ color:var(--ink); background:#0f1522; }
+    #roi select option:checked, #roi select option:hover,
+    #audit select option:checked, #audit select option:hover{ background:#2F6FFF !important; color:#fff; }
 
-  /* Keep equal heights and push CTAs to bottom safely even if markup varies */
-  #pricing .card{ display:flex; flex-direction:column; }
-  #pricing .card .plan-footer, #pricing .card > div:last-child{ margin-top:auto; }
+    /* Keep equal heights and push CTAs to bottom safely even if markup varies */
+    #pricing .card{ display:flex; flex-direction:column; }
+    #pricing .card .plan-footer, #pricing .card > div:last-child{ margin-top:auto; }
 
-</style>
+  </style>
 
+  <!-- Calendly widget CSS (added) -->
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
 </head>
 <body>
   <div id="top"></div>
 
-<!-- Header -->
-<header>
-  <div class="container">
-    <nav aria-label="Primary">
-     <a href="#top" class="logo" aria-label="Storefront home">
-      <img
-        src="assets/logos/storefront%20logo/Storefront%20IO%20logo%20.svg"
-        alt="Storefront"
-        style="height:60px;width:auto;display:block;"
-      >
-      </a>
-      <div class="nav-links" id="desktopNav">
-        <a href="#features">Features</a>
-        <a href="#how">How it works</a>
-        <a href="#roi">Estimate ROI</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#integrations">Integrations</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div style="display:flex; gap:10px; align-items:center;">
-        <a class="btn" href="#cta">Book a demo</a>
-        <button id="menuBtn" class="hamb" aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle menu">☰</button>
-      </div>
-    </nav>
-    <div id="mobileNav" class="mobile" hidden>
-      <div class="container" style="padding:12px 16px;">
-        <a href="#features">Features</a>
-        <a href="#how">How it works</a>
-        <a href="#roi">Estimate ROI</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#integrations">Integrations</a>
-        <a href="#faq">FAQ</a>
-        <a class="btn" style="margin-top:10px;" href="#cta">Book a demo</a>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav aria-label="Primary">
+        <a href="#top" class="logo" aria-label="Storefront home">
+          <img
+            src="assets/logos/storefront%20logo/Storefront%20IO%20logo%20.svg"
+            alt="Storefront"
+            style="height:60px;width:auto;display:block;"
+          >
+        </a>
+        <div class="nav-links" id="desktopNav">
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#roi">Estimate ROI</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#integrations">Integrations</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <!-- add js-book-demo -->
+          <a class="btn js-book-demo" href="#cta">Book a demo</a>
+          <button id="menuBtn" class="hamb" aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle menu">☰</button>
+        </div>
+      </nav>
+      <div id="mobileNav" class="mobile" hidden>
+        <div class="container" style="padding:12px 16px;">
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#roi">Estimate ROI</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#integrations">Integrations</a>
+          <a href="#faq">FAQ</a>
+          <!-- add js-book-demo -->
+          <a class="btn js-book-demo" style="margin-top:10px;" href="#cta">Book a demo</a>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
+
   <!-- Hero -->
   <section class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
@@ -269,7 +274,8 @@
       <h1>AI workflows for Shopify brands <span style="background:linear-gradient(135deg,#2F6FFF,#00C4B4); -webkit-background-clip:text; background-clip:text; color:transparent;">support agents, upsells, and forecasting</span>.</h1>
       <p class="muted" style="margin-top:12px; max-width:780px; margin-inline:auto;">Cut support 45%, boost conversions 18%, and launch in days.</p>
       <div style="margin-top:18px; display:flex; gap:12px; justify-content:center; align-items:center;">
-        <a class="btn" href="#cta">Get a live demo</a>
+        <!-- add js-book-demo -->
+        <a class="btn js-book-demo" href="#cta">Get a live demo</a>
         <span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span>
       </div>
       <div class="logos-row" aria-label="Platforms & apps">
@@ -336,48 +342,46 @@
   </section>
 
   <!-- Reviews -->
-  
-<section id="reviews" aria-labelledby="reviews-title">
-  <div class="container">
-    <h2 id="reviews-title">What customers say</h2>
-    <div class="card carousel" style="margin-top:12px;">
-      <div class="slides" id="slides">
-        <article class="slide" aria-roledescription="slide" aria-label="Brotein testimonial">
-          <div class="media-box">
-            <img src="assets/brands/Brotein.jpg" alt="Brotein Whey Protein" loading="lazy" />
-          </div>
-          <div>
-            <div class="quote">“Storefront cut our support time and gave us clear revenue wins within weeks.”</div>
-            <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
-              <div style="width:42px;height:42px;border-radius:999px;background:#1a2330;border:1px solid #2b3a52;display:flex;align-items:center;justify-content:center;color:#7fb1ff;font-weight:800;">P</div>
-              <div><div style="font-weight:700;">Peter Hesthaven</div><div class="muted" style="font-size:.9rem;">VP Operations</div></div>
+  <section id="reviews" aria-labelledby="reviews-title">
+    <div class="container">
+      <h2 id="reviews-title">What customers say</h2>
+      <div class="card carousel" style="margin-top:12px;">
+        <div class="slides" id="slides">
+          <article class="slide" aria-roledescription="slide" aria-label="Brotein testimonial">
+            <div class="media-box">
+              <img src="assets/brands/Brotein.jpg" alt="Brotein Whey Protein" loading="lazy" />
             </div>
-          </div>
-        </article>
-        <article class="slide" aria-roledescription="slide" aria-label="Restup testimonial">
-          <div class="media-box">
-            <img src="assets/brands/Restupnasal.jpg" alt="Restup nasal strips" loading="lazy" />
-          </div>
-          <div>
-            <div class="quote">“Fast setup. Noticeable lift in conversion and fewer repetitive tickets.”</div>
-            <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
-              <div style="width:42px;height:42px;border-radius:999px;background:#1a2330;border:1px solid #2b3a52;display:flex;align-items:center;justify-content:center;color:#7fb1ff;font-weight:800;">M</div>
-              <div><div style="font-weight:700;">Michael Valky</div><div class="muted" style="font-size:.9rem;">Ecommerce Manager</div></div>
+            <div>
+              <div class="quote">“Storefront cut our support time and gave us clear revenue wins within weeks.”</div>
+              <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
+                <div style="width:42px;height:42px;border-radius:999px;background:#1a2330;border:1px solid #2b3a52;display:flex;align-items:center;justify-content:center;color:#7fb1ff;font-weight:800;">P</div>
+                <div><div style="font-weight:700;">Peter Hesthaven</div><div class="muted" style="font-size:.9rem;">VP Operations</div></div>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+          <article class="slide" aria-roledescription="slide" aria-label="Restup testimonial">
+            <div class="media-box">
+              <img src="assets/brands/Restupnasal.jpg" alt="Restup nasal strips" loading="lazy" />
+            </div>
+            <div>
+              <div class="quote">“Fast setup. Noticeable lift in conversion and fewer repetitive tickets.”</div>
+              <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
+                <div style="width:42px;height:42px;border-radius:999px;background:#1a2330;border:1px solid #2b3a52;display:flex;align-items:center;justify-content:center;color:#7fb1ff;font-weight:800;">M</div>
+                <div><div style="font-weight:700;">Michael Valky</div><div class="muted" style="font-size:.9rem;">Ecommerce Manager</div></div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <button class="nav-btn prev" id="prev" aria-label="Previous slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="nav-btn next" id="next" aria-label="Next slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <div class="dots" id="dots" aria-label="Slide navigation"><button class="dot" aria-label="Slide 1"></button><button class="dot" aria-label="Slide 2"></button></div>
       </div>
-      <button class="nav-btn prev" id="prev" aria-label="Previous slide">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <button class="nav-btn next" id="next" aria-label="Next slide">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-      <div class="dots" id="dots" aria-label="Slide navigation"><button class="dot" aria-label="Slide 1"></button><button class="dot" aria-label="Slide 2"></button></div>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- How it works -->
   <section id="how">
@@ -407,70 +411,71 @@
   </section>
 
   <!-- Pricing -->
-  
-<section id="pricing">
-  <div class="container">
-    <h2 class="center">Simple pricing that scales with you</h2>
-    <p class="center muted" style="margin-bottom:16px;">Month-to-month. Launch in days. Cancel anytime.</p>
-    <div class="center" style="margin-bottom:14px;"><span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span></div>
+  <section id="pricing">
+    <div class="container">
+      <h2 class="center">Simple pricing that scales with you</h2>
+      <p class="center muted" style="margin-bottom:16px;">Month-to-month. Launch in days. Cancel anytime.</p>
+      <div class="center" style="margin-bottom:14px;"><span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span></div>
 
-    <div class="plans">
-      <!-- Starter -->
-      <div class="card plan">
-        <div class="plan-header">
-          <h3>Starter</h3>
-          <p class="muted">Efficiency unlocks</p>
-          <div class="plan-price">$497 <span class="plan-per">/mo</span></div>
+      <div class="plans">
+        <!-- Starter -->
+        <div class="card plan">
+          <div class="plan-header">
+            <h3>Starter</h3>
+            <p class="muted">Efficiency unlocks</p>
+            <div class="plan-price">$497 <span class="plan-per">/mo</span></div>
+          </div>
+          <ul class="plan-features" aria-label="Starter features">
+            <li>AI support agent</li>
+            <li>Order status updates</li>
+            <li>Product copy assist</li>
+          </ul>
+          <div class="plan-meta">3–5× ROI, ~$1.5k/mo savings.</div>
+          <!-- add js-book-demo -->
+          <div class="plan-footer"><a class="btn js-book-demo" href="#cta">Get started</a></div>
         </div>
-        <ul class="plan-features" aria-label="Starter features">
-          <li>AI support agent</li>
-          <li>Order status updates</li>
-          <li>Product copy assist</li>
-        </ul>
-        <div class="plan-meta">3–5× ROI, ~$1.5k/mo savings.</div>
-        <div class="plan-footer"><a class="btn" href="#cta">Get started</a></div>
-      </div>
 
-      <!-- Growth (Most Popular) -->
-      <div class="card plan plan--popular">
-        <div class="ribbon" aria-label="Most Popular">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#0b0f14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          Most Popular
+        <!-- Growth (Most Popular) -->
+        <div class="card plan plan--popular">
+          <div class="ribbon" aria-label="Most Popular">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0b0f14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            Most Popular
+          </div>
+          <div class="plan-header">
+            <h3>Growth</h3>
+            <p class="muted">Revenue acceleration</p>
+            <div class="plan-price">$1,997 <span class="plan-per">/mo</span></div>
+          </div>
+          <ul class="plan-features" aria-label="Growth features">
+            <li>Everything in Starter</li>
+            <li>AI sales assistant</li>
+            <li>Abandoned cart flows</li>
+            <li>Weekly performance reports</li>
+          </ul>
+          <div class="plan-meta">8–12× ROI, ~$20k/mo uplift.</div>
+          <!-- add js-book-demo -->
+          <div class="plan-footer"><a class="btn js-book-demo" href="#cta">Book a demo</a></div>
         </div>
-        <div class="plan-header">
-          <h3>Growth</h3>
-          <p class="muted">Revenue acceleration</p>
-          <div class="plan-price">$1,997 <span class="plan-per">/mo</span></div>
-        </div>
-        <ul class="plan-features" aria-label="Growth features">
-          <li>Everything in Starter</li>
-          <li>AI sales assistant</li>
-          <li>Abandoned cart flows</li>
-          <li>Weekly performance reports</li>
-        </ul>
-        <div class="plan-meta">8–12× ROI, ~$20k/mo uplift.</div>
-        <div class="plan-footer"><a class="btn" href="#cta">Book a demo</a></div>
-      </div>
 
-      <!-- Enterprise -->
-      <div class="card plan">
-        <div class="plan-header">
-          <h3>Enterprise</h3>
-          <p class="muted">Scale &amp; predictability</p>
-          <div class="plan-price">Custom</div>
+        <!-- Enterprise -->
+        <div class="card plan">
+          <div class="plan-header">
+            <h3>Enterprise</h3>
+            <p class="muted">Scale &amp; predictability</p>
+            <div class="plan-price">Custom</div>
+          </div>
+          <ul class="plan-features" aria-label="Enterprise features">
+            <li>Everything in Growth</li>
+            <li>Forecasting &amp; pricing</li>
+            <li>Executive dashboards</li>
+          </ul>
+          <div class="plan-meta">Custom ROI modeling available.</div>
+          <!-- add js-book-demo -->
+          <div class="plan-footer"><a class="btn btn-outline js-book-demo" href="#cta">Talk to sales</a></div>
         </div>
-        <ul class="plan-features" aria-label="Enterprise features">
-          <li>Everything in Growth</li>
-          <li>Forecasting &amp; pricing</li>
-          <li>Executive dashboards</li>
-        </ul>
-        <div class="plan-meta">Custom ROI modeling available.</div>
-        <div class="plan-footer"><a class="btn btn-outline" href="#cta">Talk to sales</a></div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- Free AI Audit + FAQ -->
   <section id="audit" aria-labelledby="audit-title">
@@ -481,7 +486,7 @@
 
         <!-- Set data-endpoint to your n8n webhook or form backend URL -->
         <form id="auditForm" novalidate aria-describedby="auditError"
-      data-endpoint="https://thestorefrontai.app.n8n.cloud/webhook/audit-signup">
+          data-endpoint="https://thestorefrontai.app.n8n.cloud/webhook/audit-signup">
 
           <!-- honeypot -->
           <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
@@ -568,7 +573,8 @@
       <div class="card" style="padding:26px;">
         <h2 id="cta-title">See Storefront in action</h2>
         <p class="muted" style="margin:8px 0 12px;">We’ll map your bottlenecks and show a revenue plan in 20 minutes.</p>
-        <a class="btn" href="mailto:hello@storefront.com">Book my demo</a>
+        <!-- keep mailto as-is; add js-book-demo so popup intercepts -->
+        <a class="btn js-book-demo" href="mailto:hello@storefront.com">Book my demo</a>
       </div>
     </div>
   </section>
@@ -727,152 +733,224 @@
   })();
   </script>
 
-<script>
-(function(){ // Audit form (preflight-free FormData submit)
-  var form=document.getElementById('auditForm');
-  if(!form) return;
+  <script>
+  (function(){ // Audit form (preflight-free FormData submit)
+    var form=document.getElementById('auditForm');
+    if(!form) return;
 
-  var errorEl=document.getElementById('auditError');
-  var submitBtn=document.getElementById('auditSubmit');
-  var startedAt=Date.now();
-  // IMPORTANT: this should be your n8n Production URL (exactly as shown in n8n)
-  var SUBMIT_URL=(form.getAttribute('data-endpoint')||'').trim()||null;
+    var errorEl=document.getElementById('auditError');
+    var submitBtn=document.getElementById('auditSubmit');
+    var startedAt=Date.now();
+    // IMPORTANT: this should be your n8n Production URL (exactly as shown in n8n)
+    var SUBMIT_URL=(form.getAttribute('data-endpoint')||'').trim()||null;
 
-  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
-  var shopifyRe=/^(https?:\/\/)?([a-z0-9-]+)\.(myshopify\.com|[a-z0-9-]+\.[a-z.]+)(\/.*)?$/i;
+    var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
+    var shopifyRe=/^(https?:\/\/)?([a-z0-9-]+)\.(myshopify\.com|[a-z0-9-]+\.[a-z.]+)(\/.*)?$/i;
 
-  function el(id){ return document.getElementById(id); }
-  var fields={
-    fullName: el('fullName'),
-    companyName: el('companyName'),
-    shopifyUrl: el('shopifyUrl'),
-    niche: el('niche'),
-    email: el('email'),
-    revenue: el('revenue')
-  };
-  function setInvalid(node, bad){ if(!node) return; node.toggleAttribute('aria-invalid', !!bad); }
-  function showError(msg, focusEl){
-    errorEl.textContent=msg; errorEl.style.display='block';
-    if(focusEl && focusEl.focus) focusEl.focus({preventScroll:true});
-  }
-  function clearError(){
-    errorEl.style.display='none';
-    Object.keys(fields).forEach(function(k){ setInvalid(fields[k], false); });
-  }
-
-  // UTM capture
-  var params=new URLSearchParams(location.search);
-  var utm={
-    utm_source: params.get('utm_source')||'',
-    utm_medium: params.get('utm_medium')||'',
-    utm_campaign: params.get('utm_campaign')||'',
-    utm_term: params.get('utm_term')||'',
-    utm_content: params.get('utm_content')||''
-  };
-
-  function renderSuccess(){
-    var wrap=document.createElement('div'); wrap.className='success';
-    wrap.innerHTML = '<div style="font-weight:700">Thanks! You’re on the list.</div>\
-      <div class="muted" style="margin-top:6px">We’ll email you within 1–2 business days with next steps.</div>';
-    form.replaceWith(wrap);
-  }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault(); clearError();
-
-    // Gather + validate
-    var fd=new FormData(form);
-    var payload={
-      fullName: (fd.get('fullName')||'').toString().trim(),
-      companyName: (fd.get('companyName')||'').toString().trim(),
-      shopifyUrl: (fd.get('shopifyUrl')||'').toString().trim(),
-      niche: (fd.get('niche')||'').toString().trim(),
-      email: (fd.get('email')||'').toString().trim(),
-      revenue: (fd.get('revenue')||'').toString(),
-      consent: fd.get('consent')==='on'
+    function el(id){ return document.getElementById(id); }
+    var fields={
+      fullName: el('fullName'),
+      companyName: el('companyName'),
+      shopifyUrl: el('shopifyUrl'),
+      niche: el('niche'),
+      email: el('email'),
+      revenue: el('revenue')
     };
-
-    // honeypot + time-gate (kept from your version)
-    var honeypot=(fd.get('website')||'').toString().trim();
-    var elapsed=Date.now()-startedAt;
-    if(honeypot || elapsed<1200){ renderSuccess(); return; }
-
-    if(!payload.fullName){ setInvalid(fields.fullName,true); showError('Please add your full name.', fields.fullName); return; }
-    if(!payload.companyName){ setInvalid(fields.companyName,true); showError('Please add your company name.', fields.companyName); return; }
-    if(!payload.shopifyUrl){ setInvalid(fields.shopifyUrl,true); showError('Please add your Shopify store URL.', fields.shopifyUrl); return; }
-    if(!shopifyRe.test(payload.shopifyUrl)){ setInvalid(fields.shopifyUrl,true); showError('Please enter a valid Shopify store URL.', fields.shopifyUrl); return; }
-    if(!payload.email || !emailRe.test(payload.email)){ setInvalid(fields.email,true); showError('Please enter a valid work email.', fields.email); return; }
-    if(!payload.revenue){ setInvalid(fields.revenue,true); showError('Please choose a revenue range.', fields.revenue); return; }
-    if(!payload.consent){ showError('Please agree to be contacted about your audit.'); return; }
-
-    // Build FormData for POST (NO headers -> no preflight)
-    var postData=new FormData();
-    Object.keys(payload).forEach(function(k){ postData.append(k, payload[k]); });
-    // add UTM and useful context
-    postData.append('utm_source', utm.utm_source);
-    postData.append('utm_medium', utm.utm_medium);
-    postData.append('utm_campaign', utm.utm_campaign);
-    postData.append('utm_term', utm.utm_term);
-    postData.append('utm_content', utm.utm_content);
-    postData.append('userAgent', navigator.userAgent);
-    postData.append('receivedAt', new Date().toISOString());
-
-    submitBtn.setAttribute('aria-busy','true'); submitBtn.disabled=true;
-
-    var done=function(){ submitBtn.removeAttribute('aria-busy'); submitBtn.disabled=false; };
-
-    if(!SUBMIT_URL){
-      renderSuccess();
-      window.dataLayer=window.dataLayer||[];
-      window.dataLayer.push({event:'audit_form_submit', payload:payload});
-      return done();
+    function setInvalid(node, bad){ if(!node) return; node.toggleAttribute('aria-invalid', !!bad); }
+    function showError(msg, focusEl){
+      errorEl.textContent=msg; errorEl.style.display='block';
+      if(focusEl && focusEl.focus) focusEl.focus({preventScroll:true});
+    }
+    function clearError(){
+      errorEl.style.display='none';
+      Object.keys(fields).forEach(function(k){ setInvalid(fields[k], false); });
     }
 
-    fetch(SUBMIT_URL, { method:'POST', body: postData, mode:'cors', keepalive:true })
-      .then(function(res){
-        if(!res.ok) throw new Error('bad_status_'+res.status);
+    // UTM capture
+    var params=new URLSearchParams(location.search);
+    var utm={
+      utm_source: params.get('utm_source')||'',
+      utm_medium: params.get('utm_medium')||'',
+      utm_campaign: params.get('utm_campaign')||'',
+      utm_term: params.get('utm_term')||'',
+      utm_content: params.get('utm_content')||''
+    };
+
+    function renderSuccess(){
+      var wrap=document.createElement('div'); wrap.className='success';
+      wrap.innerHTML = '<div style="font-weight:700">Thanks! You’re on the list.</div>\
+        <div class="muted" style="margin-top:6px">We’ll email you within 1–2 business days with next steps.</div>';
+      form.replaceWith(wrap);
+    }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault(); clearError();
+
+      // Gather + validate
+      var fd=new FormData(form);
+      var payload={
+        fullName: (fd.get('fullName')||'').toString().trim(),
+        companyName: (fd.get('companyName')||'').toString().trim(),
+        shopifyUrl: (fd.get('shopifyUrl')||'').toString().trim(),
+        niche: (fd.get('niche')||'').toString().trim(),
+        email: (fd.get('email')||'').toString().trim(),
+        revenue: (fd.get('revenue')||'').toString(),
+        consent: fd.get('consent')==='on'
+      };
+
+      // honeypot + time-gate (kept from your version)
+      var honeypot=(fd.get('website')||'').toString().trim();
+      var elapsed=Date.now()-startedAt;
+      if(honeypot || elapsed<1200){ renderSuccess(); return; }
+
+      if(!payload.fullName){ setInvalid(fields.fullName,true); showError('Please add your full name.', fields.fullName); return; }
+      if(!payload.companyName){ setInvalid(fields.companyName,true); showError('Please add your company name.', fields.companyName); return; }
+      if(!payload.shopifyUrl){ setInvalid(fields.shopifyUrl,true); showError('Please add your Shopify store URL.', fields.shopifyUrl); return; }
+      if(!shopifyRe.test(payload.shopifyUrl)){ setInvalid(fields.shopifyUrl,true); showError('Please enter a valid Shopify store URL.', fields.shopifyUrl); return; }
+      if(!payload.email || !emailRe.test(payload.email)){ setInvalid(fields.email,true); showError('Please enter a valid work email.', fields.email); return; }
+      if(!payload.revenue){ setInvalid(fields.revenue,true); showError('Please choose a revenue range.', fields.revenue); return; }
+      if(!payload.consent){ showError('Please agree to be contacted about your audit.'); return; }
+
+      // Build FormData for POST (NO headers -> no preflight)
+      var postData=new FormData();
+      Object.keys(payload).forEach(function(k){ postData.append(k, payload[k]); });
+      // add UTM and useful context
+      postData.append('utm_source', utm.utm_source);
+      postData.append('utm_medium', utm.utm_medium);
+      postData.append('utm_campaign', utm.utm_campaign);
+      postData.append('utm_term', utm.utm_term);
+      postData.append('utm_content', utm.utm_content);
+      postData.append('userAgent', navigator.userAgent);
+      postData.append('receivedAt', new Date().toISOString());
+
+      submitBtn.setAttribute('aria-busy','true'); submitBtn.disabled=true;
+
+      var done=function(){ submitBtn.removeAttribute('aria-busy'); submitBtn.disabled=false; };
+
+      if(!SUBMIT_URL){
         renderSuccess();
         window.dataLayer=window.dataLayer||[];
         window.dataLayer.push({event:'audit_form_submit', payload:payload});
-      })
-      .catch(function(){
-        showError('Something went wrong. Please try again.');
-      })
-      .finally(done);
-  });
-})();
-</script>
+        return done();
+      }
 
-<script id="carousel-polish-20250929">
-(function(){
-  var slides=document.getElementById('slides');
-  var dots=document.getElementById('dots');
-  var prev=document.getElementById('prev');
-  var next=document.getElementById('next');
-  if(!slides||!dots) return;
-  var dotEls=[].slice.call(dots.querySelectorAll('.dot'));
-  var count=slides.children.length; var index=0;
-  function go(i){
-    index=(i+count)%count;
-    slides.style.transform='translateX('+(-index*100)+'%)';
-    dotEls.forEach(function(d,di){ d.classList.toggle('active', di===index); });
-  }
-  dotEls.forEach(function(d,i){ d.addEventListener('click', function(){ go(i); }); });
-  if(prev) prev.addEventListener('click', function(){ go(index-1); });
-  if(next) next.addEventListener('click', function(){ go(index+1); });
-  var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var timer=null;
-  if(!reduce){
-    timer=setInterval(function(){ go(index+1); }, 6500);
-    var carousel=slides.closest('.carousel');
-    if(carousel){
-      carousel.addEventListener('mouseenter', function(){ clearInterval(timer); });
-      carousel.addEventListener('mouseleave', function(){ timer=setInterval(function(){ go(index+1); },6500); });
+      fetch(SUBMIT_URL, { method:'POST', body: postData, mode:'cors', keepalive:true })
+        .then(function(res){
+          if(!res.ok) throw new Error('bad_status_'+res.status);
+          renderSuccess();
+          window.dataLayer=window.dataLayer||[];
+          window.dataLayer.push({event:'audit_form_submit', payload:payload});
+        })
+        .catch(function(){
+          showError('Something went wrong. Please try again.');
+        })
+        .finally(done);
+    });
+  })();
+  </script>
+
+  <script id="carousel-polish-20250929">
+  (function(){
+    var slides=document.getElementById('slides');
+    var dots=document.getElementById('dots');
+    var prev=document.getElementById('prev');
+    var next=document.getElementById('next');
+    if(!slides||!dots) return;
+    var dotEls=[].slice.call(dots.querySelectorAll('.dot'));
+    var count=slides.children.length; var index=0;
+    function go(i){
+      index=(i+count)%count;
+      slides.style.transform='translateX('+(-index*100)+'%)';
+      dotEls.forEach(function(d,di){ d.classList.toggle('active', di===index); });
     }
-  }
-  go(0);
-})();
-</script>
+    dotEls.forEach(function(d,i){ d.addEventListener('click', function(){ go(i); }); });
+    if(prev) prev.addEventListener('click', function(){ go(index-1); });
+    if(next) next.addEventListener('click', function(){ go(index+1); });
+    var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var timer=null;
+    if(!reduce){
+      timer=setInterval(function(){ go(index+1); }, 6500);
+      var carousel=slides.closest('.carousel');
+      if(carousel){
+        carousel.addEventListener('mouseenter', function(){ clearInterval(timer); });
+        carousel.addEventListener('mouseleave', function(){ timer=setInterval(function(){ go(index+1); },6500); });
+      }
+    }
+    go(0);
+  })();
+  </script>
+
+  <!-- Calendly popup + prefill (added) -->
+  <script>
+  (function() {
+    var CAL_URL = "https://calendly.com/thestorefront-sales/storefront-demo?hide_gdpr_banner=1&background_color=0B0F14&text_color=E6EAF0&primary_color=2F6FFF";
+
+    function getUTM(){
+      var p=new URLSearchParams(location.search);
+      return {
+        utm_source:p.get('utm_source')||undefined,
+        utm_medium:p.get('utm_medium')||undefined,
+        utm_campaign:p.get('utm_campaign')||undefined,
+        utm_term:p.get('utm_term')||undefined,
+        utm_content:p.get('utm_content')||undefined
+      };
+    }
+
+    function gatherAuditPrefill(){
+      var f=document.getElementById('auditForm'); if(!f) return {};
+      var v=function(sel){var el=f.querySelector(sel); return el?el.value.trim():'';};
+      var name=v('#fullName'), email=v('#email'), company=v('#companyName');
+      var shop=v('#shopifyUrl'), revenue=v('#revenue'), niche=v('#niche');
+      var pre={};
+      if(name) pre.name=name;
+      if(email) pre.email=email;
+      var ca={}; if(company) ca.a1=company; if(shop) ca.a2=shop; if(revenue) ca.a3=revenue; if(niche) ca.a4=niche;
+      if(Object.keys(ca).length) pre.customAnswers=ca;
+      return pre;
+    }
+
+    window.openCalendly = function(prefill){
+      prefill = (prefill && Object.keys(prefill).length) ? prefill : gatherAuditPrefill();
+      function open(){ Calendly.initPopupWidget({ url: CAL_URL, prefill: prefill, utm: getUTM() }); }
+      if(window.Calendly && Calendly.initPopupWidget){ open(); }
+      else{
+        var s=document.createElement('script');
+        s.src='https://assets.calendly.com/assets/external/widget.js'; s.async=true; s.onload=open;
+        document.head.appendChild(s);
+      }
+    };
+
+    // Attach to CTAs with js-book-demo
+    function attach(){
+      document.querySelectorAll('.js-book-demo').forEach(function(a){
+        a.addEventListener('click', function(e){ e.preventDefault(); window.openCalendly(); });
+      });
+    }
+    if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', attach); } else { attach(); }
+
+    // Open Calendly after audit submit success (without modifying your existing form script)
+    (function hookDataLayer(){
+      try {
+        window.dataLayer = window.dataLayer || [];
+        if(window.dataLayer._sfHooked) return;
+        var origPush = window.dataLayer.push.bind(window.dataLayer);
+        window.dataLayer.push = function(){
+          var args = Array.prototype.slice.call(arguments);
+          for(var i=0;i<args.length;i++){
+            var evt = args[i] && args[i].event;
+            if(evt === 'audit_form_submit'){
+              var p = args[i].payload || {};
+              var pre={ name:p.fullName, email:p.email, customAnswers:{ a1:p.companyName, a2:p.shopifyUrl, a3:p.revenue, a4:p.niche } };
+              try { window.openCalendly(pre); } catch(e){ /* no-op */ }
+            }
+          }
+          return origPush.apply(window.dataLayer, args);
+        };
+        window.dataLayer._sfHooked = true;
+      } catch(e){ /* no-op */ }
+    })();
+  })();
+  </script>
 
 </body>
 </html>
