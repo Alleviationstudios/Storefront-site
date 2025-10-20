@@ -34,18 +34,47 @@
     h1{ font-size: clamp(36px, 5.6vw, 64px); line-height:1.05; margin:0; text-align:center; }
     .h1-gradient{ background:linear-gradient(180deg, #fff, #9fb8ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
+    /* Video Wrapper (responsive 16:9) */
     .video-wrap{ margin:20px auto 18px; max-width:1100px; }
     .video-outer{ position:relative; width:100%; padding-top:56.25%; border-radius:18px; overflow:hidden; box-shadow: var(--shadow); border:1px solid var(--border); background:#0a0f14; }
-    .video-outer iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .video-outer iframe, .video-outer video{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
+    /* Subheads under video */
     .subheads{ max-width:1100px; margin:0 auto 14px; }
     .lead{ color:var(--muted); font-size: clamp(16px, 2.1vw, 18px); margin:0 0 8px 0; }
     .highlight{ color:var(--accent); font-weight:800; }
     .accent{ color:var(--teal); font-weight:800; }
     .lead-strong{ color:#cfe0ff; font-weight:800; }
 
+    /* Info grid (removed from markup but styles harmless) */
+    .info-grid{ display:grid; gap:16px; grid-template-columns: 1fr; margin:16px auto 10px; max-width:1100px; }
+    @media(min-width:900px){ .info-grid{ grid-template-columns: 1fr 1fr; } }
+    .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; box-shadow: var(--shadow); }
+    .muted{ color:var(--muted); }
+    h3{ margin:0 0 6px 0; font-size: 18px; }
+
+    /* Form (wide) */
     .form-wrap{ margin:22px auto 0; max-width:1100px; }
     .wide-card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:22px; box-shadow: var(--shadow); }
+    form .grid{ display:grid; gap:12px; }
+    form .two{ grid-template-columns: 1fr; }
+    @media(min-width:720px){ form .two{ grid-template-columns: 1fr 1fr; } }
+    @media(min-width:1060px){ form .two{ grid-template-columns: 1fr 1fr 1fr; } }
+    label{ font-size:.92rem; color:var(--muted); display:block; margin-bottom:6px; }
+    input[type="text"], input[type="email"], input[type="url"], input[type="number"], select, textarea{
+      width:100%; background:var(--card); border:1px solid var(--border); color:var(--ink);
+      border-radius:10px; padding:.78rem .9rem; font-size:1rem;
+    }
+    input:focus, select:focus, textarea:focus, .chip input:focus + span, .btn:focus{ outline:none; box-shadow: var(--focus); }
+    .fine{ font-size:.82rem; color:var(--muted); }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+    .chip{ position:relative; }
+    .chip input{ position:absolute; opacity:0; pointer-events:none; }
+    .chip span{ display:inline-flex; align-items:center; padding:.55rem .8rem; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.02); cursor:pointer; user-select:none; }
+    .chip input:checked + span{ background:linear-gradient(135deg,var(--blue),var(--teal)); color:#0b0f14; border-color:transparent; font-weight:700; }
+    .submit-wrap{ padding-top:8px; }
+
+    footer{ border-top:1px solid var(--border); margin-top:28px; }
   </style>
 </head>
 <body>
@@ -84,7 +113,94 @@
     <section class="container form-wrap">
       <div class="wide-card" aria-labelledby="form-title">
         <h2 id="form-title">Apply for the waitlist</h2>
-        <p style="color:var(--muted);">(Form content goes here – unchanged from original)</p>
+        <form id="waitlist" method="post" action="https://script.google.com/macros/s/AKfycbwl9jgFIjofTHEPYFye6tfvSYmhgfjteKMxugMdnoe4HvNIH1eJZYDNvj2DFZV29FBlvA/exec" novalidate>
+          <div class="grid two">
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="email">Work email</label>
+              <input id="email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="name@company.com" />
+            </div>
+            <div class="field">
+              <label for="store_url">Store URL</label>
+              <input id="store_url" name="store_url" type="url" required placeholder="https://example.com" pattern="https?://.*" />
+              <div class="fine" id="urlHelp">Please include http(s)://</div>
+            </div>
+            <div class="field">
+              <label for="platform">Platform</label>
+              <select id="platform" name="platform">
+                <option>Shopify</option>
+                <option>WooCommerce</option>
+                <option>BigCommerce</option>
+                <option>Custom or Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="revenue_band">Monthly revenue</label>
+              <select id="revenue_band" name="revenue_band" required>
+                <option value="<30k">&lt;$30k</option>
+                <option value="30-100k">$30–100k</option>
+                <option value="100-300k">$100–300k</option>
+                <option value="300k+">$300k+</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="category">Category</label>
+              <input id="category" name="category" type="text" placeholder="supplements, apparel, beauty…" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Biggest pain points</label>
+            <div class="chips" role="group" aria-label="Pain points">
+              <label class="chip"><input type="checkbox" name="pains" value="WISMO and returns"><span>WISMO and returns</span></label>
+              <label class="chip"><input type="checkbox" name="pains" value="Abandoned carts"><span>Abandoned carts</span></label>
+              <label class="chip"><input type="checkbox" name="pains" value="Product copy and SEO"><span>Product copy and SEO</span></label>
+              <label class="chip"><input type="checkbox" name="pains" value="Forecasting"><span>Forecasting</span></label>
+              <label class="chip"><input type="checkbox" name="pains" value="Other"><span>Other</span></label>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="field">
+              <label for="start">Start timeframe</label>
+              <select id="start" name="start">
+                <option>ASAP</option>
+                <option>30 to 60 days</option>
+                <option>60 to 90 days</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="team_size">Team size</label>
+              <input id="team_size" name="team_size" type="number" min="1" placeholder="e.g., 8" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="notes">Notes (optional)</label>
+            <textarea id="notes" name="notes" rows="4" placeholder="Anything else we should know?"></textarea>
+          </div>
+
+          <!-- hidden tracking fields -->
+          <input type="hidden" name="utm_source" id="utm_source">
+          <input type="hidden" name="utm_medium" id="utm_medium">
+          <input type="hidden" name="utm_campaign" id="utm_campaign">
+          <input type="hidden" name="referrer" id="referrer">
+          <input type="hidden" name="page_path" id="page_path">
+          <input type="text" name="website" id="hp" style="display:none" tabindex="-1" autocomplete="off">
+
+          <label class="fine" for="consent"><input id="consent" type="checkbox" required> I agree to be contacted and accept the privacy policy.</label>
+
+          <div class="submit-wrap">
+            <button class="btn" type="submit" id="submitBtn">Join the waitlist</button>
+            <p id="ok" class="fine" hidden>Thanks! You are on the list. Redirecting…</p>
+          </div>
+
+          <p class="fine" style="margin-top:8px">Prefer a demo instead? <a href="./index.html">Back to home →</a></p>
+          <p class="fine" aria-live="polite" id="err" style="color:var(--danger);" hidden></p>
+        </form>
       </div>
     </section>
 
@@ -99,5 +215,71 @@
       </div>
     </footer>
   </main>
+
+  <script>
+    // UTM + referrer + path
+    (function () {
+      const qs = new URLSearchParams(location.search);
+      for (const k of ["utm_source","utm_medium","utm_campaign"]) {
+        const el = document.getElementById(k);
+        if (el) el.value = qs.get(k) || "";
+      }
+      const ref = document.getElementById('referrer');
+      if (ref) ref.value = document.referrer || "direct";
+      const pp = document.getElementById('page_path');
+      if (pp) pp.value = location.pathname;
+    })();
+
+    // Submit with fetch → inline thank you → redirect home
+    const form = document.getElementById('waitlist');
+    const ok = document.getElementById('ok');
+    const err = document.getElementById('err');
+    const hp = document.getElementById('hp');
+    const btn = document.getElementById('submitBtn');
+    const homeUrl = './index.html';
+
+    function toFormData(formEl){
+      return new FormData(formEl);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (hp && hp.value) return;
+
+      err.hidden = true;
+      btn.disabled = true;
+      const originalText = btn.textContent;
+      btn.textContent = 'Submitting…';
+
+      try {
+        const endpoint = form.getAttribute('action');
+        const payload = toFormData(form);
+
+        // Send as FormData (no custom headers → avoids CORS preflight)
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          body: payload
+        });
+
+        ok.hidden = false;
+        btn.textContent = 'Thanks! Redirecting…';
+        setTimeout(()=> { window.location.href = homeUrl; }, 1200);
+      } catch (e2) {
+        ok.hidden = false;
+        ok.textContent = 'Thanks! If not redirected your details were likely received.';
+        err.hidden = false;
+        err.textContent = 'Submission issue. You can try again or return home.';
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
+    });
+
+    // Inline URL validation
+    const urlInput = document.getElementById('store_url');
+    urlInput.addEventListener('invalid', () => {
+      urlInput.setCustomValidity('Please enter a valid URL including http(s)://');
+    });
+    urlInput.addEventListener('input', () => urlInput.setCustomValidity(''));
+  </script>
 </body>
 </html>
