@@ -2,124 +2,116 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Storefront: AI Automation for Shopify | Boost Revenue 18%</title>
-
-  <!-- Basic SEO -->
-  <meta name="description" content="AI support agents, email automation, and forecasting for Shopify stores. Cut support 45%, boost conversions 18%, launch in days." />
-  <link rel="canonical" href="https://storefront-site.vercel.app/" />
-
-  <!-- Open Graph / Twitter -->
+  <meta name="description" content="AI support agents, email automation, and forecasting for Shopify stores. Cut support 45%, boost conversions 18%, and launch in days." />
+  <link rel="canonical" href="https://www.thestorefront.io/" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://storefront-site.vercel.app/" />
+  <meta property="og:url" content="https://www.thestorefront.io/" />
   <meta property="og:title" content="Storefront: AI Automation for Shopify | Boost Revenue 18%" />
-  <meta property="og:description" content="AI support agents, email automation, and forecasting for Shopify stores. Cut support 45%, boost conversions 18%, launch in days." />
-  <meta property="og:image" content="https://storefront-site.vercel.app/og-image.png" />
+  <meta property="og:description" content="AI support agents, email automation, and forecasting for Shopify stores. Cut support 45%, boost conversions 18%, and launch in days." />
+  <meta property="og:image" content="/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Storefront: AI Automation for Shopify | Boost Revenue 18%" />
-  <meta name="twitter:description" content="AI support agents, email automation, and forecasting for Shopify stores. Cut support 45%, boost conversions 18%, launch in days." />
-  <meta name="twitter:image" content="https://storefront-site.vercel.app/og-image.png" />
+  <meta name="twitter:description" content="AI support agents, email automation, and forecasting for Shopify stores. Cut support 45%, boost conversions 18%, and launch in days." />
+  <meta name="twitter:image" content="/og-image.png" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-
   <style>
     :root{
-      --bg:#0B0F14; --ink:#E6EAF0; --muted:#9AA4B2;
-      --blue:#2F6FFF; --teal:#00C4B4;
-      --card:#11161d; --border:#1b2330;
-      --radius:1.1rem;
+      --bg:#0B0F14; --ink:#E6EAF0; --muted:#9AA4B2; --blue:#2F6FFF; --teal:#00C4B4;
+      --card:#11161d; --border:#1b2330; --radius:14px; --focus:#6fa8ff;
+      --ok:#10b981; --ok-bg:rgba(16,185,129,.08); --ok-brd:rgba(16,185,129,.45);
+      --err:#ffb4b4; --err-bg:rgba(255,0,0,.08); --err-brd:rgba(255,0,0,.35);
     }
-    *{ box-sizing:border-box; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans"; }
+    /* Box-sizing + media hardening */
+    html{ box-sizing:border-box; max-width:100%; overflow-x:hidden; }
+    *,*::before,*::after{ box-sizing:inherit; }
+    img,svg,video{ max-width:100%; height:auto; display:block; }
+
+    *{ font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans"; }
     body{ margin:0; background:var(--bg); color:var(--ink); }
     a{ color:inherit; text-decoration:none; }
-    .container{ max-width:1128px; margin:0 auto; padding:0 16px; }
+    .container{ max-width:1152px; margin:0 auto; padding:0 16px; }
+    .center{text-align:center;}
     .muted{ color:var(--muted); }
+    h1{ font-size:clamp(32px,5vw,64px); line-height:1.05; margin:0; }
+    h2{ font-size:clamp(26px,3.4vw,36px); margin:0 0 8px; }
+    h3{ font-size:1.12rem; margin:0 0 6px; }
+    h1,h2,h3,p,.muted,span{ overflow-wrap:anywhere; }
+    section{ padding:64px 0; }
 
-    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border-radius:14px; padding:.8rem 1.1rem; font-weight:600; background:linear-gradient(135deg,var(--blue),var(--teal)); color:#0b0f14; border:0; cursor:pointer; transition:transform .15s ease, filter .15s ease; }
+    /* Buttons */
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border-radius:12px; padding:.9rem 1.1rem; font-weight:700; background:linear-gradient(135deg,var(--blue),var(--teal)); color:#0b0f14; border:0; cursor:pointer; transition:transform .15s ease, filter .15s ease, opacity .12s ease; }
     .btn:hover{ transform:translateY(-1px); filter:brightness(1.05); }
+    .btn[disabled]{ opacity:.6; cursor:not-allowed; }
     .btn-outline{ background:transparent; border:1px solid var(--border); color:var(--ink); }
-    .badge{ display:inline-flex; align-items:center; border-radius:10px; padding:.2rem .5rem; background:rgba(47,111,255,.15); color:#7fb1ff; font-weight:700; font-size:.75rem; }
+
+    .badge{ display:inline-flex; align-items:center; border-radius:10px; padding:.2rem .5rem; background:rgba(47,111,255,.15); color:#7fb1ff; font-weight:800; font-size:.75rem; }
     .guarantee{ display:inline-flex; align-items:center; gap:.4rem; border-radius:999px; padding:.35rem .7rem; background:rgba(0,196,180,.12); color:#6fe8de; border:1px solid rgba(0,196,180,.25); font-weight:700; font-size:.78rem; }
 
-    .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
-    .card:hover{ transform:translateY(-3px); border-color:#2F6FFF; box-shadow:0 12px 30px rgba(47,111,255,.1); }
+    /* Cards */
+    .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+    .card:hover{ transform:translateY(-3px); border-color:#2F6FFF; box-shadow:0 12px 30px rgba(47,111,255,.08); }
 
+    /* Header/Nav */
     header{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px); background:rgba(0,0,0,.25); }
     nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .logo{ display:flex; align-items:center; gap:10px; font-weight:900; }
     .nav-links{ display:none; gap:24px; color:var(--muted); font-size:.95rem; }
     .nav-links a:hover{ color:var(--ink); }
-    .logo{ display:flex; align-items:center; gap:10px; font-weight:800; }
     .hamb{ display:inline-flex; width:40px; height:40px; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:10px; background:transparent; color:var(--ink); }
-    .mobile{ display:none; border-top:1px solid var(--border); background:var(--card); }
-    .mobile a{ display:block; padding:12px 0; border-bottom:1px solid var(--border); }
+    .mobile{ border-top:1px solid var(--border); background:var(--card); }
+    .mobile[hidden]{ display:none; }
+    /* Mobile nav links block-level for safer wrapping */
+    #mobileNav a{ display:block; padding:10px 0; }
 
-    /* hero */
-    .hero{ position:relative; overflow:hidden; }
-    .hero-glow{ position:absolute; inset:0; background:
-        radial-gradient(600px 220px at 20% 0%, rgba(47,111,255,.25), transparent),
-        radial-gradient(600px 220px at 80% 0%, rgba(0,196,180,.18), transparent);
-      animation:glow 12s ease-in-out infinite; pointer-events:none; }
-    @keyframes glow{ 0%{ transform:translateX(-2%);} 50%{ transform:translateX(2%);} 100%{ transform:translateX(-2%);} }
+    /* Focus visibility (WCAG) */
+    a:focus-visible, button:focus-visible, .btn:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
 
-    /* grid helpers */
+    /* Layout helpers */
     .grid{ display:grid; gap:16px; }
     .g-3{ grid-template-columns:repeat(3,1fr); }
     .g-2{ grid-template-columns:repeat(2,1fr); }
 
-    /* sections */
-    section{ padding:64px 0; }
-    h1{ font-size: clamp(32px, 5vw, 64px); line-height:1.05; margin:0; }
-    h2{ font-size: clamp(26px, 3.4vw, 36px); margin:0 0 10px 0; }
-    h3{ font-size: 1.1rem; margin: 0 0 6px 0; }
-    p{ margin:0; }
-    .center{ text-align:center; }
-
-    /* logos row */
+    /* Hero */
+    .hero{ position:relative; overflow:hidden; }
+    .hero-glow{ position:absolute; inset:0; background:
+      radial-gradient(600px 220px at 20% 0%, rgba(47,111,255,.25), transparent),
+      radial-gradient(600px 220px at 80% 0%, rgba(0,196,180,.18), transparent); pointer-events:none; }
     .logos-row{ display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:20px; }
-    .logo-badge{ width:90px; height:40px; border:1px solid var(--border); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--muted); font-weight:700; position:relative; }
-    .logo-badge:hover::after{ content:attr(data-tip); position:absolute; bottom:calc(100% + 8px); background:#0d1320; border:1px solid var(--border); padding:6px 8px; border-radius:8px; color:var(--ink); font-size:.82rem; white-space:nowrap; }
+    .logos-row img{ height:24px; width:auto; }
 
-    /* pricing */
-    .pricing .card{ height:100%; display:flex; flex-direction:column; }
-    .pricing ul{ list-style:none; padding:0; margin:10px 0 0 0; }
-    .pricing li{ display:flex; align-items:center; gap:8px; margin:.35rem 0; font-size:.95rem; color:var(--muted); }
-    .check{ width:18px; height:18px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--teal)); display:inline-flex; align-items:center; justify-content:center; color:#0b0f14; font-weight:900; font-size:12px; }
-    .tip{ font-size:.85rem; color:var(--muted); background:rgba(47,111,255,.08); border:1px solid rgba(47,111,255,.25); border-radius:.8rem; padding:.6rem .8rem; margin-top:.6rem; }
+    /* Inputs (site-wide) */
+    .input, select{
+      background:linear-gradient(180deg,#0f1522,#0c111a);
+      border:1px solid #223047;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.02), 0 0 0 0 rgba(47,111,255,0);
+      color:var(--ink); border-radius:12px; padding:0 14px; height:52px; width:100%;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .input::placeholder{ color:#6e7a8f; }
+    .input:focus-visible, select:focus-visible{
+      outline:none; border-color:#3b6cff; box-shadow:0 0 0 3px rgba(59,108,255,.2);
+    }
+    .help{ font-size:12px; color:rgba(230,234,240,.6); margin-top:6px; }
 
-    /* product visuals placeholder */
-    .ph-shot{ height:260px; background:#1a2330; border:1px dashed #2b3a52; border-radius:14px; display:flex; align-items:center; justify-content:center; color:#7d8aa3; font-weight:700; }
-
-    /* calculator */
+    /* ROI calc */
     .calc-card{ display:flex; flex-direction:column; gap:14px; }
-    .input, select{ background:var(--card); border:1px solid var(--border); color:var(--ink); border-radius:10px; padding:.65rem .75rem; width:100%; }
     .slider{ width:100%; }
     .result{ background:#0d1320; border:1px solid var(--border); border-radius:12px; padding:14px; }
     .result .label{ color:var(--muted); font-size:.9rem; }
     .result .value{ font-size:1.35rem; font-weight:800; }
     .calc-grid{ display:grid; gap:16px; grid-template-columns:1fr 1fr 1fr; }
-    .details{ font-size:.85rem; color:var(--muted); }
-    .collapsible{ cursor:pointer; color:#7fb1ff; font-weight:600; }
+    .results-card{ display:flex; align-items:center; justify-content:center; }
+    /* Fix ROI input row overflow on mobile */
+    #revNum{ flex:1 1 auto; width:auto; min-width:0; }
 
-    /* video placeholder */
-    .video-ph{ height:400px; background:#1a2330; border:1px dashed #2b3a52; border-radius:16px; display:flex; align-items:center; justify-content:center; color:#7d8aa3; font-weight:700; }
-
-    /* integrations */
-    .integrations-grid{ display:grid; gap:14px; grid-template-columns:repeat(6,1fr); }
-    .int-box{ height:50px; background:#1a2330; border:1px solid #263043; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#9fb0c7; position:relative; }
-    .int-box:hover::after{ content:attr(data-tip); position:absolute; bottom:calc(100% + 8px); white-space:nowrap; background:#0d1320; border:1px solid var(--border); padding:6px 8px; border-radius:8px; color:#fff; font-size:.85rem; }
-
-    /* lead magnet */
-    .lead{ display:grid; gap:14px; grid-template-columns:1fr auto; }
-    .email{ min-width:260px; }
-
-    /* trust badges */
-    .trust{ display:flex; gap:12px; flex-wrap:wrap; }
-    .badge-ph{ width:50px; height:50px; border-radius:12px; background:#1a2330; border:1px solid #263043; display:flex; align-items:center; justify-content:center; color:#8ea4c2; font-size:.75rem; }
-
-    /* carousel */
+    /* Testimonials carousel */
     .carousel{ position:relative; overflow:hidden; }
     .slides{ display:flex; transition:transform .5s ease; }
     .slide{ min-width:100%; display:grid; grid-template-columns:300px 1fr; gap:24px; align-items:center; }
     .slide .img{ height:260px; background:#1a2330; border:1px dashed #2b3a52; border-radius:14px; display:flex; align-items:center; justify-content:center; color:#7d8aa3; font-weight:700; }
+    .slide .img img{ width:100%; height:100%; object-fit:cover; }
     .quote{ font-size:clamp(18px,2.2vw,26px); line-height:1.4; }
     .dots{ position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:8px; }
     .dot{ width:10px; height:10px; border-radius:50%; background:#334257; border:1px solid #46628a; cursor:pointer; }
@@ -127,41 +119,124 @@
     .nav-btn{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(13,19,32,.7); border:1px solid #2b3a52; color:#e6eaf0; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; }
     .prev{ left:12px; } .next{ right:12px; }
 
-    /* fade-in */
-    .reveal{ opacity:0; transform:translateY(12px); transition:opacity .35s ease, transform .35s ease; }
-    .reveal.show{ opacity:1; transform:translateY(0); }
+    /* Integrations marquee */
+    .integrations-marquee{ position:relative; overflow:hidden; padding:16px 24px; }
+    .integrations-track{ display:flex; align-items:center; gap:36px; will-change:transform; }
+    .integrations-track img{ height:28px; width:auto; opacity:.95; transition:opacity .15s ease, transform .15s ease; }
+    .integrations-track img:hover{ opacity:1; transform:translateY(-2px); }
 
-    /* responsive */
-    @media (max-width: 960px){
-      .nav-links{ display:none; }
-      .g-3{ grid-template-columns:1fr; }
-      .g-2, .calc-grid{ grid-template-columns:1fr; }
-      .integrations-grid{ grid-template-columns:repeat(3,1fr); }
-      .lead{ grid-template-columns:1fr; }
-      .slide{ grid-template-columns:1fr; }
-      .mobile{ display:block; }
-    }
-    @media (min-width: 960px){
+    /* ====== AUDIT FORM ====== */
+    #audit .container{ max-width:980px; }
+    .audit-card{ padding:28px; }
+    .audit-head{ margin-bottom:6px; }
+    .audit-sub{ margin-bottom:18px; }
+    .audit-grid{ display:grid; gap:16px; grid-template-columns:1fr; }
+    @media (min-width:960px){ .audit-grid{ grid-template-columns:1fr 1fr; } }
+    .audit-actions{ display:flex; gap:12px; align-items:center; margin-top:18px; }
+    .err{ border:1px solid var(--err-brd); background:var(--err-bg); color:var(--err); border-radius:12px; padding:12px 14px; display:none; }
+    .success{ border:1px solid var(--ok-brd); background:var(--ok-bg); color:var(--ok); border-radius:12px; padding:14px 16px; }
+
+    /* Responsive breakpoints & helpers */
+    @media (min-width:960px){
       .nav-links{ display:flex; }
       .hamb{ display:none; }
+      .mobile{ display:none !important; }
     }
+    @media (max-width:991.98px){
+      .g-3{ grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:767.98px){
+      .g-3, .g-2{ grid-template-columns:1fr; }
+      .slide{ grid-template-columns:1fr; gap:14px; }
+      .slide .img{ height:200px; }
+    }
+    @media (max-width:575.98px){
+      .calc-grid{ grid-template-columns:1fr; }
+    }
+    @media (min-width:576px) and (max-width:991.98px){
+      .calc-grid{ grid-template-columns:1fr 1fr; }
+    }
+
+    /* Pricing equalization */
+    #pricing .grid{ align-items:stretch; }
+    #pricing .card{ display:flex; flex-direction:column; }
+    #pricing .card > div:last-of-type{ margin-top:auto !important; }
   </style>
+
+  <style id="ui-polish-20250929">
+    /* === Pricing spacing & badge === */
+    #pricing .plans{ display:grid; gap:16px; align-items:stretch; }
+    @media (min-width:960px){ #pricing .plans{ grid-template-columns:repeat(3,1fr); } }
+    @media (max-width:959.98px){ #pricing .plans{ grid-template-columns:1fr; } }
+
+    .plan{ position:relative; display:flex; flex-direction:column; padding:22px; border-radius:14px;
+      background:linear-gradient(180deg, var(--card), #0f1522); border:1px solid var(--border); }
+    .plan-header{ display:flex; flex-direction:column; gap:4px; }
+    .plan-price{ font-size:1.9rem; font-weight:800; margin-top:8px; }
+    .plan-per{ font-size:.95rem; color:var(--muted); }
+    .plan-features{ list-style:none; padding:0; margin:14px 0 0; display:grid; gap:.5rem; }
+    .plan-meta{ margin-top:10px; font-size:.9rem; color:var(--muted); }
+    .plan-footer{ margin-top:auto; padding-top:16px; border-top:1px dashed #223047; }
+    .plan--popular{ border-color:#2F6FFF66; box-shadow:0 12px 30px rgba(47,111,255,.08); }
+
+    /* Ribbon badge (eye-catching but minimal) */
+    .ribbon{ position:absolute; top:14px; right:-10px; padding:.45rem .85rem; font-weight:900; font-size:.76rem; letter-spacing:.02em;
+      color:#0b0f14; background:linear-gradient(135deg,#ffd641,#ff8a00); border-radius:999px; box-shadow:0 8px 24px rgba(255,160,0,.25);
+      display:inline-flex; align-items:center; gap:6px; }
+    .ribbon svg{ width:14px; height:14px; }
+
+    /* === Testimonials: crisp media, centered arrows, non-stretched dots === */
+    #reviews .carousel{ position:relative; overflow:hidden; background:var(--card); border:1px solid var(--border); border-radius:14px; }
+    #reviews .slides{ display:flex; will-change:transform; transition:transform .5s ease; }
+    #reviews .slide{ min-width:100%; display:grid; grid-template-columns:360px 1fr; gap:24px; align-items:center; padding:18px; }
+    @media (max-width:991.98px){ #reviews .slide{ grid-template-columns:1fr; gap:14px; padding:14px; } }
+    #reviews .media-box{ border-radius:14px; background:#0d1320; border:1px solid #223047; overflow:hidden; position:relative; }
+    #reviews .media-box::after{ content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(to bottom, rgba(255,255,255,.03), transparent 35%); }
+    #reviews .media-box img{ width:100%; height:100%; aspect-ratio:16/10; object-fit:cover; image-rendering:auto; }
+    #reviews .quote{ font-size:clamp(18px,2.2vw,26px); line-height:1.4; }
+
+    #reviews .dots{ position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:10px; padding:6px 10px; border-radius:999px;
+      background:rgba(10,14,22,.5); backdrop-filter: blur(6px); border:1px solid #223047; }
+    #reviews .dot{ width:12px; height:12px; border-radius:50%; border:1px solid #46628a; background:#2a374c; cursor:pointer; position:relative; }
+    #reviews .dot::after{ content:""; position:absolute; inset:2px; border-radius:inherit; background:#2F6FFF; opacity:0; transition:opacity .15s ease; }
+    #reviews .dot.active::after{ opacity:1; }
+
+    #reviews .nav-btn{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(13,19,32,.7); border:1px solid #2b3a52; color:#e6eaf0;
+      width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.25); }
+    #reviews .nav-btn svg{ width:22px; height:22px; display:block; }
+    #reviews .prev{ left:12px; } #reviews .next{ right:12px; }
+    #reviews .nav-btn:hover{ background:rgba(13,19,32,.9); }
+
+    /* === ROI select dropdown list colors (best-effort across browsers) === */
+    #roi select, #audit select{ color:var(--ink); background:linear-gradient(180deg,#0f1522,#0c111a); }
+    #roi select option, #audit select option{ color:var(--ink); background:#0f1522; }
+    #roi select option:checked, #roi select option:hover,
+    #audit select option:checked, #audit select option:hover{ background:#2F6FFF !important; color:#fff; }
+
+    /* Keep equal heights and push CTAs to bottom safely even if markup varies */
+    #pricing .card{ display:flex; flex-direction:column; }
+    #pricing .card .plan-footer, #pricing .card > div:last-child{ margin-top:auto; }
+
+  </style>
+
+  <!-- Calendly widget CSS (added) -->
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
 </head>
 <body>
+  <div id="top"></div>
 
   <!-- Header -->
   <header>
     <div class="container">
       <nav aria-label="Primary">
-        <div class="logo">
-          <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="#2F6FFF" d="M3 8h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z" opacity=".15"/>
-            <path stroke="#2F6FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M3 8h18M5 20h14a2 2 0 0 0 2-2V6H3v12a2 2 0 0 0 2 2Zm3-6h4m-4 4h8"/>
-            <path stroke="#2F6FFF" stroke-width="1.6" fill="none" d="M4 5c3 0 6 6 9 6s5-3 7-5"/>
-          </svg>
-          <span>Storefront</span>
-        </div>
-        <div class="nav-links">
+        <a href="#top" class="logo" aria-label="Storefront home">
+          <img
+            src="assets/logos/storefront%20logo/Storefront%20IO%20logo%20.svg"
+            alt="Storefront"
+            style="height:60px;width:auto;display:block;"
+          >
+        </a>
+        <div class="nav-links" id="desktopNav">
           <a href="#features">Features</a>
           <a href="#how">How it works</a>
           <a href="#roi">Estimate ROI</a>
@@ -171,19 +246,23 @@
           <a href="#faq">FAQ</a>
         </div>
         <div style="display:flex; gap:10px; align-items:center;">
-          <a class="btn" href="#cta">Book a demo</a>
+          <!-- add js-book-demo -->
+          <a class="btn js-book-demo" href="#cta">Book a demo</a>
           <button id="menuBtn" class="hamb" aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle menu">☰</button>
         </div>
       </nav>
-      <div id="mobileNav" class="mobile container" hidden>
-        <a href="#features">Features</a>
-        <a href="#how">How it works</a>
-        <a href="#roi">Estimate ROI</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#integrations">Integrations</a>
-        <a href="#faq">FAQ</a>
-        <a href="#cta">Book a demo</a>
+      <div id="mobileNav" class="mobile" hidden>
+        <div class="container" style="padding:12px 16px;">
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#roi">Estimate ROI</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#integrations">Integrations</a>
+          <a href="#faq">FAQ</a>
+          <!-- add js-book-demo -->
+          <a class="btn js-book-demo" style="margin-top:10px;" href="#cta">Book a demo</a>
+        </div>
       </div>
     </div>
   </header>
@@ -192,19 +271,18 @@
   <section class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="container center" style="padding:96px 16px 72px;">
-      <h1 class="reveal">AI workflows for Shopify brands—<span style="background:linear-gradient(135deg,#2F6FFF,#00C4B4); -webkit-background-clip:text; background-clip:text; color:transparent;">support agents, upsells, and forecasting</span>.</h1>
-      <p class="reveal muted" style="margin-top:12px; max-width:780px; margin-inline:auto;">Cut support 45%, boost conversions 18%, and launch in 14 days.</p>
-      <div class="reveal" style="margin-top:18px; display:flex; gap:12px; justify-content:center; align-items:center;">
-        <a class="btn" href="#cta">Get a live demo</a>
-        <span class="guarantee" title="If we don't deliver the agreed outcomes, you don't pay.">✓ 30-day performance guarantee — or you don’t pay</span>
+      <h1>AI workflows for Shopify brands <span style="background:linear-gradient(135deg,#2F6FFF,#00C4B4); -webkit-background-clip:text; background-clip:text; color:transparent;">support agents, upsells, and forecasting</span>.</h1>
+      <p class="muted" style="margin-top:12px; max-width:780px; margin-inline:auto;">Cut support 45%, boost conversions 18%, and launch in days.</p>
+      <div style="margin-top:18px; display:flex; gap:12px; justify-content:center; align-items:center;">
+        <!-- add js-book-demo -->
+        <a class="btn js-book-demo" href="#cta">Get a live demo</a>
+        <span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span>
       </div>
-
-      <!-- Integrations placeholders in hero -->
-      <div class="logos-row reveal" aria-label="Ecommerce platforms and apps">
-        <div class="logo-badge" data-tip="Seamless Shopify Sync" role="img" aria-label="Shopify logo">Shopify</div>
-        <div class="logo-badge" data-tip="Seamless Klaviyo Sync" role="img" aria-label="Klaviyo logo">Klaviyo</div>
-        <div class="logo-badge" data-tip="Seamless Gorgias Sync" role="img" aria-label="Gorgias logo">Gorgias</div>
-        <div class="logo-badge" data-tip="Seamless Slack Sync" role="img" aria-label="Slack logo">Slack</div>
+      <div class="logos-row" aria-label="Platforms & apps">
+        <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy">
+        <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy">
+        <img src="assets/logos/Google/Google_Logo_0.svg" alt="Google" loading="lazy">
+        <img src="assets/logos/Slack.png" alt="Slack" loading="lazy">
       </div>
     </div>
   </section>
@@ -212,20 +290,11 @@
   <!-- Product visuals -->
   <section aria-labelledby="product-visuals">
     <div class="container">
-      <h2 id="product-visuals" class="reveal">See how it works</h2>
+      <h2 id="product-visuals">See how it works</h2>
       <div class="grid g-3" style="margin-top:12px;">
-        <div class="card reveal">
-          <div class="ph-shot" role="img" aria-label="Placeholder: AI support agent resolving a ticket">support agent Screenshot</div>
-          <p class="muted" style="margin-top:10px;">AI answers in &lt;5s, deflecting repetitive tickets.</p>
-        </div>
-        <div class="card reveal">
-          <div class="ph-shot" role="img" aria-label="Placeholder: AI-generated upsell email in Klaviyo">Email Upsell</div>
-          <p class="muted" style="margin-top:10px;">Automated upsells via email/SMS recover revenue.</p>
-        </div>
-        <div class="card reveal">
-          <div class="ph-shot" role="img" aria-label="Placeholder: Forecasting dashboard with demand alerts">Forecasting</div>
-          <p class="muted" style="margin-top:10px;">SKU-level demand alerts protect margins.</p>
-        </div>
+        <div class="card"><div class="slide img">Support Agent Screenshot</div><p class="muted" style="margin-top:10px;">AI answers in &lt;5s, deflecting repetitive tickets.</p></div>
+        <div class="card"><div class="slide img">Email Upsell</div><p class="muted" style="margin-top:10px;">Automated upsells via email/SMS recover revenue.</p></div>
+        <div class="card"><div class="slide img">Forecasting</div><p class="muted" style="margin-top:10px;">SKU-level demand alerts protect margins.</p></div>
       </div>
     </div>
   </section>
@@ -233,137 +302,110 @@
   <!-- Benefits -->
   <section id="features">
     <div class="container grid g-3">
-      <div class="card reveal"><h3>Save Time</h3><p class="muted">Save <strong>$1,500/mo</strong> on support.</p></div>
-      <div class="card reveal"><h3>Increase Revenue</h3><p class="muted"><strong>5–10× ROI</strong> from +18% conversions.</p></div>
-      <div class="card reveal"><h3>Scale Reliably</h3><p class="muted">Maintain <strong>20%+ margins</strong> with forecasting.</p></div>
+      <div class="card"><h3>Save Time</h3><p class="muted">Save <strong>$1,500/mo</strong> on support.</p></div>
+      <div class="card"><h3>Increase Revenue</h3><p class="muted"><strong>5–10× ROI</strong> from +18% conversions.</p></div>
+      <div class="card"><h3>Scale Reliably</h3><p class="muted">Maintain <strong>20%+ margins</strong> with forecasting.</p></div>
     </div>
   </section>
 
   <!-- ROI Calculator -->
   <section id="roi">
     <div class="container">
-      <h2 class="center reveal">Estimate Your ROI</h2>
-      <p class="center muted reveal" style="margin-bottom:18px;">Conservative, auto-calculated from revenue band &amp; package.</p>
+      <h2 class="center">Estimate Your ROI</h2>
+      <p class="center muted" style="margin-bottom:18px;">Conservative, auto-calculated from revenue band &amp; package.</p>
       <div class="grid g-2">
-        <div class="card calc-card reveal" aria-labelledby="calc-inputs">
+        <div class="card calc-card" aria-labelledby="calc-inputs">
           <h3 id="calc-inputs">Inputs</h3>
           <label class="muted" for="rev">Monthly revenue ($10k–$250k)</label>
-          <input id="rev" class="slider" type="range" min="10000" max="250000" step="1000" value="50000" aria-label="Monthly revenue slider" />
+          <input id="rev" class="slider" type="range" min="10000" max="250000" step="1000" value="50000" />
           <div style="display:flex; gap:10px; align-items:center;">
-            <input id="revNum" class="input" type="number" min="10000" max="250000" step="1000" value="50000" aria-label="Monthly revenue number" />
+            <input id="revNum" class="input" type="number" min="10000" max="250000" step="1000" value="50000" />
             <span class="muted">Current: <strong id="revPretty">$50,000</strong></span>
           </div>
           <label class="muted" for="plan">Package</label>
-          <select id="plan" class="input" aria-label="Package">
+          <select id="plan" class="input">
             <option value="starter" selected>Starter — $497/mo</option>
             <option value="growth">Growth — $1,997/mo</option>
             <option value="enterprise">Enterprise — Custom</option>
           </select>
-          <div class="details"><span id="detailsToggle" class="collapsible" role="button" aria-expanded="false" aria-controls="calcDetails">Details</span>
-            <div id="calcDetails" hidden class="muted" style="margin-top:8px;">
-              Assumptions: ~45% ticket reduction, +18% conversion lift, +32% repeat purchases. Tickets &amp; AOV estimated by revenue band: Small (&lt;$50k), Mid ($50–150k), Large (&gt;$150k).
-            </div>
-          </div>
         </div>
-        <div class="card calc-card reveal" aria-labelledby="calc-results">
-          <h3 id="calc-results">Results</h3>
+        <div class="card calc-card results-card" aria-labelledby="calc-results">
+          <h3 id="calc-results" class="visually-hidden" style="position:absolute;left:-9999px;">Results</h3>
           <div class="calc-grid">
-            <div class="result" aria-live="polite">
-              <div class="label">Monthly Savings</div>
-              <div id="outSave" class="value">$0</div>
-            </div>
-            <div class="result" aria-live="polite">
-              <div class="label">Revenue Boost</div>
-              <div id="outBoost" class="value">$0</div>
-            </div>
-            <div class="result" aria-live="polite">
-              <div class="label">ROI Multiple</div>
-              <div id="outROI" class="value">—</div>
-            </div>
+            <div class="result" aria-live="polite"><div class="label">Monthly Savings</div><div id="outSave" class="value">$0</div></div>
+            <div class="result" aria-live="polite"><div class="label">Revenue Boost</div><div id="outBoost" class="value">$0</div></div>
+            <div class="result" aria-live="polite"><div class="label">ROI Multiple</div><div id="outROI" class="value">—</div></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Reviews carousel -->
+  <!-- Reviews -->
   <section id="reviews" aria-labelledby="reviews-title">
     <div class="container">
-      <h2 id="reviews-title" class="reveal">What customers say</h2>
-      <div class="card carousel reveal" style="margin-top:12px;">
+      <h2 id="reviews-title">What customers say</h2>
+      <div class="card carousel" style="margin-top:12px;">
         <div class="slides" id="slides">
-          <!-- Slide 1: Brotein -->
-          <div class="slide">
-            <div class="img" role="img" aria-label="Placeholder brand imagery">Brotein Image</div>
+          <article class="slide" aria-roledescription="slide" aria-label="Brotein testimonial">
+            <div class="media-box">
+              <img src="assets/brands/Brotein.jpg" alt="Brotein Whey Protein" loading="lazy" />
+            </div>
             <div>
               <div class="quote">“Storefront cut our support time and gave us clear revenue wins within weeks.”</div>
               <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
-                <div style="width:40px;height:40px;border-radius:999px;background:#1a2330;border:1px solid #2b3a52;display:flex;align-items:center;justify-content:center;color:#7fb1ff;font-weight:800;">P</div>
-                <div>
-                  <div style="font-weight:700;">Peter Hesthaven</div>
-                  <div class="muted" style="font-size:.9rem;">Brotein — VP Operations</div>
-                </div>
-                <img src="/assets/brands/brotein.png" alt="Brotein logo" width="80" height="30" loading="lazy" style="margin-left:auto;opacity:.9;filter:grayscale(25%);background:#1a2330;border:1px solid #2b3a52;border-radius:8px;padding:6px;">
+                <div style="width:42px;height:42px;border-radius:999px;background:#1a2330;border:1px solid #2b3a52;display:flex;align-items:center;justify-content:center;color:#7fb1ff;font-weight:800;">P</div>
+                <div><div style="font-weight:700;">Peter Hesthaven</div><div class="muted" style="font-size:.9rem;">VP Operations</div></div>
               </div>
             </div>
-          </div>
-          <!-- Slide 2: Restup -->
-          <div class="slide">
-            <div class="img" role="img" aria-label="Placeholder brand imagery">Restup Image</div>
+          </article>
+          <article class="slide" aria-roledescription="slide" aria-label="Restup testimonial">
+            <div class="media-box">
+              <img src="assets/brands/Restupnasal.jpg" alt="Restup nasal strips" loading="lazy" />
+            </div>
             <div>
               <div class="quote">“Fast setup. Noticeable lift in conversion and fewer repetitive tickets.”</div>
               <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
-                <div style="width:40px;height:40px;border-radius:999px;background:#1a2330;border:1px solid #2b3a52;display:flex;align-items:center;justify-content:center;color:#7fb1ff;font-weight:800;">M</div>
-                <div>
-                  <div style="font-weight:700;">Michael Valky</div>
-                  <div class="muted" style="font-size:.9rem;">Restup — Ecommerce Manager</div>
-                </div>
-                <img src="/assets/brands/restup.png" alt="Restup logo" width="80" height="30" loading="lazy" style="margin-left:auto;opacity:.9;filter:grayscale(25%);background:#1a2330;border:1px solid #2b3a52;border-radius:8px;padding:6px;">
+                <div style="width:42px;height:42px;border-radius:999px;background:#1a2330;border:1px solid #2b3a52;display:flex;align-items:center;justify-content:center;color:#7fb1ff;font-weight:800;">M</div>
+                <div><div style="font-weight:700;">Michael Valky</div><div class="muted" style="font-size:.9rem;">Ecommerce Manager</div></div>
               </div>
             </div>
-          </div>
+          </article>
         </div>
-
-        <button class="nav-btn prev" id="prev" aria-label="Previous slide">‹</button>
-        <button class="nav-btn next" id="next" aria-label="Next slide">›</button>
-
-        <div class="dots" id="dots" aria-label="Slide indicators">
-          <button class="dot active" aria-label="Go to slide 1"></button>
-          <button class="dot" aria-label="Go to slide 2"></button>
-        </div>
+        <button class="nav-btn prev" id="prev" aria-label="Previous slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="nav-btn next" id="next" aria-label="Next slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <div class="dots" id="dots" aria-label="Slide navigation"><button class="dot" aria-label="Slide 1"></button><button class="dot" aria-label="Slide 2"></button></div>
       </div>
-    </div>
-  </section>
-
-  <!-- Video Placeholder -->
-  <section aria-labelledby="demo-video">
-    <div class="container">
-      <h2 id="demo-video" class="reveal">See It in Action</h2>
-      <div class="video-ph reveal" role="img" aria-label="Demo Video Coming Soon: AI support agent in Action">Demo Video Coming Soon: AI support agent in Action</div>
-      <p class="muted reveal" style="margin-top:10px;">Watch how our AI handles support, upsells, and more.</p>
     </div>
   </section>
 
   <!-- How it works -->
   <section id="how">
     <div class="container grid g-3">
-      <div class="card reveal"><h3>1) Map</h3><p class="muted">20-min discovery to find bottlenecks.</p></div>
-      <div class="card reveal"><h3>2) Plug in</h3><p class="muted">Shop, email, and chat tools connected.</p></div>
-      <div class="card reveal"><h3>3) Scale</h3><p class="muted">Weekly insights and A/B tests.</p></div>
+      <div class="card"><h3>1) Map</h3><p class="muted">20-min discovery to find bottlenecks.</p></div>
+      <div class="card"><h3>2) Plug in</h3><p class="muted">Shop, email, and chat tools connected.</p></div>
+      <div class="card"><h3>3) Scale</h3><p class="muted">Weekly insights and A/B tests.</p></div>
     </div>
   </section>
 
-  <!-- Integrations -->
+  <!-- Seamless Integrations -->
   <section id="integrations" aria-labelledby="integrations-title">
     <div class="container">
-      <h2 id="integrations-title" class="reveal">Seamless Integrations</h2>
-      <div class="integrations-grid" style="margin-top:14px;">
-        <div class="int-box reveal" data-tip="Seamless Shopify Sync" role="img" aria-label="Shopify logo">Shopify</div>
-        <div class="int-box reveal" data-tip="Seamless Klaviyo Sync" role="img" aria-label="Klaviyo logo">Klaviyo</div>
-        <div class="int-box reveal" data-tip="Seamless Gorgias Sync" role="img" aria-label="Gorgias logo">Gorgias</div>
-        <div class="int-box reveal" data-tip="Seamless Slack Sync" role="img" aria-label="Slack logo">Slack</div>
-        <div class="int-box reveal" data-tip="Seamless WooCommerce Sync" role="img" aria-label="WooCommerce logo">WooCommerce</div>
-        <div class="int-box reveal" data-tip="Seamless Omnisend Sync" role="img" aria-label="Omnisend logo">Omnisend</div>
+      <h2 id="integrations-title">Seamless Integrations</h2>
+      <div class="integrations-marquee" data-speed="42" aria-label="Supported integrations">
+        <div class="integrations-track" id="integrationsTrack">
+          <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy">
+          <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy">
+          <img src="assets/logos/Google/Google_Logo_0.svg" alt="Google" loading="lazy">
+          <img src="assets/logos/Slack.png" alt="Slack" loading="lazy">
+          <img src="assets/logos/Sage/Sage_idVLLxMWe9_1.png" alt="Sage" loading="lazy">
+          <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" alt="Omnisend" loading="lazy">
+          <img src="assets/logos/Xero/Xero_idfmk3Fzbf_0.svg" alt="Xero" loading="lazy">
+        </div>
       </div>
     </div>
   </section>
@@ -371,84 +413,156 @@
   <!-- Pricing -->
   <section id="pricing">
     <div class="container">
-      <h2 class="center reveal">Simple pricing that scales with you</h2>
-      <p class="center muted reveal" style="margin-bottom:16px;">Month-to-month. Launch in days. Cancel anytime.</p>
-      <div class="center reveal" style="margin-bottom:14px;">
-        <span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span>
-      </div>
-      <div class="grid g-3 pricing">
-        <div class="card reveal">
-          <h3>Starter</h3>
-          <p class="muted">Efficiency unlocks</p>
-          <p style="font-size:1.8rem; font-weight:800; margin-top:8px;">$497<span class="muted" style="font-size:.95rem;">/mo</span></p>
-          <ul aria-label="Starter features">
-            <li><span class="check">✓</span> AI support agent</li>
-            <li><span class="check">✓</span> Order status updates</li>
-            <li><span class="check">✓</span> Product copy assist</li>
+      <h2 class="center">Simple pricing that scales with you</h2>
+      <p class="center muted" style="margin-bottom:16px;">Month-to-month. Launch in days. Cancel anytime.</p>
+      <div class="center" style="margin-bottom:14px;"><span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span></div>
+
+      <div class="plans">
+        <!-- Starter -->
+        <div class="card plan">
+          <div class="plan-header">
+            <h3>Starter</h3>
+            <p class="muted">Efficiency unlocks</p>
+            <div class="plan-price">$497 <span class="plan-per">/mo</span></div>
+          </div>
+          <ul class="plan-features" aria-label="Starter features">
+            <li>AI support agent</li>
+            <li>Order status updates</li>
+            <li>Product copy assist</li>
           </ul>
-          <div class="tip"><strong>3–5× ROI</strong>, ~<strong>$1,500/mo</strong> savings.</div>
-          <div style="margin-top:auto;"><a class="btn" href="#cta">Get started</a></div>
+          <div class="plan-meta">3–5× ROI, ~$1.5k/mo savings.</div>
+          <!-- add js-book-demo -->
+          <div class="plan-footer"><a class="btn js-book-demo" href="#cta">Get started</a></div>
         </div>
 
-        <div class="card reveal" style="border-color:#2F6FFF66;">
-          <span class="badge">Most Popular</span>
-          <h3 style="margin-top:6px;">Growth</h3>
-          <p class="muted">Revenue acceleration</p>
-          <p style="font-size:1.8rem; font-weight:800; margin-top:8px;">$1,997<span class="muted" style="font-size:.95rem;">/mo</span></p>
-          <ul aria-label="Growth features">
-            <li><span class="check">✓</span> Everything in Starter</li>
-            <li><span class="check">✓</span> AI sales assistant</li>
-            <li><span class="check">✓</span> Abandoned cart flows</li>
-            <li><span class="check">✓</span> Weekly performance reports</li>
+        <!-- Growth (Most Popular) -->
+        <div class="card plan plan--popular">
+          <div class="ribbon" aria-label="Most Popular">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0b0f14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            Most Popular
+          </div>
+          <div class="plan-header">
+            <h3>Growth</h3>
+            <p class="muted">Revenue acceleration</p>
+            <div class="plan-price">$1,997 <span class="plan-per">/mo</span></div>
+          </div>
+          <ul class="plan-features" aria-label="Growth features">
+            <li>Everything in Starter</li>
+            <li>AI sales assistant</li>
+            <li>Abandoned cart flows</li>
+            <li>Weekly performance reports</li>
           </ul>
-          <div class="tip"><strong>8–12× ROI</strong>, ~<strong>$20k/mo</strong> uplift.</div>
-          <div style="margin-top:auto;"><a class="btn" href="#cta">Book a demo</a></div>
+          <div class="plan-meta">8–12× ROI, ~$20k/mo uplift.</div>
+          <!-- add js-book-demo -->
+          <div class="plan-footer"><a class="btn js-book-demo" href="#cta">Book a demo</a></div>
         </div>
 
-        <div class="card reveal">
-          <h3>Enterprise</h3>
-          <p class="muted">Scale &amp; predictability</p>
-          <p style="font-size:1.8rem; font-weight:800; margin-top:8px;">Custom</p>
-          <ul aria-label="Enterprise features">
-            <li><span class="check">✓</span> Everything in Growth</li>
-            <li><span class="check">✓</span> Forecasting &amp; pricing</li>
-            <li><span class="check">✓</span> Executive dashboards</li>
+        <!-- Enterprise -->
+        <div class="card plan">
+          <div class="plan-header">
+            <h3>Enterprise</h3>
+            <p class="muted">Scale &amp; predictability</p>
+            <div class="plan-price">Custom</div>
+          </div>
+          <ul class="plan-features" aria-label="Enterprise features">
+            <li>Everything in Growth</li>
+            <li>Forecasting &amp; pricing</li>
+            <li>Executive dashboards</li>
           </ul>
-          <div class="tip">Custom ROI modeling available.</div>
-          <div style="margin-top:auto;"><a class="btn btn-outline" href="#cta">Talk to sales</a></div>
+          <div class="plan-meta">Custom ROI modeling available.</div>
+          <!-- add js-book-demo -->
+          <div class="plan-footer"><a class="btn btn-outline js-book-demo" href="#cta">Talk to sales</a></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Lead Magnet -->
-  <section aria-labelledby="lead-title">
+  <!-- Free AI Audit + FAQ -->
+  <section id="audit" aria-labelledby="audit-title">
     <div class="container">
-      <div class="card reveal">
-        <h2 id="lead-title">Get Your Free AI Audit Checklist</h2>
-        <p class="muted" style="margin:.4rem 0 1rem;">Join 100+ Shopify stores optimizing with AI.</p>
-        <form class="lead" action="#" method="post" aria-label="Lead magnet form">
-          <input class="input email" type="email" name="email" placeholder="you@brand.com" aria-label="Email address" required />
-          <button class="btn" type="submit">Submit</button>
+      <div class="card audit-card">
+        <div class="audit-head"><h2 id="audit-title">Free signup for an AI Audit</h2></div>
+        <p class="muted audit-sub">We’ll evaluate opportunities and estimate impact before you commit.</p>
+
+        <!-- Set data-endpoint to your n8n webhook or form backend URL -->
+        <form id="auditForm" novalidate aria-describedby="auditError"
+          data-endpoint="https://thestorefrontai.app.n8n.cloud/webhook/audit-signup">
+
+          <!-- honeypot -->
+          <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+
+          <!-- Row 1 -->
+          <div class="audit-grid">
+            <div>
+              <label for="fullName" class="muted">Full Name</label>
+              <input id="fullName" name="fullName" type="text" class="input" required autocomplete="name" />
+            </div>
+            <div>
+              <label for="companyName" class="muted">Company Name</label>
+              <input id="companyName" name="companyName" type="text" class="input" required autocomplete="organization" />
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="audit-grid" style="margin-top:16px;">
+            <div>
+              <label for="shopifyUrl" class="muted">Shopify Store URL</label>
+              <input id="shopifyUrl" name="shopifyUrl" type="url" class="input" required placeholder="https://yourstore.myshopify.com" autocomplete="url" />
+              <div class="help">Custom domains are OK.</div>
+            </div>
+            <div>
+              <label for="niche" class="muted">Niche</label>
+              <input id="niche" name="niche" type="text" class="input" placeholder="Clothing brand" />
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="audit-grid" style="margin-top:16px;">
+            <div>
+              <label for="email" class="muted">Work Email</label>
+              <input id="email" name="email" type="email" class="input" required autocomplete="email" />
+            </div>
+            <div>
+              <label for="revenue" class="muted">Monthly Store Revenue</label>
+              <select id="revenue" name="revenue" class="input" required>
+                <option value="">Select a range…</option>
+                <option>&lt;$10k</option>
+                <option>$10–50k</option>
+                <option>$50–150k</option>
+                <option>$150–500k</option>
+                <option>$500k+</option>
+              </select>
+              <div class="help">Helps us tailor the audit to your current scale.</div>
+            </div>
+          </div>
+
+          <label style="display:flex; gap:12px; align-items:flex-start; margin-top:18px; font-size:14px">
+            <input type="checkbox" name="consent" required style="margin-top:6px" />
+            <span>You agree to be contacted about your audit.</span>
+          </label>
+
+          <div id="auditError" class="err" role="alert" aria-live="polite"></div>
+
+          <div class="audit-actions">
+            <button type="submit" id="auditSubmit" class="btn">Get Free Audit</button>
+            <span class="muted" style="font-size:12px">No spam—cancel anytime.</span>
+          </div>
         </form>
       </div>
-    </div>
-  </section>
 
-  <!-- FAQs -->
-  <section id="faq" aria-labelledby="faq-title">
-    <div class="container">
-      <h2 id="faq-title" class="reveal">FAQs</h2>
-      <div class="grid g-2" style="margin-top:12px;">
-        <details class="card reveal"><summary class="muted">What's the setup process?</summary><p class="muted" style="margin-top:8px;">Kickoff call, connect tools, launch first workflow in 7–14 days. We handle setup.</p></details>
-        <details class="card reveal"><summary class="muted">Do you integrate with our stack?</summary><p class="muted" style="margin-top:8px;">Yes—Shopify, WooCommerce, Klaviyo, Omnisend, Gorgias, Slack, and more.</p></details>
-        <details class="card reveal"><summary class="muted">Is our data safe?</summary><p class="muted" style="margin-top:8px;">Least-privilege access with revocation anytime. Data handled via secure APIs.</p></details>
-        <details class="card reveal"><summary class="muted">What ROI should we expect?</summary><p class="muted" style="margin-top:8px;">Conservative: 3–12× depending on store size &amp; plan. Calculator shows estimates.</p></details>
-      </div>
-
-      <div class="trust" style="margin-top:16px;" aria-label="Trust badges">
-        <div class="badge-ph" role="img" aria-label="Shopify Certified badge">Shopify</div>
-        <div class="badge-ph" role="img" aria-label="GDPR Compliant badge">GDPR</div>
+      <!-- FAQ lives INSIDE the audit section, directly below the form -->
+      <div id="faq" class="card" style="margin-top:16px;">
+        <h2 style="margin-bottom:10px;">FAQs</h2>
+        <div class="grid g-2" style="margin-top:4px;">
+          <details><summary class="muted">How long does implementation take?</summary><p class="muted" style="margin-top:8px;">Starter goes live in 7–14 days. Growth adds 1–2 weeks for sales flows and reporting. Enterprise varies by data availability.</p></details>
+          <details><summary class="muted">Is our data secure?</summary><p class="muted" style="margin-top:8px;">We use OAuth/API keys, least-privilege scopes, encrypted transit/storage where applicable, and you can revoke access anytime. No public model training on your data.</p></details>
+          <details><summary class="muted">Will the AI match our brand voice?</summary><p class="muted" style="margin-top:8px;">Yes. We ingest your guidelines and examples, then enforce tone via prompts + guardrails. You can review and tweak in week one.</p></details>
+          <details><summary class="muted">What results should we expect?</summary><p class="muted" style="margin-top:8px;">Typical: 45% fewer repetitive tickets, 6–16% conversion lift depending on plan, and 3–12× ROI. Use the ROI calculator above for a tailored estimate.</p></details>
+          <details><summary class="muted">Do you replace our support team?</summary><p class="muted" style="margin-top:8px;">No. We deflect repetitive tickets and escalate complex ones to your agents with full context, reducing workload and response times.</p></details>
+          <details><summary class="muted">Which platforms do you integrate with?</summary><p class="muted" style="margin-top:8px;">Shopify, Klaviyo/Omnisend, Slack, Google (Sheets/Calendar), Xero/Sage, and more. See the integrations marquee above.</p></details>
+          <details><summary class="muted">What if results aren’t there?</summary><p class="muted" style="margin-top:8px;">We offer a 30-day performance guarantee. If agreed outcomes aren’t met, you don’t pay.</p></details>
+          <details><summary class="muted">Can you support WooCommerce or custom stacks?</summary><p class="muted" style="margin-top:8px;">Yes. We have adapters for WooCommerce and can build custom connectors for ERPs/CRMs if needed.</p></details>
+        </div>
       </div>
     </div>
   </section>
@@ -456,145 +570,387 @@
   <!-- CTA -->
   <section id="cta" aria-labelledby="cta-title">
     <div class="container center">
-      <div class="card reveal" style="padding:26px;">
+      <div class="card" style="padding:26px;">
         <h2 id="cta-title">See Storefront in action</h2>
         <p class="muted" style="margin:8px 0 12px;">We’ll map your bottlenecks and show a revenue plan in 20 minutes.</p>
-        <a class="btn" href="mailto:hello@storefront.com">Book my demo</a>
+        <!-- keep mailto as-is; add js-book-demo so popup intercepts -->
+        <a class="btn js-book-demo" href="mailto:hello@storefront.com">Book my demo</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer style="border-top:1px solid var(--border);">
-    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0; flex-wrap:wrap;">
-      <span class="muted">© Storefront. All rights reserved.</span>
-      <div style="display:flex; gap:16px;">
-        <a class="muted" href="#">Privacy Policy</a>
-        <a class="muted" href="#">Terms</a>
-        <a class="muted" href="mailto:hello@storefront.com">Contact</a>
-      </div>
-    </div>
-  </footer>
-
   <!-- JSON-LD -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"Storefront","url":"https://storefront-site.vercel.app/","logo":"https://storefront-site.vercel.app/favicon.svg","sameAs":[]}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"What's the setup process?","acceptedAnswer":{"@type":"Answer","text":"Kickoff call, connect tools, launch first workflow in 7–14 days. We handle setup."}},
-    {"@type":"Question","name":"Do you integrate with our stack?","acceptedAnswer":{"@type":"Answer","text":"Yes—Shopify, WooCommerce, Klaviyo, Omnisend, Gorgias, Slack, and more."}},
-    {"@type":"Question","name":"Is our data safe?","acceptedAnswer":{"@type":"Answer","text":"Least-privilege access with revocation anytime. Data handled via secure APIs."}},
-    {"@type":"Question","name":"What ROI should we expect?","acceptedAnswer":{"@type":"Answer","text":"Conservative: 3–12× depending on store size & plan. Calculator shows estimates."}}
-  ]}
+  {"@context":"https://schema.org","@type":"Organization","name":"Storefront","url":"https://www.thestorefront.io/","logo":"/favicon.svg"}
   </script>
 
-  <!-- Minimal JS: menu, reveal, calculator, carousel -->
+  <!-- ===== JS (menu, calc, carousel, marquee, form) ===== -->
   <script>
-    // Mobile menu
-    const menuBtn=document.getElementById('menuBtn');
-    const mobileNav=document.getElementById('mobileNav');
-    menuBtn?.addEventListener('click',()=>{
-      const hidden=mobileNav.hasAttribute('hidden');
-      if(hidden) mobileNav.removeAttribute('hidden'); else mobileNav.setAttribute('hidden','');
-      menuBtn.setAttribute('aria-expanded', String(hidden));
-    });
-
-    // Reveal on scroll
-    const reveals=[...document.querySelectorAll('.reveal')];
-    const io=new IntersectionObserver(es=>{
-      es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
-    },{threshold:.12});
-    reveals.forEach(el=>io.observe(el));
-
-    // Calculator (conservative; 10k–250k)
-    const rev=document.getElementById('rev');
-    const revNum=document.getElementById('revNum');
-    const revPretty=document.getElementById('revPretty');
-    const plan=document.getElementById('plan');
-    const outSave=document.getElementById('outSave');
-    const outBoost=document.getElementById('outBoost');
-    const outROI=document.getElementById('outROI');
-
-    function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
-    function pretty(n){ return '$' + Number(n.toFixed(0)).toLocaleString(); }
-    function syncPretty(){ revPretty.textContent = pretty(Number(revNum.value)); }
-
-    function band(rev){ if(rev < 50000) return 'small'; if(rev <= 150000) return 'mid'; return 'large'; }
-    const EST = { small:{tickets:180,aov:45}, mid:{tickets:350,aov:60}, large:{tickets:700,aov:75} };
-    const TICKET_REDUCTION = 0.45;
-    const COST_PER_TICKET = 5;
-    const LIFT = {
-      starter:{small:.06, mid:.09, large:.11},
-      growth: {small:.10, mid:.13, large:.16},
-      enterprise:{small:.12, mid:.16, large:.20}
-    };
-    const CAP  = { starter:.12, growth:.18, enterprise:.22 };
-
-    function calc(){
-      const revenue = clamp(Number(revNum.value||rev.value||0), 10000, 250000);
-      rev.value = revenue; revNum.value = revenue; syncPretty();
-
-      const b = band(revenue);
-      const est = EST[b];
-      const planKey = plan.value;
-
-      const savings = est.tickets * TICKET_REDUCTION * COST_PER_TICKET;
-
-      let lift = LIFT[planKey][b];
-      lift = Math.min(lift, CAP[planKey]);
-      const boost = revenue * lift;
-
-      const cost = planKey==='starter'?497:planKey==='growth'?1997:3997; // enterprise placeholder for math
-      const multiple = (savings + boost) / cost;
-
-      outSave.textContent = pretty(savings);
-      outBoost.textContent = pretty(boost);
-      outROI.textContent = isFinite(multiple) ? multiple.toFixed(1) + '×' : '—';
+  (function(){ // Mobile menu + scroll lock
+    var menuBtn=document.getElementById('menuBtn');
+    var mobileNav=document.getElementById('mobileNav');
+    var root=document.documentElement;
+    function lockScroll(yes){
+      if(yes){ root.style.overflow='hidden'; }
+      else { root.style.overflow=''; }
     }
-    rev.addEventListener('input',()=>{ revNum.value = rev.value; calc(); });
-    revNum.addEventListener('input',()=>{ rev.value = revNum.value; calc(); });
+    function setMenu(open){
+      if(open){
+        mobileNav.removeAttribute('hidden');
+      } else {
+        mobileNav.setAttribute('hidden','');
+      }
+      if(menuBtn){ menuBtn.setAttribute('aria-expanded', String(open)); }
+      lockScroll(open);
+    }
+    if(menuBtn){
+      menuBtn.addEventListener('click', function(){ setMenu(mobileNav.hasAttribute('hidden')); });
+    }
+    if(mobileNav){
+      Array.prototype.forEach.call(mobileNav.querySelectorAll('a'), function(a){
+        a.addEventListener('click', function(){ setMenu(false); });
+      });
+    }
+    window.addEventListener('keydown', function(e){ if(e.key==='Escape'){ setMenu(false); } });
+    window.addEventListener('resize', function(){ if(window.innerWidth>=960){ setMenu(false); } });
+  })();
+  </script>
+
+  <script>
+  (function(){ // ROI calculator
+    var rev=document.getElementById('rev');
+    var revNum=document.getElementById('revNum');
+    var revPretty=document.getElementById('revPretty');
+    var plan=document.getElementById('plan');
+    var outSave=document.getElementById('outSave');
+    var outBoost=document.getElementById('outBoost');
+    var outROI=document.getElementById('outROI');
+    if(!rev||!revNum){ return; }
+    function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
+    function pretty(n){ return '$'+Number(n.toFixed(0)).toLocaleString(); }
+    function syncPretty(){ if(revPretty){ revPretty.textContent = pretty(Number(revNum.value||0)); } }
+    function band(v){ if(v<50000) return 'small'; if(v<=150000) return 'mid'; return 'large'; }
+    var EST={ small:{tickets:180,aov:45}, mid:{tickets:350,aov:60}, large:{tickets:700,aov:75} };
+    var TICKET_REDUCTION=0.45, COST_PER_TICKET=5;
+    var LIFT={ starter:{small:.06,mid:.09,large:.11}, growth:{small:.10,mid:.13,large:.16}, enterprise:{small:.12,mid:.16,large:.20} };
+    var CAP={ starter:.12, growth:.18, enterprise:.22 };
+    function calc(){
+      var revenue=clamp(Number(revNum.value||rev.value||0),10000,250000);
+      rev.value=revenue; revNum.value=revenue; syncPretty();
+      var b=band(revenue), est=EST[b], planKey=plan.value;
+      var savings=est.tickets*TICKET_REDUCTION*COST_PER_TICKET;
+      var lift=Math.min(LIFT[planKey][b], CAP[planKey]);
+      var boost=revenue*lift;
+      var cost=planKey==='starter'?497:planKey==='growth'?1997:3997;
+      var multiple=(savings+boost)/cost;
+      outSave.textContent=pretty(savings);
+      outBoost.textContent=pretty(boost);
+      outROI.textContent=isFinite(multiple)? multiple.toFixed(1)+'×' : '—';
+    }
+    rev.addEventListener('input', function(){ revNum.value=rev.value; calc(); });
+    revNum.addEventListener('input', function(){ rev.value=revNum.value; calc(); });
     plan.addEventListener('change', calc);
     calc();
-
-    // Collapsible details
-    const detailsToggle=document.getElementById('detailsToggle');
-    const calcDetails=document.getElementById('calcDetails');
-    detailsToggle.addEventListener('click',()=>{
-      const hidden = calcDetails.hasAttribute('hidden');
-      if(hidden) calcDetails.removeAttribute('hidden'); else calcDetails.setAttribute('hidden','');
-      detailsToggle.setAttribute('aria-expanded', String(hidden));
-    });
-
-    // Testimonial carousel
-    (function initCarousel(){
-      const slidesEl = document.getElementById('slides');
-      const dotsEl   = document.getElementById('dots');
-      const prev     = document.getElementById('prev');
-      const next     = document.getElementById('next');
-      if (!slidesEl || !dotsEl) return;
-
-      const dots = Array.from(dotsEl.querySelectorAll('.dot'));
-      let index = 0;
-
-      function go(i){
-        index = (i + dots.length) % dots.length;
-        slidesEl.style.transform = 'translateX(' + (-index * 100) + '%)';
-        dots.forEach((d,di)=>d.classList.toggle('active', di===index));
-      }
-      prev?.addEventListener('click', ()=> go(index-1));
-      next?.addEventListener('click', ()=> go(index+1));
-      dots.forEach((d,i)=> d.addEventListener('click', ()=> go(i)));
-
-      const AUTO_MS = 6500;
-      let timer = setInterval(()=> go(index+1), AUTO_MS);
-      const carousel = slidesEl.closest('.carousel');
-      if (carousel){
-        carousel.addEventListener('mouseenter', ()=> clearInterval(timer));
-        carousel.addEventListener('mouseleave', ()=> { timer = setInterval(()=> go(index+1), AUTO_MS); });
-      }
-      go(0);
-    })();
+  })();
   </script>
+
+  <script>
+  (function(){ // Testimonials (reduced motion aware)
+    var slidesEl=document.getElementById('slides');
+    var dotsEl=document.getElementById('dots');
+    var prev=document.getElementById('prev');
+    var next=document.getElementById('next');
+    if(!slidesEl||!dotsEl){ return; }
+    var dots=Array.prototype.slice.call(dotsEl.querySelectorAll('.dot'));
+    var index=0;
+    function go(i){
+      index=(i+dots.length)%dots.length;
+      slidesEl.style.transform='translateX('+(-index*100)+'%)';
+      dots.forEach(function(d,di){ d.classList.toggle('active', di===index); });
+    }
+    if(prev){ prev.addEventListener('click', function(){ go(index-1); }); }
+    if(next){ next.addEventListener('click', function(){ go(index+1); }); }
+    dots.forEach(function(d,i){ d.addEventListener('click', function(){ go(i); }); });
+    var timer=null;
+    var reduceMotion=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!reduceMotion){
+      timer=setInterval(function(){ go(index+1); },6500);
+      var carousel=slidesEl.closest('.carousel');
+      if(carousel){
+        carousel.addEventListener('mouseenter', function(){ clearInterval(timer); });
+        carousel.addEventListener('mouseleave', function(){ timer=setInterval(function(){ go(index+1); },6500); });
+      }
+    }
+    go(0);
+  })();
+  </script>
+
+  <script>
+  (function(){ // Integrations marquee
+    var marquee=document.querySelector('.integrations-marquee');
+    var track=document.getElementById('integrationsTrack');
+    if(!marquee||!track){ return; }
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ return; }
+
+    var pxPerSec=Number(marquee.getAttribute('data-speed')||40);
+    var x=0, last=null, running=true;
+
+    function fill(){
+      var startCount=track.children.length;
+      var visibleW=marquee.clientWidth;
+      while(track.scrollWidth < visibleW*2){
+        for(var i=0;i<startCount && track.scrollWidth < visibleW*2;i++){
+          track.appendChild(track.children[i].cloneNode(true));
+        }
+      }
+    }
+    function unit(){
+      var f=track.children[0]; if(!f) return 0;
+      var gap=parseFloat(getComputedStyle(track).gap)||0;
+      return f.getBoundingClientRect().width+gap;
+    }
+    function step(ts){
+      if(!running){ requestAnimationFrame(step); return; }
+      if(last===null){ last=ts; }
+      var dt=(ts-last)/1000; last=ts;
+      x-=pxPerSec*dt;
+      var w=unit();
+      while(w && x<=-w){ x+=w; track.appendChild(track.children[0]); w=unit(); }
+      track.style.transform='translateX('+x+'px)';
+      requestAnimationFrame(step);
+    }
+    marquee.addEventListener('mouseenter', function(){ running=false; });
+    marquee.addEventListener('mouseleave', function(){ running=true; last=null; });
+    document.addEventListener('visibilitychange', function(){ running=document.visibilityState==='visible'; last=null; });
+
+    var imgs=track.querySelectorAll('img'); var pending=imgs.length;
+    function go(){ fill(); requestAnimationFrame(step); }
+    if(pending===0){ go(); }
+    Array.prototype.forEach.call(imgs, function(img){
+      if(img.complete){ pending--; if(pending===0) go(); }
+      else { img.addEventListener('load', function(){ pending--; if(pending===0) go(); }, {once:true}); }
+    });
+  })();
+  </script>
+
+  <script>
+  (function(){ // Audit form (preflight-free FormData submit)
+    var form=document.getElementById('auditForm');
+    if(!form) return;
+
+    var errorEl=document.getElementById('auditError');
+    var submitBtn=document.getElementById('auditSubmit');
+    var startedAt=Date.now();
+    // IMPORTANT: this should be your n8n Production URL (exactly as shown in n8n)
+    var SUBMIT_URL=(form.getAttribute('data-endpoint')||'').trim()||null;
+
+    var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
+    var shopifyRe=/^(https?:\/\/)?([a-z0-9-]+)\.(myshopify\.com|[a-z0-9-]+\.[a-z.]+)(\/.*)?$/i;
+
+    function el(id){ return document.getElementById(id); }
+    var fields={
+      fullName: el('fullName'),
+      companyName: el('companyName'),
+      shopifyUrl: el('shopifyUrl'),
+      niche: el('niche'),
+      email: el('email'),
+      revenue: el('revenue')
+    };
+    function setInvalid(node, bad){ if(!node) return; node.toggleAttribute('aria-invalid', !!bad); }
+    function showError(msg, focusEl){
+      errorEl.textContent=msg; errorEl.style.display='block';
+      if(focusEl && focusEl.focus) focusEl.focus({preventScroll:true});
+    }
+    function clearError(){
+      errorEl.style.display='none';
+      Object.keys(fields).forEach(function(k){ setInvalid(fields[k], false); });
+    }
+
+    // UTM capture
+    var params=new URLSearchParams(location.search);
+    var utm={
+      utm_source: params.get('utm_source')||'',
+      utm_medium: params.get('utm_medium')||'',
+      utm_campaign: params.get('utm_campaign')||'',
+      utm_term: params.get('utm_term')||'',
+      utm_content: params.get('utm_content')||''
+    };
+
+    function renderSuccess(){
+      var wrap=document.createElement('div'); wrap.className='success';
+      wrap.innerHTML = '<div style="font-weight:700">Thanks! You’re on the list.</div>\
+        <div class="muted" style="margin-top:6px">We’ll email you within 1–2 business days with next steps.</div>';
+      form.replaceWith(wrap);
+    }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault(); clearError();
+
+      // Gather + validate
+      var fd=new FormData(form);
+      var payload={
+        fullName: (fd.get('fullName')||'').toString().trim(),
+        companyName: (fd.get('companyName')||'').toString().trim(),
+        shopifyUrl: (fd.get('shopifyUrl')||'').toString().trim(),
+        niche: (fd.get('niche')||'').toString().trim(),
+        email: (fd.get('email')||'').toString().trim(),
+        revenue: (fd.get('revenue')||'').toString(),
+        consent: fd.get('consent')==='on'
+      };
+
+      // honeypot + time-gate (kept from your version)
+      var honeypot=(fd.get('website')||'').toString().trim();
+      var elapsed=Date.now()-startedAt;
+      if(honeypot || elapsed<1200){ renderSuccess(); return; }
+
+      if(!payload.fullName){ setInvalid(fields.fullName,true); showError('Please add your full name.', fields.fullName); return; }
+      if(!payload.companyName){ setInvalid(fields.companyName,true); showError('Please add your company name.', fields.companyName); return; }
+      if(!payload.shopifyUrl){ setInvalid(fields.shopifyUrl,true); showError('Please add your Shopify store URL.', fields.shopifyUrl); return; }
+      if(!shopifyRe.test(payload.shopifyUrl)){ setInvalid(fields.shopifyUrl,true); showError('Please enter a valid Shopify store URL.', fields.shopifyUrl); return; }
+      if(!payload.email || !emailRe.test(payload.email)){ setInvalid(fields.email,true); showError('Please enter a valid work email.', fields.email); return; }
+      if(!payload.revenue){ setInvalid(fields.revenue,true); showError('Please choose a revenue range.', fields.revenue); return; }
+      if(!payload.consent){ showError('Please agree to be contacted about your audit.'); return; }
+
+      // Build FormData for POST (NO headers -> no preflight)
+      var postData=new FormData();
+      Object.keys(payload).forEach(function(k){ postData.append(k, payload[k]); });
+      // add UTM and useful context
+      postData.append('utm_source', utm.utm_source);
+      postData.append('utm_medium', utm.utm_medium);
+      postData.append('utm_campaign', utm.utm_campaign);
+      postData.append('utm_term', utm.utm_term);
+      postData.append('utm_content', utm.utm_content);
+      postData.append('userAgent', navigator.userAgent);
+      postData.append('receivedAt', new Date().toISOString());
+
+      submitBtn.setAttribute('aria-busy','true'); submitBtn.disabled=true;
+
+      var done=function(){ submitBtn.removeAttribute('aria-busy'); submitBtn.disabled=false; };
+
+      if(!SUBMIT_URL){
+        renderSuccess();
+        window.dataLayer=window.dataLayer||[];
+        window.dataLayer.push({event:'audit_form_submit', payload:payload});
+        return done();
+      }
+
+      fetch(SUBMIT_URL, { method:'POST', body: postData, mode:'cors', keepalive:true })
+        .then(function(res){
+          if(!res.ok) throw new Error('bad_status_'+res.status);
+          renderSuccess();
+          window.dataLayer=window.dataLayer||[];
+          window.dataLayer.push({event:'audit_form_submit', payload:payload});
+        })
+        .catch(function(){
+          showError('Something went wrong. Please try again.');
+        })
+        .finally(done);
+    });
+  })();
+  </script>
+
+  <script id="carousel-polish-20250929">
+  (function(){
+    var slides=document.getElementById('slides');
+    var dots=document.getElementById('dots');
+    var prev=document.getElementById('prev');
+    var next=document.getElementById('next');
+    if(!slides||!dots) return;
+    var dotEls=[].slice.call(dots.querySelectorAll('.dot'));
+    var count=slides.children.length; var index=0;
+    function go(i){
+      index=(i+count)%count;
+      slides.style.transform='translateX('+(-index*100)+'%)';
+      dotEls.forEach(function(d,di){ d.classList.toggle('active', di===index); });
+    }
+    dotEls.forEach(function(d,i){ d.addEventListener('click', function(){ go(i); }); });
+    if(prev) prev.addEventListener('click', function(){ go(index-1); });
+    if(next) next.addEventListener('click', function(){ go(index+1); });
+    var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var timer=null;
+    if(!reduce){
+      timer=setInterval(function(){ go(index+1); }, 6500);
+      var carousel=slides.closest('.carousel');
+      if(carousel){
+        carousel.addEventListener('mouseenter', function(){ clearInterval(timer); });
+        carousel.addEventListener('mouseleave', function(){ timer=setInterval(function(){ go(index+1); },6500); });
+      }
+    }
+    go(0);
+  })();
+  </script>
+
+  <!-- Calendly popup + prefill (added) -->
+  <script>
+  (function() {
+    var CAL_URL = "https://calendly.com/thestorefront-sales/storefront-demo?hide_gdpr_banner=1&background_color=0B0F14&text_color=E6EAF0&primary_color=2F6FFF";
+
+    function getUTM(){
+      var p=new URLSearchParams(location.search);
+      return {
+        utm_source:p.get('utm_source')||undefined,
+        utm_medium:p.get('utm_medium')||undefined,
+        utm_campaign:p.get('utm_campaign')||undefined,
+        utm_term:p.get('utm_term')||undefined,
+        utm_content:p.get('utm_content')||undefined
+      };
+    }
+
+    function gatherAuditPrefill(){
+      var f=document.getElementById('auditForm'); if(!f) return {};
+      var v=function(sel){var el=f.querySelector(sel); return el?el.value.trim():'';};
+      var name=v('#fullName'), email=v('#email'), company=v('#companyName');
+      var shop=v('#shopifyUrl'), revenue=v('#revenue'), niche=v('#niche');
+      var pre={};
+      if(name) pre.name=name;
+      if(email) pre.email=email;
+      var ca={}; if(company) ca.a1=company; if(shop) ca.a2=shop; if(revenue) ca.a3=revenue; if(niche) ca.a4=niche;
+      if(Object.keys(ca).length) pre.customAnswers=ca;
+      return pre;
+    }
+
+    window.openCalendly = function(prefill){
+      prefill = (prefill && Object.keys(prefill).length) ? prefill : gatherAuditPrefill();
+      function open(){ Calendly.initPopupWidget({ url: CAL_URL, prefill: prefill, utm: getUTM() }); }
+      if(window.Calendly && Calendly.initPopupWidget){ open(); }
+      else{
+        var s=document.createElement('script');
+        s.src='https://assets.calendly.com/assets/external/widget.js'; s.async=true; s.onload=open;
+        document.head.appendChild(s);
+      }
+    };
+
+    // Attach to CTAs with js-book-demo
+    function attach(){
+      document.querySelectorAll('.js-book-demo').forEach(function(a){
+        a.addEventListener('click', function(e){ e.preventDefault(); window.openCalendly(); });
+      });
+    }
+    if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', attach); } else { attach(); }
+
+    // Open Calendly after audit submit success (without modifying your existing form script)
+    (function hookDataLayer(){
+      try {
+        window.dataLayer = window.dataLayer || [];
+        if(window.dataLayer._sfHooked) return;
+        var origPush = window.dataLayer.push.bind(window.dataLayer);
+        window.dataLayer.push = function(){
+          var args = Array.prototype.slice.call(arguments);
+          for(var i=0;i<args.length;i++){
+            var evt = args[i] && args[i].event;
+            if(evt === 'audit_form_submit'){
+              var p = args[i].payload || {};
+              var pre={ name:p.fullName, email:p.email, customAnswers:{ a1:p.companyName, a2:p.shopifyUrl, a3:p.revenue, a4:p.niche } };
+              try { window.openCalendly(pre); } catch(e){ /* no-op */ }
+            }
+          }
+          return origPush.apply(window.dataLayer, args);
+        };
+        window.dataLayer._sfHooked = true;
+      } catch(e){ /* no-op */ }
+    })();
+  })();
+  </script>
+
 </body>
 </html>
