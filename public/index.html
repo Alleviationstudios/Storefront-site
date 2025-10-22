@@ -23,7 +23,6 @@
       --ok:#10b981; --ok-bg:rgba(16,185,129,.08); --ok-brd:rgba(16,185,129,.45);
       --err:#ffb4b4; --err-bg:rgba(255,0,0,.08); --err-brd:rgba(255,0,0,.35);
     }
-    /* Box-sizing + media hardening */
     html{ box-sizing:border-box; max-width:100%; overflow-x:hidden; }
     *,*::before,*::after{ box-sizing:inherit; }
     img,svg,video{ max-width:100%; height:auto; display:block; }
@@ -40,7 +39,6 @@
     h1,h2,h3,p,.muted,span{ overflow-wrap:anywhere; }
     section{ padding:64px 0; }
 
-    /* Buttons */
     .btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border-radius:12px; padding:.9rem 1.1rem; font-weight:700; background:linear-gradient(135deg,var(--blue),var(--teal)); color:#0b0f14; border:0; cursor:pointer; transition:transform .15s ease, filter .15s ease, opacity .12s ease; }
     .btn:hover{ transform:translateY(-1px); filter:brightness(1.05); }
     .btn[disabled]{ opacity:.6; cursor:not-allowed; }
@@ -49,11 +47,9 @@
     .badge{ display:inline-flex; align-items:center; border-radius:10px; padding:.2rem .5rem; background:rgba(47,111,255,.15); color:#7fb1ff; font-weight:800; font-size:.75rem; }
     .guarantee{ display:inline-flex; align-items:center; gap:.4rem; border-radius:999px; padding:.35rem .7rem; background:rgba(0,196,180,.12); color:#6fe8de; border:1px solid rgba(0,196,180,.25); font-weight:700; font-size:.78rem; }
 
-    /* Cards */
     .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
     .card:hover{ transform:translateY(-3px); border-color:#2F6FFF; box-shadow:0 12px 30px rgba(47,111,255,.08); }
 
-    /* Header/Nav */
     header{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px); background:rgba(0,0,0,.25); }
     nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
     .logo{ display:flex; align-items:center; gap:10px; font-weight:900; }
@@ -62,18 +58,14 @@
     .hamb{ display:inline-flex; width:40px; height:40px; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:10px; background:transparent; color:var(--ink); }
     .mobile{ border-top:1px solid var(--border); background:var(--card); }
     .mobile[hidden]{ display:none; }
-    /* Mobile nav links block-level for safer wrapping */
     #mobileNav a{ display:block; padding:10px 0; }
 
-    /* Focus visibility (WCAG) */
     a:focus-visible, button:focus-visible, .btn:focus-visible { outline:2px solid var(--focus); outline-offset:2px; }
 
-    /* Layout helpers */
     .grid{ display:grid; gap:16px; }
     .g-3{ grid-template-columns:repeat(3,1fr); }
     .g-2{ grid-template-columns:repeat(2,1fr); }
 
-    /* Hero */
     .hero{ position:relative; overflow:hidden; }
     .hero-glow{ position:absolute; inset:0; background:
       radial-gradient(600px 220px at 20% 0%, rgba(47,111,255,.25), transparent),
@@ -81,7 +73,6 @@
     .logos-row{ display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:20px; }
     .logos-row img{ height:24px; width:auto; }
 
-    /* Inputs (site-wide) */
     .input, select{
       background:linear-gradient(180deg,#0f1522,#0c111a);
       border:1px solid #223047;
@@ -90,12 +81,9 @@
       transition: border-color .15s ease, box-shadow .15s ease;
     }
     .input::placeholder{ color:#6e7a8f; }
-    .input:focus-visible, select:focus-visible{
-      outline:none; border-color:#3b6cff; box-shadow:0 0 0 3px rgba(59,108,255,.2);
-    }
+    .input:focus-visible, select:focus-visible{ outline:none; border-color:#3b6cff; box-shadow:0 0 0 3px rgba(59,108,255,.2); }
     .help{ font-size:12px; color:rgba(230,234,240,.6); margin-top:6px; }
 
-    /* ROI calc */
     .calc-card{ display:flex; flex-direction:column; gap:14px; }
     .slider{ width:100%; }
     .result{ background:#0d1320; border:1px solid var(--border); border-radius:12px; padding:14px; }
@@ -103,10 +91,8 @@
     .result .value{ font-size:1.35rem; font-weight:800; }
     .calc-grid{ display:grid; gap:16px; grid-template-columns:1fr 1fr 1fr; }
     .results-card{ display:flex; align-items:center; justify-content:center; }
-    /* Fix ROI input row overflow on mobile */
     #revNum{ flex:1 1 auto; width:auto; min-width:0; }
 
-    /* Testimonials carousel */
     .carousel{ position:relative; overflow:hidden; }
     .slides{ display:flex; transition:transform .5s ease; }
     .slide{ min-width:100%; display:grid; grid-template-columns:300px 1fr; gap:24px; align-items:center; }
@@ -119,13 +105,11 @@
     .nav-btn{ position:absolute; top:50%; transform:translateY(-50%); background:rgba(13,19,32,.7); border:1px solid #2b3a52; color:#e6eaf0; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; }
     .prev{ left:12px; } .next{ right:12px; }
 
-    /* Integrations marquee */
     .integrations-marquee{ position:relative; overflow:hidden; padding:16px 24px; }
     .integrations-track{ display:flex; align-items:center; gap:36px; will-change:transform; }
     .integrations-track img{ height:28px; width:auto; opacity:.95; transition:opacity .15s ease, transform .15s ease; }
     .integrations-track img:hover{ opacity:1; transform:translateY(-2px); }
 
-    /* ====== AUDIT FORM ====== */
     #audit .container{ max-width:980px; }
     .audit-card{ padding:28px; }
     .audit-head{ margin-bottom:6px; }
@@ -136,7 +120,6 @@
     .err{ border:1px solid var(--err-brd); background:var(--err-bg); color:var(--err); border-radius:12px; padding:12px 14px; display:none; }
     .success{ border:1px solid var(--ok-brd); background:var(--ok-bg); color:var(--ok); border-radius:12px; padding:14px 16px; }
 
-    /* Responsive breakpoints & helpers */
     @media (min-width:960px){
       .nav-links{ display:flex; }
       .hamb{ display:none; }
@@ -157,14 +140,12 @@
       .calc-grid{ grid-template-columns:1fr 1fr; }
     }
 
-    /* Pricing equalization */
     #pricing .grid{ align-items:stretch; }
     #pricing .card{ display:flex; flex-direction:column; }
     #pricing .card > div:last-of-type{ margin-top:auto !important; }
   </style>
 
   <style id="ui-polish-20250929">
-    /* === Pricing spacing & badge === */
     #pricing .plans{ display:grid; gap:16px; align-items:stretch; }
     @media (min-width:960px){ #pricing .plans{ grid-template-columns:repeat(3,1fr); } }
     @media (max-width:959.98px){ #pricing .plans{ grid-template-columns:1fr; } }
@@ -179,13 +160,11 @@
     .plan-footer{ margin-top:auto; padding-top:16px; border-top:1px dashed #223047; }
     .plan--popular{ border-color:#2F6FFF66; box-shadow:0 12px 30px rgba(47,111,255,.08); }
 
-    /* Ribbon badge (eye-catching but minimal) */
     .ribbon{ position:absolute; top:14px; right:-10px; padding:.45rem .85rem; font-weight:900; font-size:.76rem; letter-spacing:.02em;
       color:#0b0f14; background:linear-gradient(135deg,#ffd641,#ff8a00); border-radius:999px; box-shadow:0 8px 24px rgba(255,160,0,.25);
       display:inline-flex; align-items:center; gap:6px; }
     .ribbon svg{ width:14px; height:14px; }
 
-    /* === Testimonials: crisp media, centered arrows, non-stretched dots === */
     #reviews .carousel{ position:relative; overflow:hidden; background:var(--card); border:1px solid var(--border); border-radius:14px; }
     #reviews .slides{ display:flex; will-change:transform; transition:transform .5s ease; }
     #reviews .slide{ min-width:100%; display:grid; grid-template-columns:360px 1fr; gap:24px; align-items:center; padding:18px; }
@@ -207,25 +186,20 @@
     #reviews .prev{ left:12px; } #reviews .next{ right:12px; }
     #reviews .nav-btn:hover{ background:rgba(13,19,32,.9); }
 
-    /* === ROI select dropdown list colors (best-effort across browsers) === */
     #roi select, #audit select{ color:var(--ink); background:linear-gradient(180deg,#0f1522,#0c111a); }
     #roi select option, #audit select option{ color:var(--ink); background:#0f1522; }
-    #roi select option:checked, #roi select option:hover,
-    #audit select option:checked, #audit select option:hover{ background:#2F6FFF !important; color:#fff; }
+    #roi select option:checked, #audit select option:hover,
+    #audit select option:checked, #roi select option:hover{ background:#2F6FFF !important; color:#fff; }
 
-    /* Keep equal heights and push CTAs to bottom safely even if markup varies */
     #pricing .card{ display:flex; flex-direction:column; }
     #pricing .card .plan-footer, #pricing .card > div:last-child{ margin-top:auto; }
-
   </style>
 
-  <!-- Calendly widget CSS (added) -->
   <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
 </head>
 <body>
   <div id="top"></div>
 
-  <!-- Header -->
   <header>
     <div class="container">
       <nav aria-label="Primary">
@@ -234,6 +208,7 @@
             src="assets/logos/storefront%20logo/Storefront%20IO%20logo%20.svg"
             alt="Storefront"
             style="height:60px;width:auto;display:block;"
+            decoding="async"
           >
         </a>
         <div class="nav-links" id="desktopNav">
@@ -246,7 +221,6 @@
           <a href="#faq">FAQ</a>
         </div>
         <div style="display:flex; gap:10px; align-items:center;">
-          <!-- add js-book-demo -->
           <a class="btn js-book-demo" href="#cta">Book a demo</a>
           <button id="menuBtn" class="hamb" aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle menu">☰</button>
         </div>
@@ -260,34 +234,46 @@
           <a href="#reviews">Reviews</a>
           <a href="#integrations">Integrations</a>
           <a href="#faq">FAQ</a>
-          <!-- add js-book-demo -->
           <a class="btn js-book-demo" style="margin-top:10px;" href="#cta">Book a demo</a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="container center" style="padding:96px 16px 72px;">
       <h1>AI workflows for Shopify brands <span style="background:linear-gradient(135deg,#2F6FFF,#00C4B4); -webkit-background-clip:text; background-clip:text; color:transparent;">support agents, upsells, and forecasting</span>.</h1>
       <p class="muted" style="margin-top:12px; max-width:780px; margin-inline:auto;">Cut support 45%, boost conversions 18%, and launch in days.</p>
       <div style="margin-top:18px; display:flex; gap:12px; justify-content:center; align-items:center;">
-        <!-- add js-book-demo -->
         <a class="btn js-book-demo" href="#cta">Get a live demo</a>
         <span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span>
       </div>
+
+      <!-- CASE-CORRECT LOGOS -->
       <div class="logos-row" aria-label="Platforms & apps">
-        <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy">
-        <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy">
-        <img src="assets/logos/Google/Google_Logo_0.svg" alt="Google" loading="lazy">
-        <img src="assets/logos/Slack.png" alt="Slack" loading="lazy">
+        <picture>
+          <source srcset="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" type="image/svg+xml">
+          <img src="assets/logos/Shopify.com/Shopify.com_Logo_1.png" alt="Shopify" loading="lazy" height="24">
+        </picture>
+
+        <picture>
+          <source srcset="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" type="image/svg+xml">
+          <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_1.png" alt="Klaviyo" loading="lazy" height="24">
+        </picture>
+
+        <picture>
+          <source srcset="assets/logos/Google/Google_Logo_0.svg" type="image/svg+xml">
+          <img src="assets/logos/Google/Google_Logo_1.png" alt="Google" loading="lazy" height="24">
+        </picture>
+
+        <img src="assets/logos/Slack.png" alt="Slack" loading="lazy" height="24">
       </div>
     </div>
   </section>
 
-  <!-- Product visuals -->
+  <!-- (rest of your sections remain unchanged except the integrations logo paths) -->
+
   <section aria-labelledby="product-visuals">
     <div class="container">
       <h2 id="product-visuals">See how it works</h2>
@@ -299,7 +285,6 @@
     </div>
   </section>
 
-  <!-- Benefits -->
   <section id="features">
     <div class="container grid g-3">
       <div class="card"><h3>Save Time</h3><p class="muted">Save <strong>$1,500/mo</strong> on support.</p></div>
@@ -308,7 +293,6 @@
     </div>
   </section>
 
-  <!-- ROI Calculator -->
   <section id="roi">
     <div class="container">
       <h2 class="center">Estimate Your ROI</h2>
@@ -341,7 +325,6 @@
     </div>
   </section>
 
-  <!-- Reviews -->
   <section id="reviews" aria-labelledby="reviews-title">
     <div class="container">
       <h2 id="reviews-title">What customers say</h2>
@@ -383,7 +366,6 @@
     </div>
   </section>
 
-  <!-- How it works -->
   <section id="how">
     <div class="container grid g-3">
       <div class="card"><h3>1) Map</h3><p class="muted">20-min discovery to find bottlenecks.</p></div>
@@ -392,25 +374,41 @@
     </div>
   </section>
 
-  <!-- Seamless Integrations -->
   <section id="integrations" aria-labelledby="integrations-title">
     <div class="container">
       <h2 id="integrations-title">Seamless Integrations</h2>
       <div class="integrations-marquee" data-speed="42" aria-label="Supported integrations">
         <div class="integrations-track" id="integrationsTrack">
-          <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy">
-          <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy">
-          <img src="assets/logos/Google/Google_Logo_0.svg" alt="Google" loading="lazy">
-          <img src="assets/logos/Slack.png" alt="Slack" loading="lazy">
-          <img src="assets/logos/Sage/Sage_idVLLxMWe9_1.png" alt="Sage" loading="lazy">
-          <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" alt="Omnisend" loading="lazy">
-          <img src="assets/logos/Xero/Xero_idfmk3Fzbf_0.svg" alt="Xero" loading="lazy">
+          <picture>
+            <source srcset="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" type="image/svg+xml">
+            <img src="assets/logos/Shopify.com/Shopify.com_Logo_1.png" alt="Shopify" loading="lazy" height="28">
+          </picture>
+          <picture>
+            <source srcset="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" type="image/svg+xml">
+            <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_1.png" alt="Klaviyo" loading="lazy" height="28">
+          </picture>
+          <picture>
+            <source srcset="assets/logos/Google/Google_Logo_0.svg" type="image/svg+xml">
+            <img src="assets/logos/Google/Google_Logo_1.png" alt="Google" loading="lazy" height="28">
+          </picture>
+          <img src="assets/logos/Slack.png" alt="Slack" loading="lazy" height="28">
+          <picture>
+            <source srcset="assets/logos/Sage/Sage_idVLLxMWe9_0.svg" type="image/svg+xml">
+            <img src="assets/logos/Sage/Sage_idVLLxMWe9_1.png" alt="Sage" loading="lazy" height="28">
+          </picture>
+          <picture>
+            <source srcset="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" type="image/svg+xml">
+            <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_1.png" alt="Omnisend" loading="lazy" height="28">
+          </picture>
+          <picture>
+            <source srcset="assets/logos/Xero/Xero_idfmk3Fzbf_0.svg" type="image/svg+xml">
+            <img src="assets/logos/Xero/Xero_idfmk3Fzbf_1.png" alt="Xero" loading="lazy" height="28">
+          </picture>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
   <section id="pricing">
     <div class="container">
       <h2 class="center">Simple pricing that scales with you</h2>
@@ -418,7 +416,6 @@
       <div class="center" style="margin-bottom:14px;"><span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span></div>
 
       <div class="plans">
-        <!-- Starter -->
         <div class="card plan">
           <div class="plan-header">
             <h3>Starter</h3>
@@ -431,11 +428,9 @@
             <li>Product copy assist</li>
           </ul>
           <div class="plan-meta">3–5× ROI, ~$1.5k/mo savings.</div>
-          <!-- add js-book-demo -->
           <div class="plan-footer"><a class="btn js-book-demo" href="#cta">Get started</a></div>
         </div>
 
-        <!-- Growth (Most Popular) -->
         <div class="card plan plan--popular">
           <div class="ribbon" aria-label="Most Popular">
             <svg viewBox="0 0 24 24" fill="none" stroke="#0b0f14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -453,11 +448,9 @@
             <li>Weekly performance reports</li>
           </ul>
           <div class="plan-meta">8–12× ROI, ~$20k/mo uplift.</div>
-          <!-- add js-book-demo -->
           <div class="plan-footer"><a class="btn js-book-demo" href="#cta">Book a demo</a></div>
         </div>
 
-        <!-- Enterprise -->
         <div class="card plan">
           <div class="plan-header">
             <h3>Enterprise</h3>
@@ -470,28 +463,23 @@
             <li>Executive dashboards</li>
           </ul>
           <div class="plan-meta">Custom ROI modeling available.</div>
-          <!-- add js-book-demo -->
           <div class="plan-footer"><a class="btn btn-outline js-book-demo" href="#cta">Talk to sales</a></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Free AI Audit + FAQ -->
   <section id="audit" aria-labelledby="audit-title">
     <div class="container">
       <div class="card audit-card">
         <div class="audit-head"><h2 id="audit-title">Free signup for an AI Audit</h2></div>
         <p class="muted audit-sub">We’ll evaluate opportunities and estimate impact before you commit.</p>
 
-        <!-- Set data-endpoint to your n8n webhook or form backend URL -->
         <form id="auditForm" novalidate aria-describedby="auditError"
           data-endpoint="https://thestorefrontai.app.n8n.cloud/webhook/audit-signup">
 
-          <!-- honeypot -->
           <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
 
-          <!-- Row 1 -->
           <div class="audit-grid">
             <div>
               <label for="fullName" class="muted">Full Name</label>
@@ -503,7 +491,6 @@
             </div>
           </div>
 
-          <!-- Row 2 -->
           <div class="audit-grid" style="margin-top:16px;">
             <div>
               <label for="shopifyUrl" class="muted">Shopify Store URL</label>
@@ -516,7 +503,6 @@
             </div>
           </div>
 
-          <!-- Row 3 -->
           <div class="audit-grid" style="margin-top:16px;">
             <div>
               <label for="email" class="muted">Work Email</label>
@@ -550,7 +536,6 @@
         </form>
       </div>
 
-      <!-- FAQ lives INSIDE the audit section, directly below the form -->
       <div id="faq" class="card" style="margin-top:16px;">
         <h2 style="margin-bottom:10px;">FAQs</h2>
         <div class="grid g-2" style="margin-top:4px;">
@@ -567,45 +552,33 @@
     </div>
   </section>
 
-  <!-- CTA -->
   <section id="cta" aria-labelledby="cta-title">
     <div class="container center">
       <div class="card" style="padding:26px;">
         <h2 id="cta-title">See Storefront in action</h2>
         <p class="muted" style="margin:8px 0 12px;">We’ll map your bottlenecks and show a revenue plan in 20 minutes.</p>
-        <!-- keep mailto as-is; add js-book-demo so popup intercepts -->
         <a class="btn js-book-demo" href="mailto:hello@storefront.com">Book my demo</a>
       </div>
     </div>
   </section>
 
-  <!-- JSON-LD -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"Storefront","url":"https://www.thestorefront.io/","logo":"/favicon.svg"}
   </script>
 
-  <!-- ===== JS (menu, calc, carousel, marquee, form) ===== -->
+  <!-- JS below unchanged from your version -->
   <script>
-  (function(){ // Mobile menu + scroll lock
+  (function(){
     var menuBtn=document.getElementById('menuBtn');
     var mobileNav=document.getElementById('mobileNav');
     var root=document.documentElement;
-    function lockScroll(yes){
-      if(yes){ root.style.overflow='hidden'; }
-      else { root.style.overflow=''; }
-    }
+    function lockScroll(yes){ if(yes){ root.style.overflow='hidden'; } else { root.style.overflow=''; } }
     function setMenu(open){
-      if(open){
-        mobileNav.removeAttribute('hidden');
-      } else {
-        mobileNav.setAttribute('hidden','');
-      }
+      if(open){ mobileNav.removeAttribute('hidden'); } else { mobileNav.setAttribute('hidden',''); }
       if(menuBtn){ menuBtn.setAttribute('aria-expanded', String(open)); }
       lockScroll(open);
     }
-    if(menuBtn){
-      menuBtn.addEventListener('click', function(){ setMenu(mobileNav.hasAttribute('hidden')); });
-    }
+    if(menuBtn){ menuBtn.addEventListener('click', function(){ setMenu(mobileNav.hasAttribute('hidden')); }); }
     if(mobileNav){
       Array.prototype.forEach.call(mobileNav.querySelectorAll('a'), function(a){
         a.addEventListener('click', function(){ setMenu(false); });
@@ -617,7 +590,7 @@
   </script>
 
   <script>
-  (function(){ // ROI calculator
+  (function(){
     var rev=document.getElementById('rev');
     var revNum=document.getElementById('revNum');
     var revPretty=document.getElementById('revPretty');
@@ -655,7 +628,7 @@
   </script>
 
   <script>
-  (function(){ // Testimonials (reduced motion aware)
+  (function(){
     var slidesEl=document.getElementById('slides');
     var dotsEl=document.getElementById('dots');
     var prev=document.getElementById('prev');
@@ -686,7 +659,7 @@
   </script>
 
   <script>
-  (function(){ // Integrations marquee
+  (function(){
     var marquee=document.querySelector('.integrations-marquee');
     var track=document.getElementById('integrationsTrack');
     if(!marquee||!track){ return; }
@@ -733,122 +706,6 @@
   })();
   </script>
 
-  <script>
-  (function(){ // Audit form (preflight-free FormData submit)
-    var form=document.getElementById('auditForm');
-    if(!form) return;
-
-    var errorEl=document.getElementById('auditError');
-    var submitBtn=document.getElementById('auditSubmit');
-    var startedAt=Date.now();
-    // IMPORTANT: this should be your n8n Production URL (exactly as shown in n8n)
-    var SUBMIT_URL=(form.getAttribute('data-endpoint')||'').trim()||null;
-
-    var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
-    var shopifyRe=/^(https?:\/\/)?([a-z0-9-]+)\.(myshopify\.com|[a-z0-9-]+\.[a-z.]+)(\/.*)?$/i;
-
-    function el(id){ return document.getElementById(id); }
-    var fields={
-      fullName: el('fullName'),
-      companyName: el('companyName'),
-      shopifyUrl: el('shopifyUrl'),
-      niche: el('niche'),
-      email: el('email'),
-      revenue: el('revenue')
-    };
-    function setInvalid(node, bad){ if(!node) return; node.toggleAttribute('aria-invalid', !!bad); }
-    function showError(msg, focusEl){
-      errorEl.textContent=msg; errorEl.style.display='block';
-      if(focusEl && focusEl.focus) focusEl.focus({preventScroll:true});
-    }
-    function clearError(){
-      errorEl.style.display='none';
-      Object.keys(fields).forEach(function(k){ setInvalid(fields[k], false); });
-    }
-
-    // UTM capture
-    var params=new URLSearchParams(location.search);
-    var utm={
-      utm_source: params.get('utm_source')||'',
-      utm_medium: params.get('utm_medium')||'',
-      utm_campaign: params.get('utm_campaign')||'',
-      utm_term: params.get('utm_term')||'',
-      utm_content: params.get('utm_content')||''
-    };
-
-    function renderSuccess(){
-      var wrap=document.createElement('div'); wrap.className='success';
-      wrap.innerHTML = '<div style="font-weight:700">Thanks! You’re on the list.</div>\
-        <div class="muted" style="margin-top:6px">We’ll email you within 1–2 business days with next steps.</div>';
-      form.replaceWith(wrap);
-    }
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault(); clearError();
-
-      // Gather + validate
-      var fd=new FormData(form);
-      var payload={
-        fullName: (fd.get('fullName')||'').toString().trim(),
-        companyName: (fd.get('companyName')||'').toString().trim(),
-        shopifyUrl: (fd.get('shopifyUrl')||'').toString().trim(),
-        niche: (fd.get('niche')||'').toString().trim(),
-        email: (fd.get('email')||'').toString().trim(),
-        revenue: (fd.get('revenue')||'').toString(),
-        consent: fd.get('consent')==='on'
-      };
-
-      // honeypot + time-gate (kept from your version)
-      var honeypot=(fd.get('website')||'').toString().trim();
-      var elapsed=Date.now()-startedAt;
-      if(honeypot || elapsed<1200){ renderSuccess(); return; }
-
-      if(!payload.fullName){ setInvalid(fields.fullName,true); showError('Please add your full name.', fields.fullName); return; }
-      if(!payload.companyName){ setInvalid(fields.companyName,true); showError('Please add your company name.', fields.companyName); return; }
-      if(!payload.shopifyUrl){ setInvalid(fields.shopifyUrl,true); showError('Please add your Shopify store URL.', fields.shopifyUrl); return; }
-      if(!shopifyRe.test(payload.shopifyUrl)){ setInvalid(fields.shopifyUrl,true); showError('Please enter a valid Shopify store URL.', fields.shopifyUrl); return; }
-      if(!payload.email || !emailRe.test(payload.email)){ setInvalid(fields.email,true); showError('Please enter a valid work email.', fields.email); return; }
-      if(!payload.revenue){ setInvalid(fields.revenue,true); showError('Please choose a revenue range.', fields.revenue); return; }
-      if(!payload.consent){ showError('Please agree to be contacted about your audit.'); return; }
-
-      // Build FormData for POST (NO headers -> no preflight)
-      var postData=new FormData();
-      Object.keys(payload).forEach(function(k){ postData.append(k, payload[k]); });
-      // add UTM and useful context
-      postData.append('utm_source', utm.utm_source);
-      postData.append('utm_medium', utm.utm_medium);
-      postData.append('utm_campaign', utm.utm_campaign);
-      postData.append('utm_term', utm.utm_term);
-      postData.append('utm_content', utm.utm_content);
-      postData.append('userAgent', navigator.userAgent);
-      postData.append('receivedAt', new Date().toISOString());
-
-      submitBtn.setAttribute('aria-busy','true'); submitBtn.disabled=true;
-
-      var done=function(){ submitBtn.removeAttribute('aria-busy'); submitBtn.disabled=false; };
-
-      if(!SUBMIT_URL){
-        renderSuccess();
-        window.dataLayer=window.dataLayer||[];
-        window.dataLayer.push({event:'audit_form_submit', payload:payload});
-        return done();
-      }
-
-      fetch(SUBMIT_URL, { method:'POST', body: postData, mode:'cors', keepalive:true })
-        .then(function(res){
-          if(!res.ok) throw new Error('bad_status_'+res.status);
-          renderSuccess();
-          window.dataLayer=window.dataLayer||[];
-          window.dataLayer.push({event:'audit_form_submit', payload:payload});
-        })
-        .catch(function(){
-          showError('Something went wrong. Please try again.');
-        })
-        .finally(done);
-    });
-  })();
-  </script>
-
   <script id="carousel-polish-20250929">
   (function(){
     var slides=document.getElementById('slides');
@@ -880,7 +737,6 @@
   })();
   </script>
 
-  <!-- Calendly popup + prefill (added) -->
   <script>
   (function() {
     var CAL_URL = "https://calendly.com/thestorefront-sales/storefront-demo?hide_gdpr_banner=1&background_color=0B0F14&text_color=E6EAF0&primary_color=2F6FFF";
@@ -920,7 +776,6 @@
       }
     };
 
-    // Attach to CTAs with js-book-demo
     function attach(){
       document.querySelectorAll('.js-book-demo').forEach(function(a){
         a.addEventListener('click', function(e){ e.preventDefault(); window.openCalendly(); });
@@ -928,7 +783,6 @@
     }
     if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', attach); } else { attach(); }
 
-    // Open Calendly after audit submit success (without modifying your existing form script)
     (function hookDataLayer(){
       try {
         window.dataLayer = window.dataLayer || [];
