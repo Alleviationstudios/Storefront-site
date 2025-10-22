@@ -179,13 +179,13 @@
     .plan-footer{ margin-top:auto; padding-top:16px; border-top:1px dashed #223047; }
     .plan--popular{ border-color:#2F6FFF66; box-shadow:0 12px 30px rgba(47,111,255,.08); }
 
-    /* Ribbon badge (eye-catching but minimal) */
+    /* Ribbon badge */
     .ribbon{ position:absolute; top:14px; right:-10px; padding:.45rem .85rem; font-weight:900; font-size:.76rem; letter-spacing:.02em;
       color:#0b0f14; background:linear-gradient(135deg,#ffd641,#ff8a00); border-radius:999px; box-shadow:0 8px 24px rgba(255,160,0,.25);
       display:inline-flex; align-items:center; gap:6px; }
     .ribbon svg{ width:14px; height:14px; }
 
-    /* === Testimonials: crisp media, centered arrows, non-stretched dots === */
+    /* === Testimonials polish === */
     #reviews .carousel{ position:relative; overflow:hidden; background:var(--card); border:1px solid var(--border); border-radius:14px; }
     #reviews .slides{ display:flex; will-change:transform; transition:transform .5s ease; }
     #reviews .slide{ min-width:100%; display:grid; grid-template-columns:360px 1fr; gap:24px; align-items:center; padding:18px; }
@@ -207,19 +207,19 @@
     #reviews .prev{ left:12px; } #reviews .next{ right:12px; }
     #reviews .nav-btn:hover{ background:rgba(13,19,32,.9); }
 
-    /* === ROI select dropdown list colors (best-effort across browsers) === */
+    /* === ROI select dropdown colors === */
     #roi select, #audit select{ color:var(--ink); background:linear-gradient(180deg,#0f1522,#0c111a); }
     #roi select option, #audit select option{ color:var(--ink); background:#0f1522; }
-    #roi select option:checked, #roi select option:hover,
-    #audit select option:checked, #audit select option:hover{ background:#2F6FFF !important; color:#fff; }
+    #roi select option:checked, #audit select option:hover,
+    #audit select option:checked, #roi select option:hover{ background:#2F6FFF !important; color:#fff; }
 
-    /* Keep equal heights and push CTAs to bottom safely even if markup varies */
+    /* Equal heights & push CTAs to bottom */
     #pricing .card{ display:flex; flex-direction:column; }
     #pricing .card .plan-footer, #pricing .card > div:last-child{ margin-top:auto; }
 
   </style>
 
-  <!-- Calendly widget CSS (added) -->
+  <!-- Calendly widget CSS -->
   <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
 </head>
 <body>
@@ -231,9 +231,10 @@
       <nav aria-label="Primary">
         <a href="#top" class="logo" aria-label="Storefront home">
           <img
-            src="assets/logos/storefront%20logo/Storefront%20IO%20logo%20.svg"
+            src="assets/logos/storefront%20logo/Storefront%20IO%20logo.svg"
             alt="Storefront"
             style="height:60px;width:auto;display:block;"
+            decoding="async"
           >
         </a>
         <div class="nav-links" id="desktopNav">
@@ -246,7 +247,6 @@
           <a href="#faq">FAQ</a>
         </div>
         <div style="display:flex; gap:10px; align-items:center;">
-          <!-- add js-book-demo -->
           <a class="btn js-book-demo" href="#cta">Book a demo</a>
           <button id="menuBtn" class="hamb" aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle menu">☰</button>
         </div>
@@ -260,7 +260,6 @@
           <a href="#reviews">Reviews</a>
           <a href="#integrations">Integrations</a>
           <a href="#faq">FAQ</a>
-          <!-- add js-book-demo -->
           <a class="btn js-book-demo" style="margin-top:10px;" href="#cta">Book a demo</a>
         </div>
       </div>
@@ -274,15 +273,32 @@
       <h1>AI workflows for Shopify brands <span style="background:linear-gradient(135deg,#2F6FFF,#00C4B4); -webkit-background-clip:text; background-clip:text; color:transparent;">support agents, upsells, and forecasting</span>.</h1>
       <p class="muted" style="margin-top:12px; max-width:780px; margin-inline:auto;">Cut support 45%, boost conversions 18%, and launch in days.</p>
       <div style="margin-top:18px; display:flex; gap:12px; justify-content:center; align-items:center;">
-        <!-- add js-book-demo -->
         <a class="btn js-book-demo" href="#cta">Get a live demo</a>
         <span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span>
       </div>
+
+      <!-- Logos with fallbacks -->
       <div class="logos-row" aria-label="Platforms & apps">
-        <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy">
-        <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy">
-        <img src="assets/logos/Google/Google_Logo_0.svg" alt="Google" loading="lazy">
-        <img src="assets/logos/Slack.png" alt="Slack" loading="lazy">
+        <picture>
+          <source srcset="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" type="image/svg+xml">
+          <source srcset="assets/logos/Shopify.com/Shopify.com_Logo_1.png" type="image/png">
+          <img src="assets/logos/Shopify.com/Shopify.com_Logo_2.webp" alt="Shopify" loading="lazy" height="24">
+        </picture>
+
+        <picture>
+          <source srcset="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" type="image/svg+xml">
+          <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_1.png" alt="Klaviyo" loading="lazy" height="24">
+        </picture>
+
+        <picture>
+          <source srcset="assets/logos/Google/Google_Logo_0.svg" type="image/svg+xml">
+          <img src="assets/logos/Google/Google_Logo_1.png" alt="Google" loading="lazy" height="24">
+        </picture>
+
+        <picture>
+          <source srcset="assets/logos/Slack.png" type="image/png">
+          <img src="assets/logos/Slack.png" alt="Slack" loading="lazy" height="24">
+        </picture>
       </div>
     </div>
   </section>
@@ -398,13 +414,40 @@
       <h2 id="integrations-title">Seamless Integrations</h2>
       <div class="integrations-marquee" data-speed="42" aria-label="Supported integrations">
         <div class="integrations-track" id="integrationsTrack">
-          <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy">
-          <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy">
-          <img src="assets/logos/Google/Google_Logo_0.svg" alt="Google" loading="lazy">
-          <img src="assets/logos/Slack.png" alt="Slack" loading="lazy">
-          <img src="assets/logos/Sage/Sage_idVLLxMWe9_1.png" alt="Sage" loading="lazy">
-          <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" alt="Omnisend" loading="lazy">
-          <img src="assets/logos/Xero/Xero_idfmk3Fzbf_0.svg" alt="Xero" loading="lazy">
+          <picture>
+            <source srcset="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" type="image/svg+xml">
+            <img src="assets/logos/Shopify.com/Shopify.com_Logo_1.png" alt="Shopify" loading="lazy" height="28">
+          </picture>
+
+          <picture>
+            <source srcset="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" type="image/svg+xml">
+            <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_1.png" alt="Klaviyo" loading="lazy" height="28">
+          </picture>
+
+          <picture>
+            <source srcset="assets/logos/Google/Google_Logo_0.svg" type="image/svg+xml">
+            <img src="assets/logos/Google/Google_Logo_1.png" alt="Google" loading="lazy" height="28">
+          </picture>
+
+          <picture>
+            <source srcset="assets/logos/Slack.png" type="image/png">
+            <img src="assets/logos/Slack.png" alt="Slack" loading="lazy" height="28">
+          </picture>
+
+          <picture>
+            <source srcset="assets/logos/Sage/Sage_idVLLxMWe9_0.svg" type="image/svg+xml">
+            <img src="assets/logos/Sage/Sage_idVLLxMWe9_1.png" alt="Sage" loading="lazy" height="28">
+          </picture>
+
+          <picture>
+            <source srcset="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" type="image/svg+xml">
+            <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_1.png" alt="Omnisend" loading="lazy" height="28">
+          </picture>
+
+          <picture>
+            <source srcset="assets/logos/Xero/Xero_idfmk3Fzbf_0.svg" type="image/svg+xml">
+            <img src="assets/logos/Xero/Xero_idfmk3Fzbf_1.png" alt="Xero" loading="lazy" height="28">
+          </picture>
         </div>
       </div>
     </div>
@@ -431,7 +474,6 @@
             <li>Product copy assist</li>
           </ul>
           <div class="plan-meta">3–5× ROI, ~$1.5k/mo savings.</div>
-          <!-- add js-book-demo -->
           <div class="plan-footer"><a class="btn js-book-demo" href="#cta">Get started</a></div>
         </div>
 
@@ -453,7 +495,6 @@
             <li>Weekly performance reports</li>
           </ul>
           <div class="plan-meta">8–12× ROI, ~$20k/mo uplift.</div>
-          <!-- add js-book-demo -->
           <div class="plan-footer"><a class="btn js-book-demo" href="#cta">Book a demo</a></div>
         </div>
 
@@ -470,7 +511,6 @@
             <li>Executive dashboards</li>
           </ul>
           <div class="plan-meta">Custom ROI modeling available.</div>
-          <!-- add js-book-demo -->
           <div class="plan-footer"><a class="btn btn-outline js-book-demo" href="#cta">Talk to sales</a></div>
         </div>
       </div>
@@ -573,7 +613,6 @@
       <div class="card" style="padding:26px;">
         <h2 id="cta-title">See Storefront in action</h2>
         <p class="muted" style="margin:8px 0 12px;">We’ll map your bottlenecks and show a revenue plan in 20 minutes.</p>
-        <!-- keep mailto as-is; add js-book-demo so popup intercepts -->
         <a class="btn js-book-demo" href="mailto:hello@storefront.com">Book my demo</a>
       </div>
     </div>
@@ -741,7 +780,6 @@
     var errorEl=document.getElementById('auditError');
     var submitBtn=document.getElementById('auditSubmit');
     var startedAt=Date.now();
-    // IMPORTANT: this should be your n8n Production URL (exactly as shown in n8n)
     var SUBMIT_URL=(form.getAttribute('data-endpoint')||'').trim()||null;
 
     var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
@@ -798,7 +836,7 @@
         consent: fd.get('consent')==='on'
       };
 
-      // honeypot + time-gate (kept from your version)
+      // honeypot + time-gate
       var honeypot=(fd.get('website')||'').toString().trim();
       var elapsed=Date.now()-startedAt;
       if(honeypot || elapsed<1200){ renderSuccess(); return; }
@@ -880,7 +918,7 @@
   })();
   </script>
 
-  <!-- Calendly popup + prefill (added) -->
+  <!-- Calendly popup + prefill -->
   <script>
   (function() {
     var CAL_URL = "https://calendly.com/thestorefront-sales/storefront-demo?hide_gdpr_banner=1&background_color=0B0F14&text_color=E6EAF0&primary_color=2F6FFF";
@@ -928,7 +966,7 @@
     }
     if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', attach); } else { attach(); }
 
-    // Open Calendly after audit submit success (without modifying your existing form script)
+    // Open Calendly after audit submit success
     (function hookDataLayer(){
       try {
         window.dataLayer = window.dataLayer || [];
