@@ -34,26 +34,22 @@
     h1{ font-size: clamp(36px, 5.6vw, 64px); line-height:1.05; margin:0; text-align:center; }
     .h1-gradient{ background:linear-gradient(180deg, #fff, #9fb8ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
-    /* Video Wrapper (responsive 16:9) */
     .video-wrap{ margin:20px auto 18px; max-width:1100px; }
     .video-outer{ position:relative; width:100%; padding-top:56.25%; border-radius:18px; overflow:hidden; box-shadow: var(--shadow); border:1px solid var(--border); background:#0a0f14; }
     .video-outer iframe, .video-outer video{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
-    /* Subheads under video */
     .subheads{ max-width:1100px; margin:0 auto 14px; }
     .lead{ color:var(--muted); font-size: clamp(16px, 2.1vw, 18px); margin:0 0 8px 0; }
     .highlight{ color:var(--accent); font-weight:800; }
     .accent{ color:var(--teal); font-weight:800; }
     .lead-strong{ color:#cfe0ff; font-weight:800; }
 
-    /* Info grid (removed from markup but styles harmless) */
     .info-grid{ display:grid; gap:16px; grid-template-columns: 1fr; margin:16px auto 10px; max-width:1100px; }
     @media(min-width:900px){ .info-grid{ grid-template-columns: 1fr 1fr; } }
     .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; box-shadow: var(--shadow); }
     .muted{ color:var(--muted); }
     h3{ margin:0 0 6px 0; font-size: 18px; }
 
-    /* Form (wide) */
     .form-wrap{ margin:22px auto 0; max-width:1100px; }
     .wide-card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:22px; box-shadow: var(--shadow); }
     form .grid{ display:grid; gap:12px; }
@@ -106,13 +102,14 @@
     </section>
 
     <section class="subheads">
-      <p class="lead"><span class="lead-strong">Only 10 brands get in free.</span> We will fully set up an AI support agent for you, help recover revenue with smart workflows, and measure ROI live. Everyone else joins the waitlist. Qualified leads are considered for the next cohort.</p>
-      <p class="lead"><span class="accent">100% free</span> setup for 10 companies, done for you onboarding, rapid iteration, and clear ROI tracking. If we do not make support faster and recover more revenue, you owe nothing because you never paid a cent.</p>
+      <p class="lead"><span class="lead-strong">Only 10 brands get in free.</span> We’ll set up a done-for-you AI support agent that deflects repetitive tickets, saves your team hours, and helps capture missed sales. Everyone else joins the waitlist and is considered for the next cohort.</p>
+      <p class="lead"><span class="accent">100% free</span> for the first 10 companies — fast onboarding, rapid iteration, and a support agent designed to save you time and money from day one.</p>
     </section>
 
     <section class="container form-wrap">
       <div class="wide-card" aria-labelledby="form-title">
         <h2 id="form-title">Apply for the waitlist</h2>
+        <!-- kept original endpoint + hidden fields -->
         <form id="waitlist" method="post" action="https://script.google.com/macros/s/AKfycbwl9jgFIjofTHEPYFye6tfvSYmhgfjteKMxugMdnoe4HvNIH1eJZYDNvj2DFZV29FBlvA/exec" novalidate>
           <div class="grid two">
             <div class="field">
@@ -140,10 +137,13 @@
             <div class="field">
               <label for="revenue_band">Monthly revenue</label>
               <select id="revenue_band" name="revenue_band" required>
-                <option value="<30k">&lt;$30k</option>
-                <option value="30-100k">$30–100k</option>
-                <option value="100-300k">$100–300k</option>
-                <option value="300k+">$300k+</option>
+                <option value="<1000">&lt;$1,000</option>
+                <option value="2000-5000">$2,000–$5,000</option>
+                <option value="5000-10000">$5,000–$10,000</option>
+                <option value="10000-20000">$10,000–$20,000</option>
+                <option value="20000-50000">$20,000–$50,000</option>
+                <option value="100000-300000">$100,000–$300,000</option>
+                <option value="300000+">$300,000+</option>
               </select>
             </div>
             <div class="field">
@@ -163,19 +163,10 @@
             </div>
           </div>
 
-          <div class="grid two">
-            <div class="field">
-              <label for="start">Start timeframe</label>
-              <select id="start" name="start">
-                <option>ASAP</option>
-                <option>30 to 60 days</option>
-                <option>60 to 90 days</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="team_size">Team size</label>
-              <input id="team_size" name="team_size" type="number" min="1" placeholder="e.g., 8" />
-            </div>
+          <!-- Start timeframe removed as requested -->
+          <div class="field">
+            <label for="team_size">Team size</label>
+            <input id="team_size" name="team_size" type="number" min="1" placeholder="e.g., 8" />
           </div>
 
           <div class="field">
@@ -183,7 +174,7 @@
             <textarea id="notes" name="notes" rows="4" placeholder="Anything else we should know?"></textarea>
           </div>
 
-          <!-- hidden tracking fields -->
+          <!-- hidden tracking fields (kept) -->
           <input type="hidden" name="utm_source" id="utm_source">
           <input type="hidden" name="utm_medium" id="utm_medium">
           <input type="hidden" name="utm_campaign" id="utm_campaign">
@@ -217,7 +208,7 @@
   </main>
 
   <script>
-    // UTM + referrer + path
+    // UTM + referrer + path (kept)
     (function () {
       const qs = new URLSearchParams(location.search);
       for (const k of ["utm_source","utm_medium","utm_campaign"]) {
@@ -230,7 +221,7 @@
       if (pp) pp.value = location.pathname;
     })();
 
-    // Submit with fetch → inline thank you → redirect home
+    // Submit with fetch → inline thank you → redirect home (kept)
     const form = document.getElementById('waitlist');
     const ok = document.getElementById('ok');
     const err = document.getElementById('err');
@@ -255,7 +246,6 @@
         const endpoint = form.getAttribute('action');
         const payload = toFormData(form);
 
-        // Send as FormData (no custom headers → avoids CORS preflight)
         const res = await fetch(endpoint, {
           method: 'POST',
           body: payload
@@ -274,7 +264,7 @@
       }
     });
 
-    // Inline URL validation
+    // Inline URL validation (kept)
     const urlInput = document.getElementById('store_url');
     urlInput.addEventListener('invalid', () => {
       urlInput.setCustomValidity('Please enter a valid URL including http(s)://');
