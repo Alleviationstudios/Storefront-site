@@ -77,6 +77,16 @@
       radial-gradient(600px 220px at 80% 0%, rgba(0,196,180,.18), transparent); pointer-events:none; }
     .logos-row{ display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:20px; }
     .logos-row img{ height:24px; width:auto; }
+    .demo-figure { margin: 0; }
+    .demo-img{
+      width:100%; height:auto; display:block;
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      box-shadow:0 10px 28px rgba(0,0,0,.28);
+      overflow:hidden;
+    }
+    .better { padding:4px 2px; }
+    .better-list { margin:10px 0 0 18px; line-height:1.55; }
 
     /* Inputs (site-wide) */
     .input, select{
@@ -106,6 +116,7 @@
     .slide{ min-width:100%; display:grid; grid-template-columns:300px 1fr; gap:24px; align-items:center; }
     .slide .img{ height:260px; background:#1a2330; border:1px dashed #2b3a52; border-radius:14px; display:flex; align-items:center; justify-content:center; color:#7d8aa3; font-weight:700; }
     .slide .img img{ width:100%; height:100%; object-fit:cover; }
+    .media-box img { border-radius: var(--radius); }
     .quote{ font-size:clamp(18px,2.2vw,26px); line-height:1.4; }
     .dots{ position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:8px; }
     .dot{ width:10px; height:10px; border-radius:50%; background:#334257; border:1px solid #46628a; cursor:pointer; }
@@ -187,13 +198,14 @@
       <p class="muted" style="margin-top:12px; max-width:780px; margin-inline:auto;">Cut support 45%, boost conversions 18%, and launch in days.</p>
       <div style="margin-top:18px; display:flex; gap:12px; justify-content:center; align-items:center;">
         <a class="btn js-book-demo" href="#cta">Get a live demo</a>
+        <span class="badge" style="margin-left:8px;">Built for Shopify</span>
         <span class="guarantee">✓ 30-day performance guarantee — or you don’t pay</span>
       </div>
       <div class="logos-row" aria-label="Platforms & apps">
-        <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy">
-        <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy">
-        <img src="assets/logos/Google/Google_Logo_0.svg" alt="Google" loading="lazy">
-        <img src="assets/logos/Slack.png" alt="Slack" loading="lazy">
+        <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy" decoding="async">
+        <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy" decoding="async">
+        <img src="assets/logos/Google/Google_Logo_0.svg" alt="Google" loading="lazy" decoding="async">
+        <img src="assets/logos/Slack.png" alt="Slack" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -202,37 +214,37 @@
 <section id="product-visuals" aria-labelledby="product-visuals-title">
   <div class="container">
     <h2 id="product-visuals-title">See how it works</h2>
-    <p class="muted" style="margin:6px 0 14px;">Two live demos below plus a quick explainer of how our agent actually solves WISMO (Where Is My Order?) queries.</p>
+    <p class="muted" style="margin:6px 0 14px;">
+      Two live demos plus why our agent outperforms generic chat widgets.
+    </p>
 
     <div class="grid g-3" style="margin-top:12px;">
-      <!-- DEMO 1 -->
-      <div class="card">
-        <img class="demo" src="Screenshot1.png" alt="Storefront virtual assistant demo — chat UI with quick actions" />
-        <p class="muted" style="margin-top:10px;">Demo 1</p>
-      </div>
+      <!-- Screenshot 1 (no card wrapper) -->
+      <figure class="demo-figure">
+        <img class="demo-img" src="Screenshot1.png"
+             alt="Storefront assistant demo — chat UI with quick actions" loading="lazy" decoding="async" />
+      </figure>
 
-      <!-- DEMO 2 -->
-      <div class="card">
-        <img class="demo" src="Screenshot2.png" alt="Storefront virtual assistant demo — opening conversation" />
-        <p class="muted" style="margin-top:10px;">Demo 2</p>
-      </div>
+      <!-- Screenshot 2 (no card wrapper) -->
+      <figure class="demo-figure">
+        <img class="demo-img" src="Screenshot2.png"
+             alt="Storefront assistant demo — opening conversation" loading="lazy" decoding="async" />
+      </figure>
 
-      <!-- EXPLAINER (replaces placeholder 3) -->
-      <div class="card">
-        <h3 style="margin-bottom:6px;">Real order support (WISMO)</h3>
-        <p class="muted" style="margin-top:6px;">
-          Unlike generic “plug-and-play” chatbots that only echo website FAQs, our agent connects to your store data
-          to <strong>answer real customer order queries</strong> — saving time and money.
+      <!-- Explainer column -->
+      <div class="better">
+        <h3 style="margin:0 0 8px;">What makes us better</h3>
+        <p class="muted" style="margin:0">
+          Most “plug-and-play” bots only parrot FAQs. Storefront connects to your live store data to
+          <strong>resolve real customer problems</strong>:
         </p>
-        <ul class="muted" style="margin:10px 0 0 18px;">
-          <li>Looks up orders using ID, email, or name.</li>
-          <li>Returns live <strong>status & tracking</strong> with courier links.</li>
-          <li>Confirms shipping details and expected delivery windows.</li>
-          <li>Escalates to your team with full conversation context when needed.</li>
+        <ul class="muted better-list">
+          <li>Instant <strong>order lookups</strong> by ID, email, or name.</li>
+          <li>Live <strong>status &amp; tracking</strong> with courier links.</li>
+          <li><strong>ETA/address confirmation</strong> and shipping details.</li>
+          <li>Smart <strong>handoffs</strong> to your team with full context.</li>
         </ul>
-        <p class="muted" style="margin-top:10px;">
-          Result: faster answers, fewer repetitive tickets, and higher customer satisfaction.
-        </p>
+        <p class="muted" style="margin-top:10px;">Faster answers, fewer repetitive tickets, happier customers.</p>
       </div>
     </div>
   </div>
@@ -255,7 +267,7 @@
         <div class="slides" id="slides">
       	 <article class="slide" aria-roledescription="slide" aria-label="Brotein testimonial">
  		 <div class="media-box">
-    		<img src="assets/brands/brotein.jpg" alt="Brotein product photo" loading="lazy">
+                 <img src="assets/brands/Brotein/brotein.jpg" alt="Brotein product photo" loading="lazy" decoding="async">
  		 </div>
             <div>
               <div class="quote">“Storefront cut our support time and gave us clear revenue wins within weeks.”</div>
@@ -267,7 +279,7 @@
           </article>
           <article class="slide" aria-roledescription="slide" aria-label="Restup testimonial">
   		<div class="media-box">
-   		 <img src="assets/brands/restup-nasal.jpg" alt="Restup nasal strips" loading="lazy">
+                 <img src="assets/brands/Restup/restup-nasal.jpg" alt="Restup nasal strips" loading="lazy" decoding="async">
   		</div>
             <div>
               <div class="quote">“Fast setup. Noticeable lift in conversion and fewer repetitive tickets.”</div>
@@ -295,13 +307,13 @@
       <h2 id="integrations-title">Future Integrations</h2>
       <div class="integrations-marquee" data-speed="42" aria-label="Supported integrations">
         <div class="integrations-track" id="integrationsTrack">
-          <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy">
-          <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy">
-          <img src="assets/logos/Google/Google_Logo_0.svg" alt="Google" loading="lazy">
-          <img src="assets/logos/Slack.png" alt="Slack" loading="lazy">
-          <img src="assets/logos/Sage/Sage_idVLLxMWe9_1.png" alt="Sage" loading="lazy">
-          <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" alt="Omnisend" loading="lazy">
-          <img src="assets/logos/Xero/Xero_idfmk3Fzbf_0.svg" alt="Xero" loading="lazy">
+          <img src="assets/logos/Shopify.com/Shopify.com_Logo_0.svg" alt="Shopify" loading="lazy" decoding="async">
+          <img src="assets/logos/Klaviyo/Klaviyo_idnxx87nKw_0.svg" alt="Klaviyo" loading="lazy" decoding="async">
+          <img src="assets/logos/Google/Google_Logo_0.svg" alt="Google" loading="lazy" decoding="async">
+          <img src="assets/logos/Slack.png" alt="Slack" loading="lazy" decoding="async">
+          <img src="assets/logos/Sage/Sage_idVLLxMWe9_1.png" alt="Sage" loading="lazy" decoding="async">
+          <img src="assets/logos/Omnisend/Omnisend_ideJ9ZNUzZ_0.svg" alt="Omnisend" loading="lazy" decoding="async">
+          <img src="assets/logos/Xero/Xero_idfmk3Fzbf_0.svg" alt="Xero" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
