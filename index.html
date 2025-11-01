@@ -132,12 +132,35 @@
 
     /* ====== AUDIT FORM ====== */
     #audit .container{ max-width:980px; }
-    .audit-card{ padding:28px; }
+    .audit-card{
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
     .audit-head{ margin-bottom:6px; }
     .audit-sub{ margin-bottom:18px; }
     .audit-grid{ display:grid; gap:16px; grid-template-columns:1fr; }
     @media (min-width:960px){ .audit-grid{ grid-template-columns:1fr 1fr; } }
     .audit-actions{ display:flex; gap:12px; align-items:center; margin-top:18px; }
+    #audit .input, #audit .select, #audit textarea,
+    #audit input[type="text"], #audit input[type="email"], #audit input[type="url"], #audit input[type="number"]{
+      background:#ffffff !important;
+      color:#0B0F14 !important;
+      border:1px solid #D0D5DD !important;
+      border-radius:10px !important;
+      padding:.78rem .9rem !important;
+      box-shadow:none !important;
+    }
+    #audit .input::placeholder, #audit textarea::placeholder{ color:#6B7280; }
+    #audit .input:focus, #audit .select:focus, #audit textarea:focus,
+    #audit input[type="text"]:focus, #audit input[type="email"]:focus,
+    #audit input[type="url"]:focus, #audit input[type="number"]:focus{
+      outline:none !important;
+      border-color:#2F6FFF !important;
+      box-shadow:0 0 0 3px rgba(47,111,255,.25) !important;
+    }
+    #audit label{ color:var(--muted); }
     .err{ border:1px solid var(--err-brd); background:var(--err-bg); color:var(--err); border-radius:12px; padding:12px 14px; display:none; }
     .success{ border:1px solid var(--ok-brd); background:var(--ok-bg); color:var(--ok); border-radius:12px; padding:14px 16px; }
 
