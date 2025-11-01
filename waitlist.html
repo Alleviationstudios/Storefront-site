@@ -51,17 +51,34 @@
     h3{ margin:0 0 6px 0; font-size: 18px; }
 
     .form-wrap{ margin:22px auto 0; max-width:1100px; }
-    .wide-card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:22px; box-shadow: var(--shadow); }
+    .wide-card, .form-card{
+      background:transparent !important;
+      border:0 !important;
+      box-shadow:none !important;
+      padding:0 !important;
+    }
     form .grid{ display:grid; gap:12px; }
     form .two{ grid-template-columns: 1fr; }
     @media(min-width:720px){ form .two{ grid-template-columns: 1fr 1fr; } }
     @media(min-width:1060px){ form .two{ grid-template-columns: 1fr 1fr 1fr; } }
     label{ font-size:.92rem; color:var(--muted); display:block; margin-bottom:6px; }
-    input[type="text"], input[type="email"], input[type="url"], input[type="number"], select, textarea{
-      width:100%; background:var(--card); border:1px solid var(--border); color:var(--ink);
-      border-radius:10px; padding:.78rem .9rem; font-size:1rem;
+    input[type="text"], input[type="email"], input[type="url"], input[type="number"],
+    input[type="tel"], select, textarea, .input, .select{
+      width:100%;
+      background:#ffffff !important;
+      color:#0B0F14 !important;
+      border:1px solid #D0D5DD !important;
+      border-radius:10px !important;
+      padding:.78rem .9rem !important;
+      font-size:1rem;
+      box-shadow:none !important;
     }
-    input:focus, select:focus, textarea:focus, .chip input:focus + span, .btn:focus{ outline:none; box-shadow: var(--focus); }
+    input::placeholder, textarea::placeholder{ color:#6B7280; }
+    input:focus, select:focus, textarea:focus, .chip input:focus + span, .btn:focus{
+      outline:none !important;
+      border-color:#2F6FFF !important;
+      box-shadow:0 0 0 3px rgba(47,111,255,.25) !important;
+    }
     .fine{ font-size:.82rem; color:var(--muted); }
     .chips{ display:flex; flex-wrap:wrap; gap:8px; }
     .chip{ position:relative; }
